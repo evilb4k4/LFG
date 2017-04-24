@@ -1,12 +1,13 @@
 'use strict';
 
-function Player(username, avatar, startTimeUsual, endTimeUsual, skillLevel) {
+function Player(username, avatar, startTimeUsual, endTimeUsual, skillLevel, comments) {
   this.username = username;
   this.avatar = avatar;
   this.online = false;
   this.startTimeUsual = startTimeUsual;
   this.endTimeUsual = endTimeUsual;
   this.skillLevel = skillLevel;
+  this.comments = comments;
 
   this.gamesPlayed = {
     leagueOfLegends: false,
