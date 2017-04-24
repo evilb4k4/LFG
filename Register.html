@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Resgiter form</title>
+  </head>
+  <body>
+    
+<div id="formDiv">
+  <form id="registerForm" method="post">
+    <lable>username <input type="text" name="userName"></lable><br>
+    <lable>Gamer Tag's <input type="text"></lable>
+    <input type="radio" name="Games" value="steam">Steam
+    <input type="radio" name="Games" value="origin">Origin
+    <input type="radio" name="Games" value="battelnet"> Battlenet
+    <input type="radio" name="Games" value="leagueOfLegends">League Of Legends
+    <input type="radio" name="Games" value="uplay">Uplay
+    <input type="radio" name="Games" value="xboxLive">Xbox Live
+    <input type="radio" name="Games" value="playStationNetwork"> PlayStation Network
+    <input type="radio" name="Games" value="All of network"> All Networks
+
+
+  <!-- //skill level -->
+  <h2>Choice your Gamer skill Level (Be honest with yourself)</h2>
+  <input type="radio" name="Skill level" value="Noob" checked> Noob<br>
+  <input type="radio" name="Skill level" value="INTERMEDIATE">Intermediate<br>
+  <input type="radio" name="Skill level" value="Veteran">Veteran<br>
+  <input type="radio" name="Skill level" value="Pro">Pro level gaming<br>
+  <!-- Game check boxes -->
+  <h2>What game would you like to find Gamer on?</h2>
+  <input type="checkbox" name="Games" value="leagueOfLegends">League Of Legends
+  <input type="checkbox" name="Games" value="worldOfWarcraft">World Of Warcraft
+  <input type="checkbox" name="Games" value="callOfDuty">Call Of Duty<br>
+  <input type="checkbox" name="Games" value="overwatch">Overwatch
+  <input type="checkbox" name="Games" value="battlefield1">Battlefield 1
+  <input type="checkbox" name="Games" value="titanfall2">Titanfall 2<br>
+  <input type="checkbox" name="Games" value="mineCraft">MineCraft
+  <input type="checkbox" name="Games" value="theDivision">The Division
+  <input type="checkbox" name="Games" value="noMansSky">No Man's Sky<br>
+  <!-- date and time input -->
+  <h3>Day you usally online to game.</h3>
+  <input type="checkbox" name="Day of the week" value="Monday">Monday<br>
+  <input type="checkbox" name="Day of the week" value="Tuesday">Tuesday<br>
+  <input type="checkbox" name="Day of the week" value="Wednesday">Wednesday<br>
+  <input type="checkbox" name="Day of the week" value="Thrusday">Thrusday<br>
+  <input type="checkbox" name="Day of the week" value="Friday">Friday<br>
+  <input type="checkbox" name="Day of the week" value="Saturday">Saturday<br>
+  <input type="checkbox" name="Day of the week" value="Sunday">Sunday<br>
+  <!-- did some change keeping code if needed later for adding date and time
+  <select name="day of the week">
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thrusday">Thrusday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+    <option value="Sunday">Sunday</option>
+    time input
+    <input type="time" name="Start time" id="time">
+    <input type="time" name="End time" id="time"><br>
+
+  </select> -->
+
+<!-- comment boxs -->
+<textarea name="User comments" rows="5" cols="50"></textarea><br>
+<button type="submit">Register</button>
+
+</form>
+<script src="form.js"></script>
+</div>
+  </body>
+</html>
