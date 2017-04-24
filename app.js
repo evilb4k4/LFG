@@ -1,11 +1,11 @@
 'use strict';
 
-function Player(username, avatar, skillLevel) {
+function Player(username, avatar, startTimeUsual, endTimeUsual, skillLevel) {
   this.username = username;
-  this.avatar = '';
+  this.avatar = avatar;
   this.online = false;
-  this.startTimeUsual = '';
-  this.endTimeUsual = '';
+  this.startTimeUsual = startTimeUsual;
+  this.endTimeUsual = endTimeUsual;
   this.skillLevel = skillLevel;
 
   var gamesPlayed = {
@@ -23,6 +23,8 @@ function Player(username, avatar, skillLevel) {
   var gamerTags = {
     steam:'',
     origin:'',
+    battlenet:'',
+    leagueOfLegends: '',
     uplay:'',
     xboxLive:'',
     playStationNetwork:'',
