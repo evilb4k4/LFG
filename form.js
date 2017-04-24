@@ -1,11 +1,37 @@
 'use strict';
-//Demo Object creation
-function Player(userName, gamertag, skillLevel) {
-  this.gamertag = gamertag;
-  this.skillLevel = skillLevel;
-  this.userName = userName;
 
+function Player(userName, avatar, startTimeUsual, endTimeUsual, skillLevel) {
+  this.username = userName;
+  this.avatar = avatar;
+  this.online = false;
+  this.startTimeUsual = startTimeUsual;
+  this.endTimeUsual = endTimeUsual;
+  this.skillLevel = skillLevel;
+
+
+  this.gamesPlayed = {
+    leagueOfLegends: false,
+    worldOfWarcraft: false,
+    callOfDuty: false,
+    overwatch: false,
+    battlefield1: false,
+    titanfall2: false,
+    mineCraft: false,
+    theDivision: false,
+    noMansSky: false,
+  };
+
+  this.gamerTags = {
+    steam:'',
+    origin:'',
+    battlenet:'',
+    leagueOfLegends: '',
+    uplay:'',
+    xboxLive:'',
+    playStationNetwork:'',
+  };
 }
+
 
 //Function
 var registerForm = document.getElementById('registerForm');
@@ -16,23 +42,23 @@ function handleRegisterPlayer(event) {
   var getTarget = event.target;
 
   var playerUserName = getTarget.userName.value;
-  var createNewPlayer;
+  var playerList;
 
   //Checking if the Players localStorage DB exists
   try {
-    createNewPlayer = JSON.parse(localStorage.Players);
+    playerList = JSON.parse(localStorage.playerList);
     console.log('it exists');
   } catch(error){
     console.log('error');
   }
-  if(createNewPlayer){
+  if(playerList){
     console.log('again');
-    createNewPlayer.push(new Player(playerUserName));
+    playerList.push(new Player(playerUserName));
   } else {
-    createNewPlayer = [new Player(playerUserName)];
+    playerList = [new Player(playerUserName)];
   }
 
-  localStorage.Players = JSON.stringify(createNewPlayer);
+  localStorage.playerList = JSON.stringify(playerList);
   console.log(playerUserName);
 
 }
