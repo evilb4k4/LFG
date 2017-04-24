@@ -8,6 +8,7 @@ function resultDisplay(){
   var avatarPic = document.createElement('div');
   var username = document.createElement('h3');
   var userOnline = document.createElement('h3');
+  var playerSkill = document.createElement('h1');
   var gamertags = document.createElement('ul');
   var gamesPlayed = document.createElement('ul');
   var comments = document.createElement('p');
@@ -20,6 +21,7 @@ function resultDisplay(){
   avatarUserWrap = document.appendChild(userOnlineWrap);
   userOnlineWrap = document.appendChild(username);
   userOnlineWrap = document.appendChild(userOnline);
+  userOnlineWrap = document.appendChild(playerSkill);
   player = document.appendChild(gamerGamesWrap);
   gamerGamesWrap = document.appendChild(gamertags);
   gamerGamesWrap = document.appendChild(gamesPlayed);
@@ -32,4 +34,3 @@ function resultDisplay(){
     var gamerTagLi = createElement('li');
     var gamerTagLiText = new textNode (object.entries(playerList[j].gamerTags[i][0], ': ', object.entries(playerList[j].gamerTags[i][1])))
 }
-    
