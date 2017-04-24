@@ -66,19 +66,20 @@ function handleRegisterPlayer(event) {
 
 
 ///Section for the sigin logic
-function signIn(userNames) {
+function signIn(playerSignInName) {
   try {
     var playerList = JSON.parse(localStorage.playerList);
-    console.log('Sign in');
   } catch(error){
-    console.log('error');
+    console.log('error: ' + error);
   }
+  var matched = false;
 
-  for (var i = 0; i < playerList.length; i++) {
-    if(userNames == playerList[i].userName) {
-      console.log(playerList[0]);
+  for(var i = 0; i < playerList.length && !matched; i++){
+    if(playerSignInName == playerList[i].userName){
+      console.log('match');
+      matched = true;
     } else {
-      console.log('Please try again');
+      console.log('no match');
     }
   }
 }
