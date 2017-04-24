@@ -6,9 +6,9 @@
   </head>
   <body>
 <div id="formDiv">
-<form action="index.html" method="post">
-  <lable>username <input type="text"></lable><br>
-  <lable>Gamer Tag's <input type="text"></lable><br>
+  <form id="registerForm" method="post">
+    <lable>username <input type="text" name="userName"></lable>
+    <lable>Gamer Tag's <input type="text"></lable>
   <!-- //skill level -->
   <h2>Choice your Gamer skill Level (Be honest with yourself)</h2>
   <input type="radio" name="Skill level" value="Noob" checked> Noob<br>
@@ -118,10 +118,9 @@
     <input type="time" name="Start time" id="time">
     <input type="time" name="End time" id="time"><br>
   </select>
-
-  <input type="submit">
-
+  <button type="submit">Register</button>
 </form>
+<script src="form.js"></script>
 </div>
   </body>
 </html>
