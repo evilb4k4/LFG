@@ -8,7 +8,7 @@ function Player(username, avatar, startTimeUsual, endTimeUsual, skillLevel) {
   this.endTimeUsual = endTimeUsual;
   this.skillLevel = skillLevel;
 
-  var gamesPlayed = {
+  this.gamesPlayed = {
     leagueOfLegends: false,
     worldOfWarcraft: false,
     callOfDuty: false,
@@ -20,7 +20,7 @@ function Player(username, avatar, startTimeUsual, endTimeUsual, skillLevel) {
     noMansSky: false,
   };
 
-  var gamerTags = {
+  this.gamerTags = {
     steam:'',
     origin:'',
     battlenet:'',
