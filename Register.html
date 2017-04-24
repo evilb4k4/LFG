@@ -7,8 +7,18 @@
   <body>
 <div id="formDiv">
   <form id="registerForm" method="post">
-    <lable>username <input type="text" name="userName"></lable>
+    <lable>username <input type="text" name="userName"></lable><br>
     <lable>Gamer Tag's <input type="text"></lable>
+    <input type="radio" name="Games" value="steam">Steam
+    <input type="radio" name="Games" value="origin">Origin
+    <input type="radio" name="Games" value="battelnet"> Battlenet
+    <input type="radio" name="Games" value="leagueOfLegends">League Of Legends
+    <input type="radio" name="Games" value="uplay">Uplay
+    <input type="radio" name="Games" value="xboxLive">Xbox Live
+    <input type="radio" name="Games" value="playStationNetwork"> PlayStation Network
+    <input type="radio" name="Games" value="All of network"> All Networks
+
+
   <!-- //skill level -->
   <h2>Choice your Gamer skill Level (Be honest with yourself)</h2>
   <input type="radio" name="Skill level" value="Noob" checked> Noob<br>
@@ -118,7 +128,9 @@
     <input type="time" name="Start time" id="time">
     <input type="time" name="End time" id="time"><br>
   </select>
-  <button type="submit">Register</button>
+<!-- comment boxs -->
+<textarea name="User comments" rows="5" cols="50"></textarea><br>
+<button type="submit">Register</button>
 </form>
 <script src="form.js"></script>
 </div>
