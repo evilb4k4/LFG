@@ -1,12 +1,13 @@
 'use strict';
 
-function Player(userName, avatar, startTimeUsual, endTimeUsual, skillLevel) {
-  this.username = userName;
+function Player(userName, avatar, startTimeUsual, endTimeUsual, skillLevel, comments) {
+  this.userName = userName;
   this.avatar = avatar;
   this.online = false;
   this.startTimeUsual = startTimeUsual;
   this.endTimeUsual = endTimeUsual;
   this.skillLevel = skillLevel;
+  this.comments = comments;
 
 
   this.gamesPlayed = {
@@ -61,4 +62,23 @@ function handleRegisterPlayer(event) {
   localStorage.playerList = JSON.stringify(playerList);
   console.log(playerUserName);
 
+}
+
+
+///Section for the sigin logic
+function signIn(userNames) {
+  try {
+    var playerList = JSON.parse(localStorage.playerList);
+    console.log('Sign in');
+  } catch(error){
+    console.log('error');
+  }
+
+  for (var i = 0; i < playerList.length; i++) {
+    if(userNames == playerList[i].userName) {
+      console.log(playerList[0]);
+    } else {
+      console.log('Please try again');
+    }
+  }
 }
