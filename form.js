@@ -88,7 +88,17 @@ function mainPageLoad() {
   var getMainDiv = document.getElementById('content');
   var registerSignBox = document.createElement('div');
   registerSignBox.className = 'registerSignBox';
+
+var registerButtonCreate = document.createElement('button');
+  registerButtonCreate.setAttribute('id', 'registerButton');
+  registerButtonCreate.className = 'buttons';
+  registerButtonCreate.innerHTML = 'Registe';
+  registerSignBox.appendChild(registerButtonCreate);
+
+
+
   getMainDiv.appendChild(registerSignBox);
+
 
 
 }
