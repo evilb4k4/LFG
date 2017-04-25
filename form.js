@@ -1,5 +1,6 @@
 'use strict';
 
+var signInSubmitButton;
 var getMainDiv = document.getElementById('content');
 
 function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
@@ -21,7 +22,6 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
     theDivision: false,
     noMansSky: false,
   };
-
   this.gamerTags = {
     steam:'',
     origin:'',
@@ -73,6 +73,19 @@ playerList[4].gamesPlayed.titanfall2 = true;
 playerList[4].gamerTags.battlenet = 'test5battlenettag';
 playerList[4].gamesPlayed.worldOfWarcraft = true;
 
+Player.prototype.daysOfWeek = function(){
+  console.log('daysOfWeek running');
+  var daysOfWeek = document.getElementsByClassName('gamingDays');
+  for(i = 0; i < daysOfWeek.lenght; i++){
+    console.log('checkboxes work',daysOfWeek[i].checked);
+    if(daysOfWeek[i].checked){
+      this.dayYouCanGame.push(daysOfWeek[i].value);
+    }
+  }
+};
+var registerForm = document.getElementById('registerForm');
+registerForm.addEventListener('submit', handleRegisterPlayer);
+
 //function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
@@ -82,17 +95,7 @@ function handleRegisterPlayer(event) {
   var playerSkillLevel = getTarget.skillLevel.value;
   var playerGamingDays = getTarget.dayYouCanGame.value;
 
-  var checkedValue = null;
-  var inputElements = document.getElementsByClassName('gamingDays');
-  for(var i = 0; inputElements[i]; ++i){
-    if(inputElements[i].checked){
-      checkedValue = inputElements[i].value;
-      this.dayYouCanGame.push(checkedValue);
-      break;
-    }
-  }
   console.log('player days work', playerGamingDays);
-
   var playerList;
 
   //Checking if the Players localStorage DB exists
@@ -115,20 +118,23 @@ function handleRegisterPlayer(event) {
 }
 
 //Section for the sigin logic
-function signIn(playerSignInName) {
+function signIn() {
   try {
     var playerList = JSON.parse(localStorage.playerList);
   } catch(error){
     console.log('error: ' + error);
   }
-  var matched = false;
 
+  var playerUserName = signInSubmitButton.userName.value;
+  var matched = false;
+  console.log(playerUserName);
   for(var i = 0; i < playerList.length && !matched; i++){
-    if(playerSignInName == playerList[i].userName){
-      console.log('match');
+    if(playerUserName == playerList[i].username){
+      showresults();
       matched = true;
     } else {
       console.log('no match');
+      alert('no match');
     }
   }
 }
@@ -137,12 +143,30 @@ function signIn(playerSignInName) {
 function SignInBoxCreate() {
   getMainDiv.innerHTML = '';
   var signInBoxcreate = document.createElement('div');
+  var formcreate = document.createElement('form');
+  formcreate.setAttribute('id', 'sign-in');
   signInBoxcreate.className = 'sign-in-box';
+  signInBoxcreate.appendChild(formcreate);
+
   var signInLabelCreate = document.createElement('label');
   signInLabelCreate.innerHTML = 'sample';
-  signInBoxcreate.appendChild(signInLabelCreate);
+  formcreate.appendChild(signInLabelCreate);
+
+  var signInInputFieldCreate = document.createElement('input')
+  signInInputFieldCreate.type = 'text';
+  signInInputFieldCreate.name = 'userName';
+  signInInputFieldCreate.placeholder = 'Please enter your username';
+  formcreate.appendChild(signInInputFieldCreate);
+
+  var signInSubmitButtonCreate = document.createElement('button');
+  signInSubmitButtonCreate.type = 'submit';
+  signInSubmitButtonCreate.innerHTML = 'Sign In';
+  formcreate.appendChild(signInSubmitButtonCreate);
 
   getMainDiv.appendChild(signInBoxcreate);
+
+ signInSubmitButton = document.getElementById('sign-in');
+  signInSubmitButton.addEventListener('submit', signIn);
 }
   //function to display the register and sign in buttons on the main site
 function mainPageLoad() {
@@ -166,5 +190,11 @@ function mainPageLoad() {
 // mainPageLoad();
 
 //event listeners
-// var signInButtonClick = document.getElementById('signInButton');
-// signInButtonClick.addEventListener('click', SignInBoxCreate);
+
+var signInButtonClick = document.getElementById('signInButton');
+
+signInButtonClick.addEventListener('click', SignInBoxCreate);
+
+function showresults() {
+  alert('you are logged in');
+}
