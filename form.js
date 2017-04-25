@@ -6,7 +6,7 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
   this.username = username;
   this.avatar = avatar;
   this.online = false;
-  this.dayYouCanGame = [];
+  this.dayYouCanGame = dayYouCanGame;
   this.skillLevel = skillLevel;
   this.comments = comments;
 
@@ -33,13 +33,45 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
   };
 }
 
-//===== test Player =====
+//===== test currentUser =====
+var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
+currentUser.gamerTags.steam = 'CUsteamtag';
+currentUser.gamesPlayed.leagueOfLegends = true;
+currentUser.gamerTags.battlenet = 'CUbattlenettag';
+currentUser.gamesPlayed.worldOfWarcraft = true;
+
+//===== test Players =====
 var playerList = [];
-playerList[0] = new Player('tester', '', 'Monday', 'Tuesday', 'n00b', 'Im a n00b');
-playerList[0].gamerTags.steam = 'dingdong';
+
+playerList[0] = new Player('test1', '', 'Monday', 'n00b', 'Im a n00b');
+playerList[0].gamerTags.steam = 'test1steamtag';
 playerList[0].gamesPlayed.leagueOfLegends = true;
-playerList[0].gamerTags.battlenet = 'glorp';
+playerList[0].gamerTags.battlenet = 'test1battlenettag';
 playerList[0].gamesPlayed.worldOfWarcraft = true;
+
+playerList[1] = new Player('test2', '', 'Monday', 'n00b', 'Im a n00b');
+playerList[1].gamerTags.steam = 'test2steamtag';
+playerList[1].gamesPlayed.leagueOfLegends = true;
+playerList[1].gamerTags.origin = 'test2origintag';
+playerList[1].gamesPlayed.callOfDuty = true;
+
+playerList[2] = new Player('test3', '', 'Monday', 'intermediate', 'Im intermediate');
+playerList[2].gamerTags.steam = 'test3steamtag';
+playerList[2].gamesPlayed.leagueOfLegends = true;
+playerList[2].gamerTags.uplay = 'test3uplaytag';
+playerList[2].gamesPlayed.overwatch = true;
+
+playerList[3] = new Player('test4', '', 'Monday', 'intermediate', 'Im intermediate');
+playerList[3].gamerTags.xboxLive = 'test4xboxtag';
+playerList[3].gamesPlayed.battlefield1 = true;
+playerList[3].gamerTags.battlenet = 'test4battlenettag';
+playerList[3].gamesPlayed.worldOfWarcraft = true;
+
+playerList[4] = new Player('test5', '', 'Monday', 'pro', 'Im a pro');
+playerList[4].gamerTags.playStationNetwork = 'test5playstationtag';
+playerList[4].gamesPlayed.titanfall2 = true;
+playerList[4].gamerTags.battlenet = 'test5battlenettag';
+playerList[4].gamesPlayed.worldOfWarcraft = true;
 
 //function handling player registration
 function handleRegisterPlayer(event) {
@@ -129,10 +161,10 @@ function mainPageLoad() {
   signInButtonCreate.innerHTML = 'Sign In';
   registerSignBox.appendChild(signInButtonCreate);
 
-  getMainDiv.appendChild(registerSignBox);
+  // getMainDiv.appendChild(registerSignBox);
 }
-mainPageLoad();
+// mainPageLoad();
 
 //event listeners
-var signInButtonClick = document.getElementById('signInButton');
-signInButtonClick.addEventListener('click', SignInBoxCreate);
+// var signInButtonClick = document.getElementById('signInButton');
+// signInButtonClick.addEventListener('click', SignInBoxCreate);
