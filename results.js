@@ -1,10 +1,14 @@
 'use strict';
 
-var playerList = JSON.parse(localStorage.playerList);
+try {
+  var playerList = JSON.parse(localStorage.playerList);
+} catch (error) {
+  console.log('error');
+}
 
 function resultDisplay(){
 
-  var content = document.getElementById('content');
+  var content = document.getElementById('testContent');
   content.InnerHTML = '';
 
   var results = document.createElement('div');
@@ -12,8 +16,34 @@ function resultDisplay(){
 
   for (var j = 0; j < playerList.length; j++) {
 
-// ===== Creates Single 'Player' Profile for Results Page =====
+    //===== Conditionals for Comparison between currentUser and Player objects =====
 
+    if (currentUser.username != playerList[j].username){
+      console.log(playerList[j].username);
+      if (currentUser.dayYouCanGame == playerList[j].dayYouCanGame){
+        console.log(playerList[j].dayYouCanGame);
+        if (currentUser.skillLevel == playerList[j].skillLevel){
+          console.log(playerList[j].skillLevel);
+          for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
+            if((Object.entries(currentUser.gamerTags)[i][1])== true && (Object.entries(playerList[j].gamerTags)[i][1]) == true){
+              console.log(playerList[j].gamerTags);
+            }
+            if((Object.entries(currentUser.gamesPlayed)[i][1])== true && (Object.entries(playerList[j].gamesPlayed)[i][1]) == true){
+              console.log(playerList[j].gamesPlayed);
+            }
+            
+            playerRender();
+
+          }
+        }
+      }
+    }
+  }
+
+
+  // ===== Renders Player Object to Results Page =====
+
+  function playerRender() {
     var player = document.createElement('div');
     player.className = 'player';
 
@@ -60,9 +90,9 @@ function resultDisplay(){
     player.appendChild(comments);
     player.appendChild(contactButton);
 
-// ========== gamerTags List Item Creation =====
+    // ========== gamerTags List Item Creation =====
 
-    for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
+    for (i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
       var gamerTagLi = document.createElement('li');
       if(Object.entries(playerList[j].gamerTags)[i][1]){
         gamerTagLi.textContent = (Object.entries(playerList[j].gamerTags)[i][0], ': ' ,   Object.entries(playerList[j].gamerTags)[i][1]);
@@ -70,7 +100,7 @@ function resultDisplay(){
       }
     }
 
-// ========== gamesPlayed List Item Creation =====
+    // ========== gamesPlayed List Item Creation =====
     for (i = 0; i < Object.entries(playerList[j].gamesPlayed).length; i++){
       var gamesPlayedLi = document.createElement('li');
       if(Object.entries(playerList[j].gamesPlayed)[i][1]){
@@ -81,4 +111,6 @@ function resultDisplay(){
   }
 }
 
-// resultDisplay();
+
+
+resultDisplay();
