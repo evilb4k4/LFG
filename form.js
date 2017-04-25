@@ -84,8 +84,8 @@ Player.prototype.daysOfWeek = function(){
   }
 };
 var registerForm = document.getElementById('registerForm');
-// registerForm.addEventListener('submit', handleRegisterPlay);
-// Player();
+
+// registerForm.addEventListener('submit', handleRegisterPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
@@ -118,19 +118,20 @@ function handleRegisterPlayer(event) {
 }
 
 //Section for the sigin logic
-function signIn() {
-  try {
-    var playerList = JSON.parse(localStorage.playerList);
-  } catch(error){
-    console.log('error: ' + error);
-  }
-
+function signIn(event) {
+  // try {
+  //   var playerList = JSON.parse(localStorage.playerList);
+  // } catch(error){
+  //   console.log('error: ' + error);
+  // }
+  event.preventDefault();
   var playerUserName = signInSubmitButton.userName.value;
   var matched = false;
   console.log(playerUserName);
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
-      showresults();
+      // resultDisplay();
+      // alert('it worked');
       matched = true;
     } else {
       console.log('no match');
@@ -168,6 +169,90 @@ function SignInBoxCreate() {
   signInSubmitButton = document.getElementById('sign-in');
   signInSubmitButton.addEventListener('submit', signIn);
 }
+
+//this fuctions creates the html form
+function registerPlayer() {
+  getMainDiv.innerHTML = '';
+
+  var playerRegistrationForm  = document.createElement('div');
+  playerRegistrationForm.className = 'register-container';
+
+  var registrationForm = document.createElement('form');
+  registrationForm.setAttribute('id', 'playerCreated');
+
+  var usernameLabelCreate = document.createElement('label');
+  usernameLabelCreate.innerHTML = 'User Name: ';
+  var userNameInputField = document.createElement('input')
+  userNameInputField.type = 'text';
+  userNameInputField.name = 'username';
+  registrationForm.appendChild(usernameLabelCreate);
+  registrationForm.appendChild(userNameInputField);
+
+  var gamerTagLabelCreate = document.createElement('label');
+  gamerTagLabelCreate.innerHTML = 'Gamer Tag: ';
+  var gamerInputField = document.createElement('input')
+  gamerInputField.type = 'text';
+  gamerInputField.name = 'username';
+  registrationForm.appendChild(gamerTagLabelCreate);
+  registrationForm.appendChild(gamerInputField);
+
+  var platformLabelCreate = document.createElement('label');
+  platformLabelCreate.innerHTML = 'Steam';
+  var gamerInputField = document.createElement('input')
+  gamerInputField.type = 'radio';
+  gamerInputField.name = 'Steam';
+  gamerInputField.value = 'Steam';
+  registrationForm.appendChild(platformLabelCreate);
+  registrationForm.appendChild(gamerInputField);
+
+  var choiceSkillLevelHeader = document.createElement('h1');
+  choiceSkillLevelHeader.textContent = 'Choice your Gamer skill Level (Be honest with yourself)';
+  registrationForm.appendChild(choiceSkillLevelHeader);
+
+  var skillLevelLabelCreate = document.createElement('label');
+  skillLevelLabelCreate.innerHTML = 'Noob';
+  var skillLevelRadioButton = document.createElement('input')
+  skillLevelRadioButton.type = 'radio';
+  skillLevelRadioButton.name = 'Noob';
+  skillLevelRadioButton.value = 'Noob';
+  registrationForm.appendChild(skillLevelLabelCreate);
+  registrationForm.appendChild(skillLevelRadioButton);
+
+  var chooseYourGame = document.createElement('h1');
+  chooseYourGame.textContent = 'What Game would you like to find gamers on?)';
+  registrationForm.appendChild(chooseYourGame);
+
+  var lolLabel = document.createElement('label');
+  lolLabel.innerHTML = 'League of Legends';
+  var lolCheckBox = document.createElement('input')
+  lolCheckBox.type = 'checkbox';
+  lolCheckBox.name = 'leagueOfLegends';
+  lolCheckBox.value = 'eagueOfLegends';
+  registrationForm.appendChild(lolLabel);
+  registrationForm.appendChild(lolCheckBox);
+
+  var weekDaysHeader = document.createElement('h1');
+  weekDaysHeader.textContent = 'Day you are usually online to game)';
+  registrationForm.appendChild(weekDaysHeader);
+
+  var daysLabel = document.createElement('label');
+  daysLabel.innerHTML = 'Monday';
+  var mondayCheckBox = document.createElement('input')
+  mondayCheckBox.type = 'checkbox';
+  mondayCheckBox.name = 'daysOfWeek';
+  mondayCheckBox.value = 'Monday';
+  registrationForm.appendChild(daysLabel);
+  registrationForm.appendChild(mondayCheckBox);
+
+  var playerRegisterSubmitButton = document.createElement('button');
+  playerRegisterSubmitButton.type = 'submit';
+  playerRegisterSubmitButton.innerHTML = 'Sign In';
+  registrationForm.appendChild(playerRegisterSubmitButton);
+
+  playerRegistrationForm.appendChild(registrationForm);
+  getMainDiv.appendChild(playerRegistrationForm);
+}
+
   //function to display the register and sign in buttons on the main site
 function mainPageLoad() {
   var registerSignBox = document.createElement('div');
@@ -185,12 +270,14 @@ function mainPageLoad() {
   signInButtonCreate.innerHTML = 'Sign In';
   registerSignBox.appendChild(signInButtonCreate);
 
-  // getMainDiv.appendChild(registerSignBox);
+  getMainDiv.appendChild(registerSignBox);
 }
-// mainPageLoad();
+mainPageLoad();
 
 //event listeners
 
-// var signInButtonClick = document.getElementById('signInButton');
+var signInButtonClick = document.getElementById('signInButton');
+signInButtonClick.addEventListener('click', SignInBoxCreate);
 
-// signInButtonClick.addEventListener('click', SignInBoxCreate);
+var formButtonCreate = document.getElementById('registerButton')
+formButtonCreate.addEventListener('click', registerPlayer)
