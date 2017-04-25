@@ -109,5 +109,4 @@ function resultDisplay(){
       }
     }
   }
-  alert('it works!');
 }
