@@ -62,7 +62,6 @@ function handleRegisterPlayer(event) {
 
 }
 
-
 //Section for the sigin logic
 function signIn(playerSignInName) {
   try {
@@ -87,8 +86,11 @@ function SignInBoxCreate() {
   getMainDiv.innerHTML = '';
   var signInBoxcreate = document.createElement('div');
   signInBoxcreate.className = 'sign-in-box';
+  var signInLabelCreate = document.createElement('label');
+  signInLabelCreate.innerHTML = 'sample';
+  signInBoxcreate.appendChild(signInLabelCreate);
+
   getMainDiv.appendChild(signInBoxcreate);
-  console.log('it worked');
 }
   //function to display the register and sign in buttons on the main site
 function mainPageLoad() {
@@ -110,7 +112,7 @@ function mainPageLoad() {
   getMainDiv.appendChild(registerSignBox);
 }
 mainPageLoad();
+
 //event listeners
-var registerForm = document.getElementById('registerForm');
 var signInButtonClick = document.getElementById('signInButton');
 signInButtonClick.addEventListener('click', SignInBoxCreate);

@@ -17,7 +17,7 @@ header {
 }
 /* This css style is for the sign in box */
 .sign-in-box {
-  /*background-color: rgba(255, 255, 255, 0.5);*/
+  background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid #000;
   width: 30%;
   height: 20%;
