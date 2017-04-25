@@ -9,7 +9,7 @@
 function resultDisplay(){
 
   var content = document.getElementById('content');
-  content.InnerHTML = '';
+  content.textContent = '';
 
   var results = document.createElement('div');
   results.id = 'results';

@@ -118,12 +118,8 @@ function handleRegisterPlayer(event) {
 }
 
 //Section for the sigin logic
-function signIn() {
-  // try {
-  //   var playerList = JSON.parse(localStorage.playerList);
-  // } catch(error){
-  //   console.log('error: ' + error);
-  // }
+function signIn(event) {
+  event.preventDefault();
 
   var playerUserName = signInSubmitButton.userName.value;
   var matched = false;
