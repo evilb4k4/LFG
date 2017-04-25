@@ -35,6 +35,16 @@ header {
   top: 40%;
   position: fixed;
 }
+
+.register-container {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #000;
+  width: 50%;
+  height: 50%;
+  left: 28%;
+  top: 20%;
+  position: fixed;
+}
 footer {
   border: 2px solid blue;
   width: 100%;
