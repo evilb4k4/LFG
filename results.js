@@ -40,7 +40,7 @@ function resultDisplay(){
     comments.className = 'comments';
     var contactButton = document.createElement('button');
     contactButton.className = 'contactButton';
-  //
+
     username.textContent = playerList[j].username;
     avatarPic.textContent = playerList[j].avatarPic;
     userOnline.textContent = playerList[j].userOnline;
@@ -80,9 +80,5 @@ function resultDisplay(){
     }
   }
 }
-
-  //
-
-
 
 resultDisplay();
