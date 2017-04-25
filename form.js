@@ -36,7 +36,7 @@ function Player(userName, avatar, startTimeUsual, endTimeUsual, skillLevel, comm
 
 //Function
 var registerForm = document.getElementById('registerForm');
-registerForm.addEventListener('submit', handleRegisterPlayer);
+// registerForm.addEventListener('submit', handleRegisterPlayer);
 
 function handleRegisterPlayer(event) {
   event.preventDefault();
@@ -65,7 +65,7 @@ function handleRegisterPlayer(event) {
 }
 
 
-///Section for the sigin logic
+//Section for the sigin logic
 function signIn(playerSignInName) {
   try {
     var playerList = JSON.parse(localStorage.playerList);
@@ -83,3 +83,13 @@ function signIn(playerSignInName) {
     }
   }
 }
+  //fucntion to display the register and sign in buttons on the main site
+function mainPageLoad() {
+  var getMainDiv = document.getElementById('content');
+  var registerSignBox = document.createElement('div');
+  registerSignBox.className = 'registerSignBox';
+  getMainDiv.appendChild(registerSignBox);
+
+
+}
+mainPageLoad();
