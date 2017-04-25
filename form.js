@@ -32,7 +32,18 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
     playStationNetwork:'',
   };
 }
-
+Player.prototype.daysOfWeek = function(){
+  console.log('daysOfWeek running');
+  var daysOfWeek = document.getElementsByClassName('gamingDays');
+  for(i = 0; i < daysOfWeek.lenght; i++){
+    console.log('checkboxes work',daysOfWeek[i].checked);
+    if(daysOfWeek[i].checked){
+      this.dayYouCanGame.push(daysOfWeek[i].value);
+    }
+  }
+};
+var registerForm = document.getElementById('registerForm');
+registerForm.addEventListener('submit', handleRegisterPlayer);
 //function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
@@ -42,17 +53,7 @@ function handleRegisterPlayer(event) {
   var playerSkillLevel = getTarget.skillLevel.value;
   var playerGamingDays = getTarget.dayYouCanGame.value;
 
-  var checkedValue = null;
-  var inputElements = document.getElementsByClassName('gamingDays');
-  for(var i = 0; inputElements[i]; ++i){
-    if(inputElements[i].checked){
-      checkedValue = inputElements[i].value;
-      this.dayYouCanGame.push(checkedValue);
-      break;
-    }
-  }
   console.log('player days work', playerGamingDays);
-
   var playerList;
 
   //Checking if the Players localStorage DB exists
@@ -121,10 +122,10 @@ function mainPageLoad() {
   signInButtonCreate.innerHTML = 'Sign In';
   registerSignBox.appendChild(signInButtonCreate);
 
-  getMainDiv.appendChild(registerSignBox);
+  // getMainDiv.appendChild(registerSignBox);
 }
 mainPageLoad();
 
 //event listeners
 var signInButtonClick = document.getElementById('signInButton');
-signInButtonClick.addEventListener('click', SignInBoxCreate);
+// signInButtonClick.addEventListener('click', SignInBoxCreate);
