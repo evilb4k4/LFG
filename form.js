@@ -1,13 +1,11 @@
 'use strict';
 
-function Player(userName, avatar, startTimeUsual, endTimeUsual, skillLevel) {
+function Player(userName, avatar, dayYouCanGame, skillLevel) {
   this.username = userName;
   this.avatar = avatar;
   this.online = false;
-  this.startTimeUsual = startTimeUsual;
-  this.endTimeUsual = endTimeUsual;
+  this.dayYouCanGame = [];
   this.skillLevel = skillLevel;
-
 
   this.gamesPlayed = {
     leagueOfLegends: false,
@@ -42,6 +40,19 @@ function handleRegisterPlayer(event) {
   var getTarget = event.target;
 
   var playerUserName = getTarget.userName.value;
+  var playerSkillLevel = getTarget.skillLevel.value;
+  var playerGamingDays = getTarget.dayYouCanGame.value;
+
+  var checkedValue = null;
+  var inputElements = document.getElementsByClassName('gamingDays');
+  for(var i = 0; inputElements[i]; ++i){
+    if(inputElements[i].checked){
+      checkedValue = inputElements[i].value;
+      this.dayYouCanGame.push(checkedValue);
+      break;
+    }
+  }
+  console.log('player days work', playerGamingDays);
   var playerList;
 
   //Checking if the Players localStorage DB exists
@@ -53,9 +64,9 @@ function handleRegisterPlayer(event) {
   }
   if(playerList){
     console.log('again');
-    playerList.push(new Player(playerUserName));
+    playerList.push(new Player(playerUserName, playerSkillLevel, playerGamingDays));
   } else {
-    playerList = [new Player(playerUserName)];
+    playerList = [new Player(playerUserName, playerSkillLevel, playerGamingDays)];
   }
 
   localStorage.playerList = JSON.stringify(playerList);
