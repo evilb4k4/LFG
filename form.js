@@ -76,7 +76,7 @@ playerList[4].gamesPlayed.worldOfWarcraft = true;
 Player.prototype.daysOfWeek = function(){
   console.log('daysOfWeek running');
   var daysOfWeek = document.getElementsByClassName('gamingDays');
-  for(i = 0; i < daysOfWeek.lenght; i++){
+  for(var i = 0; i < daysOfWeek.length; i++){
     console.log('checkboxes work',daysOfWeek[i].checked);
     if(daysOfWeek[i].checked){
       this.dayYouCanGame.push(daysOfWeek[i].value);
@@ -84,7 +84,7 @@ Player.prototype.daysOfWeek = function(){
   }
 };
 var registerForm = document.getElementById('registerForm');
-registerForm.addEventListener('submit', handleRegisterPlayer);
+// registerForm.addEventListener('submit', handleRegisterPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
@@ -119,28 +119,30 @@ function handleRegisterPlayer(event) {
 
 //Section for the sigin logic
 function signIn() {
-  try {
-    var playerList = JSON.parse(localStorage.playerList);
-  } catch(error){
-    console.log('error: ' + error);
-  }
+  // try {
+  //   var playerList = JSON.parse(localStorage.playerList);
+  // } catch(error){
+  //   console.log('error: ' + error);
+  // }
 
   var playerUserName = signInSubmitButton.userName.value;
   var matched = false;
   console.log(playerUserName);
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
-      showresults();
+      resultDisplay();
       matched = true;
     } else {
       console.log('no match');
-      alert('no match');
+      // alert('no match');
     }
   }
 }
 
 //function to display the login screen
-function SignInBoxCreate() {
+
+function SignInBoxCreate(event) {
+  event.preventDefault();
   getMainDiv.innerHTML = '';
   var signInBoxcreate = document.createElement('div');
   var formcreate = document.createElement('form');
@@ -152,7 +154,7 @@ function SignInBoxCreate() {
   signInLabelCreate.innerHTML = 'sample';
   formcreate.appendChild(signInLabelCreate);
 
-  var signInInputFieldCreate = document.createElement('input')
+  var signInInputFieldCreate = document.createElement('input');
   signInInputFieldCreate.type = 'text';
   signInInputFieldCreate.name = 'userName';
   signInInputFieldCreate.placeholder = 'Please enter your username';
@@ -165,10 +167,11 @@ function SignInBoxCreate() {
 
   getMainDiv.appendChild(signInBoxcreate);
 
- signInSubmitButton = document.getElementById('sign-in');
+  signInSubmitButton = document.getElementById('sign-in');
   signInSubmitButton.addEventListener('submit', signIn);
 }
   //function to display the register and sign in buttons on the main site
+
 function mainPageLoad() {
   var registerSignBox = document.createElement('div');
   registerSignBox.className = 'registerSignInButtons';
@@ -185,15 +188,17 @@ function mainPageLoad() {
   signInButtonCreate.innerHTML = 'Sign In';
   registerSignBox.appendChild(signInButtonCreate);
 
-  // getMainDiv.appendChild(registerSignBox);
+  getMainDiv.appendChild(registerSignBox);
+
+  var signInButtonClick = document.getElementById('signInButton');
+  signInButtonClick.addEventListener('click', SignInBoxCreate);
 }
+
 // mainPageLoad();
 
 //event listeners
 
-var signInButtonClick = document.getElementById('signInButton');
 
-signInButtonClick.addEventListener('click', SignInBoxCreate);
 
 function showresults() {
   alert('you are logged in');

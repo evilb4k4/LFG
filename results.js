@@ -1,14 +1,14 @@
 'use strict';
 
-try {
-  var playerList = JSON.parse(localStorage.playerList);
-} catch (error) {
-  console.log('error');
-}
+// try {
+//   var playerList = JSON.parse(localStorage.playerList);
+// } catch (error) {
+//   console.log('error');
+// }
 
 function resultDisplay(){
 
-  var content = document.getElementById('testContent');
+  var content = document.getElementById('content');
   content.InnerHTML = '';
 
   var results = document.createElement('div');
@@ -31,7 +31,7 @@ function resultDisplay(){
             if((Object.entries(currentUser.gamesPlayed)[i][1])== true && (Object.entries(playerList[j].gamesPlayed)[i][1]) == true){
               console.log(playerList[j].gamesPlayed);
             }
-            
+
             playerRender();
 
           }
@@ -109,8 +109,5 @@ function resultDisplay(){
       }
     }
   }
+  alert('it works!');
 }
-
-
-
-resultDisplay();
