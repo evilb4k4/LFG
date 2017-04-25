@@ -15,7 +15,16 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+/* This css style is for the sign in box */
+.sign-in-box {
+  /*background-color: rgba(255, 255, 255, 0.5);*/
+  border: 1px solid #000;
+  width: 30%;
+  height: 20%;
+  left: 35%;
+  top: 40%;
+  position: fixed;
+}
 /* This css style is for the sign in and register buttons on the landing page */
 .registerSignInButtons {
   /*background-color: rgba(255, 255, 255, 0.5);*/
