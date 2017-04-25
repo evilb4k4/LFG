@@ -84,14 +84,14 @@ Player.prototype.daysOfWeek = function(){
   }
 };
 var registerForm = document.getElementById('registerForm');
+
 // registerForm.addEventListener('submit', handleRegisterPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
-
-  var playerUserName = getTarget.userName.value;
+  var playerUserName = getTarget.username.value;
   var playerSkillLevel = getTarget.skillLevel.value;
   var playerGamingDays = getTarget.dayYouCanGame.value;
 
@@ -153,7 +153,7 @@ function SignInBoxCreate() {
   signInLabelCreate.innerHTML = 'sample';
   formcreate.appendChild(signInLabelCreate);
 
-  var signInInputFieldCreate = document.createElement('input')
+  var signInInputFieldCreate = document.createElement('input');
   signInInputFieldCreate.type = 'text';
   signInInputFieldCreate.name = 'userName';
   signInInputFieldCreate.placeholder = 'Please enter your username';
@@ -166,7 +166,7 @@ function SignInBoxCreate() {
 
   getMainDiv.appendChild(signInBoxcreate);
 
- signInSubmitButton = document.getElementById('sign-in');
+  signInSubmitButton = document.getElementById('sign-in');
   signInSubmitButton.addEventListener('submit', signIn);
 }
 
