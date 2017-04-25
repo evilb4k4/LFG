@@ -31,3 +31,11 @@ function Player(username, avatar, startTimeUsual, endTimeUsual, skillLevel, comm
     playStationNetwork:'',
   };
 }
+var playerList = [];
+playerList[0] = new Player('tester', '', 'Monday', 'Tuesday', 'n00b', 'Im a n00b');
+playerList[0].gamerTags.steam = 'dingdong';
+playerList[0].gamesPlayed.leagueOfLegends = true;
+playerList[0].gamerTags.battlenet = 'glorp';
+playerList[0].gamesPlayed.worldOfWarcraft = true;
+
+localStorage.playerList = JSON.stringify(playerList);

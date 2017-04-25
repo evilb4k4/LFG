@@ -1,0 +1,8 @@
+* {
+  border: 2px solid black;
+}
+
+.player {
+  width: 300px;
+  height: 200px;
+}

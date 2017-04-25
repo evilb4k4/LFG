@@ -1,6 +1,7 @@
 'use strict';
 
 var getMainDiv = document.getElementById('content');
+
 function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
   this.username = username;
   this.avatar = avatar;
@@ -51,6 +52,7 @@ function handleRegisterPlayer(event) {
     }
   }
   console.log('player days work', playerGamingDays);
+
   var playerList;
 
   //Checking if the Players localStorage DB exists
