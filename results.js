@@ -26,8 +26,8 @@ function resultDisplay(){
     avatarPic.className = 'avatarPic';
     var username = document.createElement('h1');
     username.className = 'username';
-    var playerSkill = document.createElement('h1');
-    playerSkill.className = 'playerSkill';
+    var skillLevel = document.createElement('h1');
+    skillLevel.className = 'skillLevel';
     var userOnline = document.createElement('h3');
     userOnline.className = 'userOnline';
     var gamertags = document.createElement('ul');
@@ -38,14 +38,13 @@ function resultDisplay(){
     comments.className = 'comments';
     var contactButton = document.createElement('button');
     contactButton.className = 'contactButton';
+  //
+    username.textContent = playerList[j].username;
+    avatarPic.textContent = playerList[j].avatarPic;
+    userOnline.textContent = playerList[j].userOnline;
+    skillLevel.textContent = playerList[j].skillLevel;
 
-    // username.textNode('playerList[j].username');
-    // avatarPic.textNode('playerList[j].avatarPic');
-    // userOnline.textNode('playerList[j].userOnline');
-    // playerSkill.textNode('playerList[j].playerSkill');
-    // username.textNode('playerList[j].username');
 
-  }
 
     content.appendChild(results);
     results.appendChild(player);
@@ -53,7 +52,7 @@ function resultDisplay(){
     avatarUserWrap.appendChild(avatarPic);
     avatarUserWrap.appendChild(userOnlineWrap);
     userOnlineWrap.appendChild(username);
-    userOnlineWrap.appendChild(playerSkill);
+    userOnlineWrap.appendChild(skillLevel);
     userOnlineWrap.appendChild(userOnline);
     player.appendChild(gamerGamesWrap);
     gamerGamesWrap.appendChild(gamertags);
@@ -61,13 +60,21 @@ function resultDisplay(){
     player.appendChild(comments);
     player.appendChild(contactButton);
 
+    for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
+      var gamerTagLi = document.createElement('li');
+      gamerTagLi.textContent = (Object.entries(playerList[j].gamerTags)[i][0], ': ' , Object.entries(playerList[j].gamerTags)[i][1]);
+      gamertags.appendChild(gamerTagLi);
+    }
+
+  }
 
     // Gamertag Creation for div
 
-    for (var i = 0; i < Object.entries(playerList.gamerTags).length; i++){
-      var gamerTagLi = createElement('li');
-      var gamerTagLiText = new textNode (Object.entries(playerList[j].gamerTags[i][0], ': ', Object.entries(playerList[j].gamerTags[i][1])));
-    }
-  }
+
+}
+
+  //
+
+
 
 resultDisplay();

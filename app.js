@@ -31,3 +31,8 @@ function Player(username, avatar, startTimeUsual, endTimeUsual, skillLevel, comm
     playStationNetwork:'',
   };
 }
+var playerList = [];
+playerList[0] = new Player('tester', '', 'Monday', 'Tuesday', 'n00b', 'Im a n00b');
+playerList[0].gamerTags.steam = 'dingdong';
+
+localStorage.playerList = JSON.stringify(playerList);
