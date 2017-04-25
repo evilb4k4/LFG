@@ -1,0 +1,50 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+header {
+  border: 2px solid blue;
+  width: 100%;
+  height: 10%;
+}
+#content {
+  width: 100%;
+  height: 80%;
+  background-image: url("img/main-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/* This css style is for the sign in box */
+.sign-in-box {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #000;
+  width: 30%;
+  height: 20%;
+  left: 35%;
+  top: 40%;
+  position: fixed;
+}
+/* This css style is for the sign in and register buttons on the landing page */
+.registerSignInButtons {
+  /*background-color: rgba(255, 255, 255, 0.5);*/
+  border: 1px solid #000;
+  width: 30%;
+  height: 20%;
+  left: 35%;
+  top: 40%;
+  position: fixed;
+}
+footer {
+  border: 2px solid blue;
+  width: 100%;
+  height: 10%;
+
+}
+.buttons {
+  border-radius: 10%;
+  margin-top: 40px;
+  margin-left: 28px;
+  width: 40%;
+  height: 30%;
+}
