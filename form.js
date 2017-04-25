@@ -21,7 +21,6 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
     theDivision: false,
     noMansSky: false,
   };
-
   this.gamerTags = {
     steam:'',
     origin:'',
