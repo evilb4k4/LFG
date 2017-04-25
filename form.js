@@ -33,6 +33,14 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
   };
 }
 
+//===== test Player =====
+var playerList = [];
+playerList[0] = new Player('tester', '', 'Monday', 'Tuesday', 'n00b', 'Im a n00b');
+playerList[0].gamerTags.steam = 'dingdong';
+playerList[0].gamesPlayed.leagueOfLegends = true;
+playerList[0].gamerTags.battlenet = 'glorp';
+playerList[0].gamesPlayed.worldOfWarcraft = true;
+
 //function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
