@@ -1,11 +1,13 @@
 'use strict';
 
-function Player(userName, avatar, dayYouCanGame, skillLevel) {
-  this.username = userName;
+var getMainDiv = document.getElementById('content');
+function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
+  this.username = username;
   this.avatar = avatar;
   this.online = false;
   this.dayYouCanGame = [];
   this.skillLevel = skillLevel;
+  this.comments = comments;
 
   this.gamesPlayed = {
     leagueOfLegends: false,
@@ -30,11 +32,7 @@ function Player(userName, avatar, dayYouCanGame, skillLevel) {
   };
 }
 
-
-//Function
-var registerForm = document.getElementById('registerForm');
-registerForm.addEventListener('submit', handleRegisterPlayer);
-
+//function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
@@ -73,3 +71,58 @@ function handleRegisterPlayer(event) {
   console.log(playerUserName);
 
 }
+
+//Section for the sigin logic
+function signIn(playerSignInName) {
+  try {
+    var playerList = JSON.parse(localStorage.playerList);
+  } catch(error){
+    console.log('error: ' + error);
+  }
+  var matched = false;
+
+  for(var i = 0; i < playerList.length && !matched; i++){
+    if(playerSignInName == playerList[i].userName){
+      console.log('match');
+      matched = true;
+    } else {
+      console.log('no match');
+    }
+  }
+}
+
+//function to display the login screen
+function SignInBoxCreate() {
+  getMainDiv.innerHTML = '';
+  var signInBoxcreate = document.createElement('div');
+  signInBoxcreate.className = 'sign-in-box';
+  var signInLabelCreate = document.createElement('label');
+  signInLabelCreate.innerHTML = 'sample';
+  signInBoxcreate.appendChild(signInLabelCreate);
+
+  getMainDiv.appendChild(signInBoxcreate);
+}
+  //function to display the register and sign in buttons on the main site
+function mainPageLoad() {
+  var registerSignBox = document.createElement('div');
+  registerSignBox.className = 'registerSignInButtons';
+
+  var registerButtonCreate = document.createElement('button');
+  registerButtonCreate.setAttribute('id', 'registerButton');
+  registerButtonCreate.className = 'buttons';
+  registerButtonCreate.innerHTML = 'Register';
+  registerSignBox.appendChild(registerButtonCreate);
+
+  var signInButtonCreate = document.createElement('button');
+  signInButtonCreate.setAttribute('id', 'signInButton');
+  signInButtonCreate.className = 'buttons';
+  signInButtonCreate.innerHTML = 'Sign In';
+  registerSignBox.appendChild(signInButtonCreate);
+
+  getMainDiv.appendChild(registerSignBox);
+}
+mainPageLoad();
+
+//event listeners
+var signInButtonClick = document.getElementById('signInButton');
+signInButtonClick.addEventListener('click', SignInBoxCreate);
