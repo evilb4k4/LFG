@@ -21,24 +21,24 @@ function resultDisplay(){
     if (currentUser.username != playerList[j].username){
       console.log(playerList[j].username);
       if (currentUser.dayYouCanGame == playerList[j].dayYouCanGame){
-              console.log(playerList[j].dayYouCanGame);
+        console.log(playerList[j].dayYouCanGame);
         if (currentUser.skillLevel == playerList[j].skillLevel){
-                console.log(playerList[j].skillLevel);
+          console.log(playerList[j].skillLevel);
           for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
             if((Object.entries(currentUser.gamerTags)[i][1])== true && (Object.entries(playerList[j].gamerTags)[i][1]) == true){
-                    console.log(playerList[j].gamerTags);
+              console.log(playerList[j].gamerTags);
             }
             if((Object.entries(currentUser.gamesPlayed)[i][1])== true && (Object.entries(playerList[j].gamesPlayed)[i][1]) == true){
-                    console.log(playerList[j].gamesPlayed);
+              console.log(playerList[j].gamesPlayed);
             }
+            
+            playerRender();
 
-              playerRender();
-
-            }
           }
         }
       }
-    }  
+    }
+  }
 
 
   // ===== Renders Player Object to Results Page =====

@@ -67,8 +67,8 @@ playerList[3].gamesPlayed.battlefield1 = true;
 playerList[3].gamerTags.battlenet = 'test4battlenettag';
 playerList[3].gamesPlayed.worldOfWarcraft = true;
 
-playerList[4] = new Player('test5', '', 'Monday', 'pro', 'Im a pro');
-playerList[4].gamerTags.playStationNetwork = 'test5playstationtag';
+playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
+playerList[4].gamerTags.steam = 'test5playstationtag';
 playerList[4].gamesPlayed.titanfall2 = true;
 playerList[4].gamerTags.battlenet = 'test5battlenettag';
 playerList[4].gamesPlayed.worldOfWarcraft = true;
