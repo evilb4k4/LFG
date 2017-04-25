@@ -12,6 +12,8 @@ function resultDisplay(){
 
   for (var j = 0; j < playerList.length; j++) {
 
+// ===== Creates Single 'Player' Profile for Results Page =====
+
     var player = document.createElement('div');
     player.className = 'player';
 
@@ -30,8 +32,8 @@ function resultDisplay(){
     skillLevel.className = 'skillLevel';
     var userOnline = document.createElement('h3');
     userOnline.className = 'userOnline';
-    var gamertags = document.createElement('ul');
-    gamertags.className = 'gamertags';
+    var gamerTags = document.createElement('ul');
+    gamerTags.className = 'gamerTags';
     var gamesPlayed = document.createElement('ul');
     gamesPlayed.className = 'gamesPlayed';
     var comments = document.createElement('p');
@@ -44,8 +46,6 @@ function resultDisplay(){
     userOnline.textContent = playerList[j].userOnline;
     skillLevel.textContent = playerList[j].skillLevel;
 
-
-
     content.appendChild(results);
     results.appendChild(player);
     player.appendChild(avatarUserWrap);
@@ -55,22 +55,30 @@ function resultDisplay(){
     userOnlineWrap.appendChild(skillLevel);
     userOnlineWrap.appendChild(userOnline);
     player.appendChild(gamerGamesWrap);
-    gamerGamesWrap.appendChild(gamertags);
+    gamerGamesWrap.appendChild(gamerTags);
     gamerGamesWrap.appendChild(gamesPlayed);
     player.appendChild(comments);
     player.appendChild(contactButton);
 
+// ========== gamerTags List Item Creation =====
+
     for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
       var gamerTagLi = document.createElement('li');
-      gamerTagLi.textContent = (Object.entries(playerList[j].gamerTags)[i][0], ': ' , Object.entries(playerList[j].gamerTags)[i][1]);
-      gamertags.appendChild(gamerTagLi);
+      if(Object.entries(playerList[j].gamerTags)[i][1]){
+        gamerTagLi.textContent = (Object.entries(playerList[j].gamerTags)[i][0], ': ' ,   Object.entries(playerList[j].gamerTags)[i][1]);
+        gamerTags.appendChild(gamerTagLi);
+      }
     }
 
+// ========== gamesPlayed List Item Creation =====
+    for (i = 0; i < Object.entries(playerList[j].gamesPlayed).length; i++){
+      var gamesPlayedLi = document.createElement('li');
+      if(Object.entries(playerList[j].gamesPlayed)[i][1]){
+        gamesPlayedLi.textContent = Object.entries(playerList[j].gamesPlayed)[i][0];
+        gamesPlayed.appendChild(gamesPlayedLi);
+      }
+    }
   }
-
-    // Gamertag Creation for div
-
-
 }
 
   //
