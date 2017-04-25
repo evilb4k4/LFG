@@ -1,18 +1,45 @@
 'use strict';
 
-// var playerList = JSON.parse(localStorage.playerList);
-
 function resultDisplay(){
 
   var content = document.getElementById('content');
-  content.InnerHTML = '';
+
+  content.textContent = '';
+
 
   var results = document.createElement('div');
   results.id = 'results';
 
   for (var j = 0; j < playerList.length; j++) {
 
-// ===== Creates Single 'Player' Profile for Results Page =====
+
+    //===== Conditionals for Comparison between currentUser and Player objects =====
+
+    if (currentUser.username != playerList[j].username){
+      console.log(playerList[j].username);
+      if (currentUser.dayYouCanGame == playerList[j].dayYouCanGame){
+        console.log(playerList[j].dayYouCanGame);
+        if (currentUser.skillLevel == playerList[j].skillLevel){
+          console.log(playerList[j].skillLevel);
+          for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
+            if((Object.entries(currentUser.gamerTags)[i][1])== true && (Object.entries(playerList[j].gamerTags)[i][1]) == true){
+              console.log(playerList[j].gamerTags);
+            }
+            if((Object.entries(currentUser.gamesPlayed)[i][1])== true && (Object.entries(playerList[j].gamesPlayed)[i][1]) == true){
+              console.log(playerList[j].gamesPlayed);
+            }
+
+            playerRender();
+
+          }
+        }
+      }
+    }
+  }
+
+
+  // ===== Renders Player Object to Results Page =====
+
 
     var player = document.createElement('div');
     player.className = 'player';
@@ -80,5 +107,3 @@ function resultDisplay(){
     }
   }
 }
-
-// resultDisplay();

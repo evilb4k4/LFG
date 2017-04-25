@@ -1,20 +1,113 @@
 * {
-  margin: 0px;
-  padding: 0px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  border: 2px solid black;
 }
-header {
-  border: 2px solid blue;
-  width: 100%;
-  height: 10%;
+
+.clear-fix {
+  clear: both;
 }
-#content {
+
+html, body {
+  height: 100%;
+}
+
+body {
   width: 100%;
-  height: 80%;
+}
+
+#background{
   background-image: url("img/main-bg.png");
   background-size: cover;
   background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1000;
 }
+
+header {
+  border: 2px solid blue;
+  width: 100%;
+  height: 120px;
+  position: fixed;
+  top: 0;
+  background-color: rgba(250, 250, 250, .7);
+}
+
+#content {
+  width: 960px;
+  margin: 0 auto;
+  margin-top: 140px;
+}
+
+.player {
+  width: 450px;
+  height: 200px;
+  margin: 11px;
+  display: inline-block;
+  /*float: left;*/
+  background-color: rgba(0,255,0,.9);
+}
+
+.avatarUserWrap {
+  display: inline-block;
+  float: left;
+  width: 20%;
+  height: 70%;
+  border-width: 0px;
+}
+
+.avatarPic {
+  width: 100%;
+  height: 75%;
+}
+
+.userOnlineWrap {
+  width: 100%;
+  height: 20%;
+  margin-top: 2%;
+}
+
+.gamerGamesWrap {
+  display: inline-block;
+  float: left;
+  width: 80%;
+  height: 70%;
+  border-width: 0px;
+}
+
+.gamerTags {
+  width: 45%;
+  display: inline-block;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.gamesPlayed {
+  width: 45%;
+  display: inline-block;
+  margin: 0 auto;
+  list-style: none;
+
+.comments {
+  display: block;
+  width: 100%;
+  height: 15%;
+  float: left;
+}
+
+.contactButton {
+  display: block;
+  width: 45%;
+  height: 10%;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
 /* This css style is for the sign in box */
 .sign-in-box {
   background-color: rgba(255, 255, 255, 0.5);
@@ -48,9 +141,12 @@ header {
 footer {
   border: 2px solid blue;
   width: 100%;
-  height: 10%;
-
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(250, 250, 250, .7);
 }
+
 .buttons {
   border-radius: 10%;
   margin-top: 40px;

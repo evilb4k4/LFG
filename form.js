@@ -76,7 +76,7 @@ playerList[4].gamesPlayed.worldOfWarcraft = true;
 Player.prototype.daysOfWeek = function(){
   console.log('daysOfWeek running');
   var daysOfWeek = document.getElementsByClassName('gamingDays');
-  for(i = 0; i < daysOfWeek.lenght; i++){
+  for(var i = 0; i < daysOfWeek.length; i++){
     console.log('checkboxes work',daysOfWeek[i].checked);
     if(daysOfWeek[i].checked){
       this.dayYouCanGame.push(daysOfWeek[i].value);
@@ -119,29 +119,25 @@ function handleRegisterPlayer(event) {
 
 //Section for the sigin logic
 function signIn(event) {
-  // try {
-  //   var playerList = JSON.parse(localStorage.playerList);
-  // } catch(error){
-  //   console.log('error: ' + error);
-  // }
   event.preventDefault();
   var playerUserName = signInSubmitButton.userName.value;
   var matched = false;
   console.log(playerUserName);
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
-      // resultDisplay();
-      // alert('it worked');
+      resultDisplay();
       matched = true;
     } else {
       console.log('no match');
-      alert('no match');
+      // alert('no match');
     }
   }
 }
 
 //function to display the login screen
-function SignInBoxCreate() {
+
+function SignInBoxCreate(event) {
+  event.preventDefault();
   getMainDiv.innerHTML = '';
   var signInBoxcreate = document.createElement('div');
   var formcreate = document.createElement('form');
@@ -254,6 +250,7 @@ function registerPlayer() {
 }
 
   //function to display the register and sign in buttons on the main site
+
 function mainPageLoad() {
   var registerSignBox = document.createElement('div');
   registerSignBox.className = 'registerSignInButtons';
@@ -272,6 +269,7 @@ function mainPageLoad() {
 
   getMainDiv.appendChild(registerSignBox);
 }
+
 mainPageLoad();
 
 //event listeners
