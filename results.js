@@ -1,20 +1,17 @@
 'use strict';
 
-// try {
-//   var playerList = JSON.parse(localStorage.playerList);
-// } catch (error) {
-//   console.log('error');
-// }
-
 function resultDisplay(){
 
   var content = document.getElementById('content');
+
   content.textContent = '';
+
 
   var results = document.createElement('div');
   results.id = 'results';
 
   for (var j = 0; j < playerList.length; j++) {
+
 
     //===== Conditionals for Comparison between currentUser and Player objects =====
 
@@ -43,7 +40,7 @@ function resultDisplay(){
 
   // ===== Renders Player Object to Results Page =====
 
-  function playerRender() {
+
     var player = document.createElement('div');
     player.className = 'player';
 
@@ -90,9 +87,9 @@ function resultDisplay(){
     player.appendChild(comments);
     player.appendChild(contactButton);
 
-    // ========== gamerTags List Item Creation =====
+// ========== gamerTags List Item Creation =====
 
-    for (i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
+    for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
       var gamerTagLi = document.createElement('li');
       if(Object.entries(playerList[j].gamerTags)[i][1]){
         gamerTagLi.textContent = (Object.entries(playerList[j].gamerTags)[i][0], ': ' ,   Object.entries(playerList[j].gamerTags)[i][1]);
@@ -100,7 +97,7 @@ function resultDisplay(){
       }
     }
 
-    // ========== gamesPlayed List Item Creation =====
+// ========== gamesPlayed List Item Creation =====
     for (i = 0; i < Object.entries(playerList[j].gamesPlayed).length; i++){
       var gamesPlayedLi = document.createElement('li');
       if(Object.entries(playerList[j].gamesPlayed)[i][1]){
