@@ -87,19 +87,21 @@ function signIn(playerSignInName) {
 function mainPageLoad() {
   var getMainDiv = document.getElementById('content');
   var registerSignBox = document.createElement('div');
-  registerSignBox.className = 'registerSignBox';
+  registerSignBox.className = 'registerSignInButtons';
 
 var registerButtonCreate = document.createElement('button');
   registerButtonCreate.setAttribute('id', 'registerButton');
   registerButtonCreate.className = 'buttons';
-  registerButtonCreate.innerHTML = 'Registe';
+  registerButtonCreate.innerHTML = 'Register';
   registerSignBox.appendChild(registerButtonCreate);
 
-
+var signInButtonCreate = document.createElement('button');
+signInButtonCreate.setAttribute('id', 'signInButton');
+signInButtonCreate.className = 'buttons';
+signInButtonCreate.innerHTML = 'Sign In';
+registerSignBox.appendChild(signInButtonCreate);
 
   getMainDiv.appendChild(registerSignBox);
-
-
 
 }
 mainPageLoad();
