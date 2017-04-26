@@ -5,7 +5,7 @@ var signInLabelCreate;
 var formcreate;
 var getMainDiv = document.getElementById('content');
 
-function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
+function Player(username, avatar, dayYouCanGame, skillLevel, comments){
   this.username = username;
   this.avatar = avatar;
   this.online = false;
@@ -24,6 +24,7 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
     theDivision: false,
     noMansSky: false,
   };
+
   this.gamerTags = {
     steam:'',
     origin:'',
@@ -75,47 +76,69 @@ playerList[4].gamesPlayed.titanfall2 = true;
 playerList[4].gamerTags.battlenet = 'test5battlenettag';
 playerList[4].gamesPlayed.leagueOfLegends = true;
 
-Player.prototype.daysOfWeek = function(){
-  console.log('daysOfWeek running');
-  var daysOfWeek = document.getElementsByClassName('gamingDays');
-  for(var i = 0; i < daysOfWeek.length; i++){
-    console.log('checkboxes work',daysOfWeek[i].checked);
-    if(daysOfWeek[i].checked){
-      this.dayYouCanGame.push(daysOfWeek[i].value);
-    }
-  }
-};
-var registerForm = document.getElementById('registerForm');
+// function dayOfWeek(){
+//   console.log('daysOfWeek running');
+//   var daysOfWeek = document.getElementsByClassName('gamingDays');
+//   for(var i = 0; i < daysOfWeek.length; i++){
+//     console.log('checkboxes work',daysOfWeek[i].checked);
+//     if(daysOfWeek[i].checked){
+//       this.dayYouCanGame.push(daysOfWeek[i].value);
+//     }
+//   }
+// };
 
-// registerForm.addEventListener('submit', handleRegisterPlayer);
+// var playerRegistrationForm = document.getElementById('playerCreated');
+// playerRegistrationForm.addEventListener('submit', registerPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
   var playerUserName = getTarget.username.value;
+  var playerGamertag = getTarget.gamertag.value;
+  console.log('username', playerUserName);
   var playerSkillLevel = getTarget.skillLevel.value;
-  var playerGamingDays = getTarget.dayYouCanGame.value;
+  var playerGamerNetwork = getTarget.gamerTags.value;
+  console.log('playerGamerNetwork', playerGamerNetwork);
+  console.log('network gamertag', playerGamerNetwork);
+  // var playerGamerNetwork = getTarget.gamerTags.value;
+  var playerGamingDays = getTarget.monday.value;
+  console.log('dayYouCanGame', playerGamingDays);
 
-  console.log('player days work', playerGamingDays);
-  var playerList;
+  var dayYouCanGame = {
+    monday: getTarget.monday.checked,
+    tuesday: getTarget.tuesday.checked,
+    wednesday: getTarget.wednesday.checked,
+    thrusday: getTarget.thrusday.checked,
+    friday: getTarget.friday.checked,
+    saturday: getTarget.saturday.checked,
+    sunday: getTarget.sunday.checked,
+  };
+  var gamesPlayed = {
+    leagueOfLegends: getTarget.leagueOfLegends.checked,
+    worldOfWarcraft: getTarget.worldOfWarcraft.checked,
+    callOfDuty: getTarget.callOfDuty.checked,
+    overwatch: getTarget.overwatch.checked,
+    battlefield1:getTarget.battlefield1.checked,
+    titanfall2: getTarget.titanfall2.checked,
+    mineCraft: getTarget.mineCraft.checked,
+    theDivision: getTarget.theDivision.checked,
+    noMansSky: getTarget.noMansSky.checked,
+  };
+  console.log('COD', gamesPlayed);
 
-  //Checking if the Players localStorage DB exists
+  var player = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  player.gamerTags[playerGamerNetwork] = playerGamertag;
+
+  console.log('lulwat player', player);
+
+  playerList.push(player);
+
   try {
-    playerList = JSON.parse(localStorage.playerList);
-    console.log('it exists');
-  } catch(error){
-    console.log('error');
+    localStorage.playerList = JSON.stringify(playerList);
+  } catch (error) {
+    console.error(error);
   }
-  if(playerList){
-    console.log('again');
-    playerList.push(new Player(playerUserName, playerSkillLevel, playerGamingDays));
-  } else {
-    playerList = [new Player(playerUserName, playerSkillLevel, playerGamingDays)];
-  }
-
-  localStorage.playerList = JSON.stringify(playerList);
-  console.log(playerUserName);
 
 }
 
@@ -234,7 +257,7 @@ function registerPlayer() {
   steamLabelCreate.innerHTML = 'Steam';
   var steamRadioButton = document.createElement('input');
   steamRadioButton.type = 'radio';
-  steamRadioButton.name = 'steam';
+  steamRadioButton.name = 'gamerTags';
   steamRadioButton.value = 'steam';
   platformDiv.appendChild(steamLabelCreate);
   steamLabelCreate.appendChild(steamRadioButton);
@@ -243,7 +266,7 @@ function registerPlayer() {
   originLabelCreate.innerHTML = 'Origin';
   var originRadioButton = document.createElement('input');
   originRadioButton.type = 'radio';
-  originRadioButton.name = 'origin';
+  originRadioButton.name = 'gamerTags';
   originRadioButton.value = 'origin';
   platformDiv.appendChild(originLabelCreate);
   originLabelCreate.appendChild(originRadioButton);
@@ -252,7 +275,7 @@ function registerPlayer() {
   battlenetLabelCreate.innerHTML = 'Battlenet';
   var battlenetRadioButton = document.createElement('input');
   battlenetRadioButton.type = 'radio';
-  battlenetRadioButton.name = 'battlenet';
+  battlenetRadioButton.name = 'gamerTags';
   battlenetRadioButton.value = 'battlenet';
   platformDiv.appendChild(battlenetLabelCreate);
   battlenetLabelCreate.appendChild(battlenetRadioButton);
@@ -261,7 +284,7 @@ function registerPlayer() {
   leagueOfLegendsLabelCreate.innerHTML = 'League Of Legends';
   var leagueOfLegendsRadioButton = document.createElement('input');
   leagueOfLegendsRadioButton.type = 'radio';
-  leagueOfLegendsRadioButton.name = 'leagueOfLegends';
+  leagueOfLegendsRadioButton.name = 'gamerTags';
   leagueOfLegendsRadioButton.value = 'leagueOfLegends';
   platformDiv.appendChild(leagueOfLegendsLabelCreate);
   leagueOfLegendsLabelCreate.appendChild(leagueOfLegendsRadioButton);
@@ -270,7 +293,7 @@ function registerPlayer() {
   uplayLabelCreate.innerHTML = 'Uplay';
   var uplayRadioButton = document.createElement('input');
   uplayRadioButton.type = 'radio';
-  uplayRadioButton.name = 'uplay';
+  uplayRadioButton.name = 'gamerTags';
   uplayRadioButton.value = 'uplay';
   platformDiv.appendChild(uplayLabelCreate);
   uplayLabelCreate.appendChild(uplayRadioButton);
@@ -279,7 +302,7 @@ function registerPlayer() {
   xboxLiveLabelCreate.innerHTML = 'Xbox Live';
   var xboxLiveRadioButton = document.createElement('input');
   xboxLiveRadioButton.type = 'radio';
-  xboxLiveRadioButton.name = 'xboxLive';
+  xboxLiveRadioButton.name = 'gamerTags';
   xboxLiveRadioButton.value = 'xboxLive';
   platformDiv.appendChild(xboxLiveLabelCreate);
   xboxLiveLabelCreate.appendChild(xboxLiveRadioButton);
@@ -288,7 +311,7 @@ function registerPlayer() {
   playStationNetworkLabelCreate.innerHTML = 'Playstation Network';
   var playStationNetworkRadioButton = document.createElement('input');
   playStationNetworkRadioButton.type = 'radio';
-  playStationNetworkRadioButton.name = 'playStationNetwork';
+  playStationNetworkRadioButton.name = 'gamerTags';
   playStationNetworkRadioButton.value = 'playStationNetwork';
   platformDiv.appendChild(playStationNetworkLabelCreate);
   playStationNetworkLabelCreate.appendChild(playStationNetworkRadioButton);
@@ -308,7 +331,7 @@ function registerPlayer() {
   noobLabelCreate.innerHTML = 'Noob';
   var noobRadioButton = document.createElement('input');
   noobRadioButton.type = 'radio';
-  noobRadioButton.name = 'Noob';
+  noobRadioButton.name = 'skillLevel';
   noobRadioButton.value = 'Noob';
   skillLevelDiv.appendChild(noobLabelCreate);
   noobLabelCreate.appendChild(noobRadioButton);
@@ -317,7 +340,7 @@ function registerPlayer() {
   intermediateLabelCreate.innerHTML = 'Intermediate';
   var intermediateRadioButton = document.createElement('input');
   intermediateRadioButton.type = 'radio';
-  intermediateRadioButton.name = 'intermediate';
+  intermediateRadioButton.name = 'skillLevel';
   intermediateRadioButton.value = 'intermediate';
   skillLevelDiv.appendChild(intermediateLabelCreate);
   intermediateLabelCreate.appendChild(intermediateRadioButton);
@@ -326,7 +349,7 @@ function registerPlayer() {
   veteranLabelCreate.innerHTML = 'Veteran';
   var veteranRadioButton = document.createElement('input');
   veteranRadioButton.type = 'radio';
-  veteranRadioButton.name = 'Veteran';
+  veteranRadioButton.name = 'skillLevel';
   veteranRadioButton.value = 'Veteran';
   skillLevelDiv.appendChild(veteranLabelCreate);
   veteranLabelCreate.appendChild(veteranRadioButton);
@@ -438,7 +461,7 @@ function registerPlayer() {
   mondayLabel.innerHTML = 'Monday';
   var mondayCheckBox = document.createElement('input');
   mondayCheckBox.type = 'checkbox';
-  mondayCheckBox.name = 'daysOfWeek';
+  mondayCheckBox.name = 'monday';
   mondayCheckBox.value = 'monday';
   daysYouCanGameDiv.appendChild(mondayLabel);
   mondayLabel.appendChild(mondayCheckBox);
@@ -447,7 +470,7 @@ function registerPlayer() {
   tuesdayLabel.innerHTML = 'Tuesday';
   var tuesdayCheckBox = document.createElement('input');
   tuesdayCheckBox.type = 'checkbox';
-  tuesdayCheckBox.name = 'daysOfWeek';
+  tuesdayCheckBox.name = 'tuesday';
   tuesdayCheckBox.value = 'tuesday';
   daysYouCanGameDiv.appendChild(tuesdayLabel);
   tuesdayLabel.appendChild(tuesdayCheckBox);
@@ -456,7 +479,7 @@ function registerPlayer() {
   wednesdayLabel.innerHTML = 'Wednesday';
   var wednesdayCheckBox = document.createElement('input');
   wednesdayCheckBox.type = 'checkbox';
-  wednesdayCheckBox.name = 'daysOfWeek';
+  wednesdayCheckBox.name = 'wednesday';
   wednesdayCheckBox.value = 'wednesday';
   daysYouCanGameDiv.appendChild(wednesdayLabel);
   wednesdayLabel.appendChild(wednesdayCheckBox);
@@ -474,7 +497,7 @@ function registerPlayer() {
   fridayLabel.innerHTML = 'Friday';
   var fridayCheckBox = document.createElement('input');
   fridayCheckBox.type = 'checkbox';
-  fridayCheckBox.name = 'daysOfWeek';
+  fridayCheckBox.name = 'friday';
   fridayCheckBox.value = 'friday';
   daysYouCanGameDiv.appendChild(fridayLabel);
   fridayLabel.appendChild(fridayCheckBox);
@@ -483,7 +506,7 @@ function registerPlayer() {
   saturdayLabel.innerHTML = 'Saturday';
   var saturdayCheckBox = document.createElement('input');
   saturdayCheckBox.type = 'checkbox';
-  saturdayCheckBox.name = 'daysOfWeek';
+  saturdayCheckBox.name = 'saturday';
   saturdayCheckBox.value = 'saturday';
   daysYouCanGameDiv.appendChild(saturdayLabel);
   saturdayLabel.appendChild(saturdayCheckBox);
@@ -492,7 +515,7 @@ function registerPlayer() {
   sundayLabel.innerHTML = 'Sunday';
   var sundayCheckBox = document.createElement('input');
   sundayCheckBox.type = 'checkbox';
-  sundayCheckBox.name = 'daysOfWeek';
+  sundayCheckBox.name = 'sunday';
   sundayCheckBox.value = 'sunday';
   daysYouCanGameDiv.appendChild(sundayLabel);
   sundayLabel.appendChild(sundayCheckBox);
@@ -507,6 +530,9 @@ function registerPlayer() {
 
   playerRegistrationForm.appendChild(registrationForm);
   getMainDiv.appendChild(playerRegistrationForm);
+
+  var playerRegistrationForm = document.getElementById('playerCreated');
+  playerRegistrationForm.addEventListener('submit', handleRegisterPlayer);
 }
 
 //function to create a humburger menu when player log in
@@ -517,7 +543,7 @@ function hamburgerMenu() {
   var hamburgerMenuSettingButton = document.createElement('div');
   hamburgerMenuSettingButton.className = 'hamburger-menu-button-img';
   var hamburgerMenuSettingImg = document.createElement('img');
-  hamburgerMenuSettingImg.setAttribute('id','setting-button')
+  hamburgerMenuSettingImg.setAttribute('id','setting-button');
   hamburgerMenuSettingImg.src = 'img/setting-button.png';
   hamburgerMenuSettingButton.appendChild(hamburgerMenuSettingImg);
   hamburgerMenuDivCreate.appendChild(hamburgerMenuSettingButton);
@@ -564,3 +590,6 @@ signInButtonClick.addEventListener('click', SignInBoxCreate);
 
 var formButtonCreate = document.getElementById('registerButton');
 formButtonCreate.addEventListener('click', registerPlayer);
+
+// var playerRegistrationForm = document.getElementById('playerCreated');
+// playerRegistrationForm.addEventListener('submit', registerPlayer);
