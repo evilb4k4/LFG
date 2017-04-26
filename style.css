@@ -44,13 +44,13 @@ body {
   height: 100%;
   right: 0px;
 }
-  
+
 header {
   border: rgba(55, 70, 110, .7);
   height: 120px;
   position: fixed;
   top: 0;
-  background-color: rgba(135, 155, 165, .3);
+  background-color: rgba(135, 155, 165, .2);
   font-family: 'Black Ops One', cursive;
   font-size: 100px;
   font-style: italic;
@@ -59,16 +59,43 @@ header {
 }
 
 footer {
-  border: rgba(55, 70, 110, .3);
+  border: rgba(55, 70, 110, .7);
   height: 60px;
   position: fixed;
   bottom: 0;
-  background-color: rgba(135, 155, 165, .7);
+  background-color: rgba(135, 155, 165, .3);
+  font-family: 'Black Ops One', cursive;
+  text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
+  text-align: center;
+}
+#icons{
+  padding: 2px;
+  float: right;
+  width: 160px;
+  background-color: rgba(0, 0, 0, .3);
+  position: fixed;
+  bottom: 8px;
+  right: 16px;
+}
+footer div img {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+}
+
+.made-by{
+  font-family: "Iceberg", cursive;
+  display: inline-block;
+  margin-top: 40px;
+  color: rgba(200, 200, 200, 0.7)
 }
 
 #content {
   height: 100%;
-  margin: 0 auto;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  /*margin: 0 auto;*/
   background-image: url("img/main-bg.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -117,13 +144,156 @@ footer {
 }
 
 .register-container {
-  background-color: rgb(255, 255, 255);
+  display: block;
+  background-color: rgba(45, 95, 110, .8);
+  border-radius: 10px;
+  box-shadow: 20px 20px 50px black;
+  width: 70%;
+  height: 85%;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  overflow: scroll;
+  position: relative;
+}
+
+.register-container input[type="text"] {
   border: 1px solid #000;
-  width: 50%;
-  height: 50%;
-  left: 28%;
-  top: 2%;
-  position: fixed;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 10px;
+  width: 120px;
+}
+
+.register-container label {
+  display: inline-block;
+  font-family: 'Iceberg', cursive;
+  font-size: 16px;
+  font-style: italic;
+  text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
+  text-align: right;
+  width: 70%;
+  float: left;
+}
+
+.registrationFormDivs {
+  display: inline-block;
+  width: 200px;
+  float: left;
+}
+
+.registrationFormDivs * {
+  font-family: "Black Ops One", cursive;
+  font-style: italic;
+}
+
+.registrationFormDivs input {
+  width: auto;
+  display: inline;
+}
+
+.registrationFormDivs h1 {
+  font-family: 'Black Ops One', cursive;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.registrationFormDivs label {
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+#usernameDiv {
+  padding-top: 50px;
+  padding-left: 50px;
+}
+
+#usernameDiv label {
+  font-family: 'Iceberg', cursive;
+  text-align: left;
+}
+
+#gamerTagDiv {
+  padding-top: 50px;
+  margin-left: 100px;
+}
+
+#gamerTagDiv label {
+  width: 150px;
+  font-family: 'Iceberg', cursive;
+  text-align: left;
+}
+
+#platformDiv {
+  position: relative;
+  padding-top: 20px;
+}
+
+#platformDiv label {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#platformDiv label input {
+  position: absolute;
+  right: 10px;
+}
+
+#skillLevelDiv {
+  position: relative;
+}
+
+#skillLevelDiv label {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#skillLevelDiv label input {
+  position: absolute;
+  right: 10px;
+}
+
+#gamesDiv {
+  position: relative;
+  padding-top: 112.4px;
+  margin-left: 50px;
+}
+
+#gamesDiv label {
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#gamesDiv label input {
+  position: absolute;
+  right: 10px;
+}
+
+#daysYouCanGameDiv {
+  position: relative;
+  padding-top: 112.4px;
+  margin-left: 50px;
+}
+
+#daysYouCanGameDiv label {
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#daysYouCanGameDiv label input {
+  position: absolute;
+  right: 10px;
+}
+
+.register-container button {
+  clear: both;
+  position: absolute;
+  bottom: 30px;
+  left: calc(50% - 125px);
 }
 
 /* This css style is for the sign in and register buttons on the landing page */
@@ -133,9 +303,8 @@ footer {
   background-color: rgba(45, 95, 110, .7);
   border-radius: 10px;
   box-shadow: 20px 20px 50px black;
-  width: 600px;
+  width: 100%;
   height: 200px;
-  margin-left: 35%;
   position: fixed;
   top: 40%;
 }
@@ -238,4 +407,28 @@ footer {
 }
 .player .buttons {
   font-size: 24px;
+}
+
+::-webkit-input-placeholder {
+  font-family: "Iceberg", cursive;
+  text-align: center;
+}
+:-moz-placeholder { /* older Firefox*/
+  font-family: "Iceberg", cursive;
+  text-align: center;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family: "Iceberg", cursive;
+  text-align: center;
+}
+:-ms-input-placeholder {
+  font-family: "Iceberg", cursive;
+  text-align: center;
+}
+
+@media screen and (min-width: 600px){
+  .registerSignInButtons{
+    width: 600px;
+    margin-left: calc(50% - 300px);
+  }
 }
