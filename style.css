@@ -120,8 +120,7 @@ footer {
 
 .register-container {
   display: block;
-  border: 1px solid #000;
-  background-color: rgba(45, 95, 110, .7);
+  background-color: rgba(45, 95, 110, .8);
   border-radius: 10px;
   box-shadow: 20px 20px 50px black;
   width: 70%;
@@ -144,18 +143,16 @@ footer {
 
 .register-container label {
   display: inline-block;
-  border: 1px dotted black;
   font-family: 'Iceberg', cursive;
   font-size: 16px;
   font-style: italic;
   text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
-  text-align: left;
+  text-align: right;
   width: 70%;
   float: left;
 }
 
 .registrationFormDivs {
-  border: 1px dotted black;
   display: inline-block;
   width: 200px;
   float: left;
@@ -166,34 +163,106 @@ footer {
   font-style: italic;
 }
 
-.registrationFormDivs h1 {
+.registrationFormDivs input {
+  width: auto;
+  display: inline;
+}
 
+.registrationFormDivs h1 {
+  font-family: 'Black Ops One', cursive;
+  font-size: 16px;
+  margin-top: 20px;
 }
 
 .registrationFormDivs label {
-  width: auto;
+  width: 100%;
   display: inline-block;
+  margin: 0 auto;
 }
 
 #usernameDiv {
-  padding-top: 10%;
-  padding-left: 10%;
+  padding-top: 50px;
+  padding-left: 50px;
+}
+
+#usernameDiv label {
   font-family: 'Iceberg', cursive;
   text-align: left;
 }
 
 #gamerTagDiv {
-  padding-top: 10%;
-  padding-left: 10%;
+  padding-top: 50px;
+  margin-left: 100px;
+}
+
+#gamerTagDiv label {
+  width: 150px;
   font-family: 'Iceberg', cursive;
   text-align: left;
 }
 
-#platformDiv label {
-  width: 200px;
+#platformDiv {
+  position: relative;
+  padding-top: 20px;
 }
 
-#
+#platformDiv label {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#platformDiv label input {
+  position: absolute;
+  right: 10px;
+}
+
+#skillLevelDiv {
+  position: relative;
+}
+
+#skillLevelDiv label {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#skillLevelDiv label input {
+  position: absolute;
+  right: 10px;
+}
+
+#gamesDiv {
+  position: relative;
+  padding-top: 112.4px;
+  margin-left: 50px;
+}
+
+#gamesDiv label {
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#gamesDiv label input {
+  position: absolute;
+  right: 10px;
+}
+
+#daysYouCanGameDiv {
+  position: relative;
+  padding-top: 112.4px;
+  margin-left: 50px;
+}
+
+#daysYouCanGameDiv label {
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#daysYouCanGameDiv label input {
+  position: absolute;
+  right: 10px;
+}
 
 .register-container button {
   clear: both;
@@ -209,9 +278,8 @@ footer {
   background-color: rgba(45, 95, 110, .7);
   border-radius: 10px;
   box-shadow: 20px 20px 50px black;
-  width: 600px;
+  width: 100%;
   height: 200px;
-  margin-left: 35%;
   position: fixed;
   top: 40%;
 }
@@ -331,4 +399,11 @@ footer {
 :-ms-input-placeholder {
   font-family: "Iceberg", cursive;
   text-align: center;
+}
+
+@media screen and (min-width: 600px){
+  .registerSignInButtons{
+    width: 600px;
+    margin-left: calc(50% - 300px);
+  }
 }
