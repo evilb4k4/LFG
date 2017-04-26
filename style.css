@@ -44,9 +44,10 @@ body {
   height: 100%;
   right: 0px;
 }
-  
+
 header {
-  border: rgba(55, 70, 110, .7);
+  display: none;
+  /*border: rgba(55, 70, 110, .7);
   height: 120px;
   position: fixed;
   top: 0;
@@ -55,15 +56,16 @@ header {
   font-size: 100px;
   font-style: italic;
   text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
-  text-align: center;
+  text-align: center;*/
 }
 
 footer {
-  border: rgba(55, 70, 110, .3);
+  display: none;
+  /*border: rgba(55, 70, 110, .3);
   height: 60px;
   position: fixed;
   bottom: 0;
-  background-color: rgba(135, 155, 165, .7);
+  background-color: rgba(135, 155, 165, .7);*/
 }
 
 #content {
@@ -123,7 +125,8 @@ footer {
   height: 50%;
   left: 28%;
   top: 2%;
-  position: fixed;
+  bottom: 5%;
+  /*position: fixed;*/
 }
 
 /* This css style is for the sign in and register buttons on the landing page */
