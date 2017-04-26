@@ -178,7 +178,7 @@ function registerPlayer() {
 
   var usernameLabelCreate = document.createElement('label');
   usernameLabelCreate.innerHTML = 'User Name: ';
-  var userNameInputField = document.createElement('input')
+  var userNameInputField = document.createElement('input');
   userNameInputField.type = 'text';
   userNameInputField.name = 'username';
   registrationForm.appendChild(usernameLabelCreate);
@@ -186,33 +186,105 @@ function registerPlayer() {
 
   var gamerTagLabelCreate = document.createElement('label');
   gamerTagLabelCreate.innerHTML = 'Gamer Tag: ';
-  var gamerInputField = document.createElement('input')
+  var gamerInputField = document.createElement('input');
   gamerInputField.type = 'text';
   gamerInputField.name = 'username';
   registrationForm.appendChild(gamerTagLabelCreate);
   registrationForm.appendChild(gamerInputField);
 
-  var platformLabelCreate = document.createElement('label');
-  platformLabelCreate.innerHTML = 'Steam';
-  var gamerInputField = document.createElement('input')
-  gamerInputField.type = 'radio';
-  gamerInputField.name = 'Steam';
-  gamerInputField.value = 'Steam';
-  registrationForm.appendChild(platformLabelCreate);
-  registrationForm.appendChild(gamerInputField);
+  var steamLabelCreate = document.createElement('label');
+  steamLabelCreate.innerHTML = 'Steam';
+  var steamRadioButton = document.createElement('input');
+  steamRadioButton.type = 'radio';
+  steamRadioButton.name = 'steam';
+  steamRadioButton.value = 'steam';
+  registrationForm.appendChild(steamLabelCreate);
+  registrationForm.appendChild(steamRadioButton);
+
+  var originLabelCreate = document.createElement('label');
+  originLabelCreate.innerHTML = 'Origin';
+  var originRadioButton = document.createElement('input');
+  originRadioButton.type = 'radio';
+  originRadioButton.name = 'origin';
+  originRadioButton.value = 'origin';
+  registrationForm.appendChild(originLabelCreate);
+  registrationForm.appendChild(originRadioButton);
+
+  var battlenetLabelCreate = document.createElement('label');
+  battlenetLabelCreate.innerHTML = 'Battlenet';
+  var battlenetRadioButton = document.createElement('input');
+  battlenetRadioButton.type = 'radio';
+  battlenetRadioButton.name = 'battlenet';
+  battlenetRadioButton.value = 'battlenet';
+  registrationForm.appendChild(battlenetLabelCreate);
+  registrationForm.appendChild(battlenetRadioButton);
+
+  var leagueOfLegendsLabelCreate = document.createElement('label');
+  leagueOfLegendsLabelCreate.innerHTML = 'League Of Legends';
+  var leagueOfLegendsRadioButton = document.createElement('input');
+  leagueOfLegendsRadioButton.type = 'radio';
+  leagueOfLegendsRadioButton.name = 'leagueOfLegends';
+  leagueOfLegendsRadioButton.value = 'leagueOfLegends';
+  registrationForm.appendChild(leagueOfLegendsLabelCreate);
+  registrationForm.appendChild(leagueOfLegendsRadioButton);
+
+  var uplayLabelCreate = document.createElement('label');
+  uplayLabelCreate.innerHTML = 'Uplay';
+  var uplayRadioButton = document.createElement('input');
+  uplayRadioButton.type = 'radio';
+  uplayRadioButton.name = 'uplay';
+  uplayRadioButton.value = 'uplay';
+  registrationForm.appendChild(uplayLabelCreate);
+  registrationForm.appendChild(uplayRadioButton);
+
+  var xboxLiveLabelCreate = document.createElement('label');
+  xboxLiveLabelCreate.innerHTML = 'Xbox Live';
+  var xboxLiveRadioButton = document.createElement('input');
+  xboxLiveRadioButton.type = 'radio';
+  xboxLiveRadioButton.name = 'xboxLive';
+  xboxLiveRadioButton.value = 'xboxLive';
+  registrationForm.appendChild(xboxLiveLabelCreate);
+  registrationForm.appendChild(xboxLiveRadioButton);
+
+  var playStationNetworkLabelCreate = document.createElement('label');
+  playStationNetworkLabelCreate.innerHTML = 'Playstation Network';
+  var playStationNetworkRadioButton = document.createElement('input');
+  playStationNetworkRadioButton.type = 'radio';
+  playStationNetworkRadioButton.name = 'playStationNetwork';
+  playStationNetworkRadioButton.value = 'playStationNetwork';
+  registrationForm.appendChild(playStationNetworkLabelCreate);
+  registrationForm.appendChild(playStationNetworkRadioButton);
 
   var choiceSkillLevelHeader = document.createElement('h1');
   choiceSkillLevelHeader.textContent = 'Choice your Gamer skill Level (Be honest with yourself)';
   registrationForm.appendChild(choiceSkillLevelHeader);
 
-  var skillLevelLabelCreate = document.createElement('label');
-  skillLevelLabelCreate.innerHTML = 'Noob';
-  var skillLevelRadioButton = document.createElement('input')
-  skillLevelRadioButton.type = 'radio';
-  skillLevelRadioButton.name = 'Noob';
-  skillLevelRadioButton.value = 'Noob';
-  registrationForm.appendChild(skillLevelLabelCreate);
-  registrationForm.appendChild(skillLevelRadioButton);
+  var noobLabelCreate = document.createElement('label');
+  noobLabelCreate.innerHTML = 'Noob';
+  var noobRadioButton = document.createElement('input');
+  noobRadioButton.type = 'radio';
+  noobRadioButton.name = 'Noob';
+  noobRadioButton.value = 'Noob';
+  registrationForm.appendChild(noobLabelCreate);
+  registrationForm.appendChild(noobRadioButton);
+
+  var intermediateLabelCreate = document.createElement('label');
+  intermediateLabelCreate.innerHTML = 'Intermediate';
+  var intermediateRadioButton = document.createElement('input');
+  intermediateRadioButton.type = 'radio';
+  intermediateRadioButton.name = 'intermediate';
+  intermediateRadioButton.value = 'intermediate';
+  registrationForm.appendChild(intermediateLabelCreate);
+  registrationForm.appendChild(intermediateRadioButton);
+
+  var veteranLabelCreate = document.createElement('label');
+  veteranLabelCreate.innerHTML = 'Veteran';
+  var veteranRadioButton = document.createElement('input');
+  veteranRadioButton.type = 'radio';
+  veteranRadioButton.name = 'Veteran';
+  veteranRadioButton.value = 'Veteran';
+  registrationForm.appendChild(veteranLabelCreate);
+  registrationForm.appendChild(veteranRadioButton);
 
   var chooseYourGame = document.createElement('h1');
   chooseYourGame.textContent = 'What Game would you like to find gamers on?)';
@@ -220,25 +292,151 @@ function registerPlayer() {
 
   var lolLabel = document.createElement('label');
   lolLabel.innerHTML = 'League of Legends';
-  var lolCheckBox = document.createElement('input')
+  var lolCheckBox = document.createElement('input');
   lolCheckBox.type = 'checkbox';
   lolCheckBox.name = 'leagueOfLegends';
-  lolCheckBox.value = 'eagueOfLegends';
+  lolCheckBox.value = 'leagueOfLegends';
   registrationForm.appendChild(lolLabel);
   registrationForm.appendChild(lolCheckBox);
+
+  var worldOfWarcraftLabel = document.createElement('label');
+  worldOfWarcraftLabel.innerHTML = 'World Of Warcraft';
+  var worldOfWarcraftCheckBox = document.createElement('input');
+  worldOfWarcraftCheckBox.type = 'checkbox';
+  worldOfWarcraftCheckBox.name = 'worldOfWarcraft';
+  worldOfWarcraftCheckBox.value = 'worldOfWarcraft';
+  registrationForm.appendChild(worldOfWarcraftLabel);
+  registrationForm.appendChild(worldOfWarcraftCheckBox);
+
+  var callOfDutyLabel = document.createElement('label');
+  callOfDutyLabel.innerHTML = 'Call Of Duty';
+  var callOfDutyCheckBox = document.createElement('input');
+  callOfDutyCheckBox.type = 'checkbox';
+  callOfDutyCheckBox.name = 'callOfDuty';
+  callOfDutyCheckBox.value = 'callOfDuty';
+  registrationForm.appendChild(callOfDutyLabel);
+  registrationForm.appendChild(callOfDutyCheckBox);
+
+  var overwatchLabel = document.createElement('label');
+  overwatchLabel.innerHTML = 'Overwatch';
+  var overwatchCheckBox = document.createElement('input');
+  overwatchCheckBox.type = 'checkbox';
+  overwatchCheckBox.name = 'overwatch';
+  overwatchCheckBox.value = 'overwatch';
+  registrationForm.appendChild(overwatchLabel);
+  registrationForm.appendChild(overwatchCheckBox);
+
+  var battlefield1Label = document.createElement('label');
+  battlefield1Label.innerHTML = 'Battlefield 1';
+  var battlefield1CheckBox = document.createElement('input');
+  battlefield1CheckBox.type = 'checkbox';
+  battlefield1CheckBox.name = 'battlefield1';
+  battlefield1CheckBox.value = 'battlefield1';
+  registrationForm.appendChild(battlefield1Label);
+  registrationForm.appendChild(battlefield1CheckBox);
+
+  var titanfall2Label = document.createElement('label');
+  titanfall2Label.innerHTML = 'Titanfall 2';
+  var titanfall2CheckBox = document.createElement('input');
+  titanfall2CheckBox.type = 'checkbox';
+  titanfall2CheckBox.name = 'titanfall2';
+  titanfall2CheckBox.value = 'titanfall2';
+  registrationForm.appendChild(titanfall2Label);
+  registrationForm.appendChild(titanfall2CheckBox);
+
+  var mineCraftLabel = document.createElement('label');
+  mineCraftLabel.innerHTML = 'MineCraft';
+  var mineCraftCheckBox = document.createElement('input');
+  mineCraftCheckBox.type = 'checkbox';
+  mineCraftCheckBox.name = 'mineCraft';
+  mineCraftCheckBox.value = 'mineCraft';
+  registrationForm.appendChild(mineCraftLabel);
+  registrationForm.appendChild(mineCraftCheckBox);
+
+  var theDivisionLabel = document.createElement('label');
+  theDivisionLabel.innerHTML = 'The Division';
+  var theDivisionCheckBox = document.createElement('input');
+  theDivisionCheckBox.type = 'checkbox';
+  theDivisionCheckBox.name = 'theDivision';
+  theDivisionCheckBox.value = 'theDivision';
+  registrationForm.appendChild(theDivisionLabel);
+  registrationForm.appendChild(theDivisionCheckBox);
+
+  var noMansSkyLabel = document.createElement('label');
+  noMansSkyLabel.innerHTML = 'No Man\'s Sky';
+  var noMansSkyCheckBox = document.createElement('input');
+  noMansSkyCheckBox.type = 'checkbox';
+  noMansSkyCheckBox.name = 'noMansSky';
+  noMansSkyCheckBox.value = 'noMansSky';
+  registrationForm.appendChild(noMansSkyLabel);
+  registrationForm.appendChild(noMansSkyCheckBox);
 
   var weekDaysHeader = document.createElement('h1');
   weekDaysHeader.textContent = 'Day you are usually online to game)';
   registrationForm.appendChild(weekDaysHeader);
 
-  var daysLabel = document.createElement('label');
-  daysLabel.innerHTML = 'Monday';
-  var mondayCheckBox = document.createElement('input')
+  var mondayLabel = document.createElement('label');
+  mondayLabel.innerHTML = 'Monday';
+  var mondayCheckBox = document.createElement('input');
   mondayCheckBox.type = 'checkbox';
   mondayCheckBox.name = 'daysOfWeek';
-  mondayCheckBox.value = 'Monday';
-  registrationForm.appendChild(daysLabel);
+  mondayCheckBox.value = 'monday';
+  registrationForm.appendChild(mondayLabel);
   registrationForm.appendChild(mondayCheckBox);
+
+  var tuesdayLabel = document.createElement('label');
+  tuesdayLabel.innerHTML = 'Tuesday';
+  var tuesdayCheckBox = document.createElement('input');
+  tuesdayCheckBox.type = 'checkbox';
+  tuesdayCheckBox.name = 'daysOfWeek';
+  tuesdayCheckBox.value = 'tuesday';
+  registrationForm.appendChild(tuesdayLabel);
+  registrationForm.appendChild(tuesdayCheckBox);
+
+  var wednesdayLabel = document.createElement('label');
+  wednesdayLabel.innerHTML = 'Wednesday';
+  var wednesdayCheckBox = document.createElement('input');
+  wednesdayCheckBox.type = 'checkbox';
+  wednesdayCheckBox.name = 'daysOfWeek';
+  wednesdayCheckBox.value = 'wednesday';
+  registrationForm.appendChild(wednesdayLabel);
+  registrationForm.appendChild(wednesdayCheckBox);
+
+  var thrusdayLabel = document.createElement('label');
+  thrusdayLabel.innerHTML = 'Tfridayhrusday';
+  var thrusdayCheckBox = document.createElement('input');
+  thrusdayCheckBox.type = 'checkbox';
+  thrusdayCheckBox.name = 'daysOfWeek';
+  thrusdayCheckBox.value = 'thrusday';
+  registrationForm.appendChild(thrusdayLabel);
+  registrationForm.appendChild(thrusdayCheckBox);
+
+  var fridayLabel = document.createElement('label');
+  fridayLabel.innerHTML = 'Friday';
+  var fridayCheckBox = document.createElement('input');
+  fridayCheckBox.type = 'checkbox';
+  fridayCheckBox.name = 'daysOfWeek';
+  fridayCheckBox.value = 'friday';
+  registrationForm.appendChild(fridayLabel);
+  registrationForm.appendChild(fridayCheckBox);
+
+  var saturdayLabel = document.createElement('label');
+  saturdayLabel.innerHTML = 'Saturday';
+  var saturdayCheckBox = document.createElement('input');
+  saturdayCheckBox.type = 'checkbox';
+  saturdayCheckBox.name = 'daysOfWeek';
+  saturdayCheckBox.value = 'saturday';
+  registrationForm.appendChild(saturdayLabel);
+  registrationForm.appendChild(saturdayCheckBox);
+
+  var sundayLabel = document.createElement('label');
+  sundayLabel.innerHTML = 'Sunday';
+  var sundayCheckBox = document.createElement('input');
+  sundayCheckBox.type = 'checkbox';
+  sundayCheckBox.name = 'daysOfWeek';
+  sundayCheckBox.value = 'sunday';
+  registrationForm.appendChild(sundayLabel);
+  registrationForm.appendChild(sundayCheckBox);
 
   var playerRegisterSubmitButton = document.createElement('button');
   playerRegisterSubmitButton.type = 'submit';
@@ -277,5 +475,5 @@ mainPageLoad();
 var signInButtonClick = document.getElementById('signInButton');
 signInButtonClick.addEventListener('click', SignInBoxCreate);
 
-var formButtonCreate = document.getElementById('registerButton')
-formButtonCreate.addEventListener('click', registerPlayer)
+var formButtonCreate = document.getElementById('registerButton');
+formButtonCreate.addEventListener('click', registerPlayer);
