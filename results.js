@@ -6,12 +6,10 @@ function resultDisplay(){
 
   content.textContent = '';
 
-
   var results = document.createElement('div');
   results.id = 'results';
 
   for (var j = 0; j < playerList.length; j++) {
-
 
     //===== Conditionals for Comparison between currentUser and Player objects =====
 
@@ -22,16 +20,16 @@ function resultDisplay(){
         if (currentUser.skillLevel == playerList[j].skillLevel){
           console.log(playerList[j].skillLevel);
           for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
-            if((Object.entries(currentUser.gamerTags)[i][1])== true && (Object.entries(playerList[j].gamerTags)[i][1]) == true){
+            if(!!(Object.entries(currentUser.gamerTags)[i][1]) && !!(Object.entries(playerList[j].gamerTags)[i][1])){
               console.log(playerList[j].gamerTags);
             }
-            if((Object.entries(currentUser.gamesPlayed)[i][1])== true && (Object.entries(playerList[j].gamesPlayed)[i][1]) == true){
+            if(!!(Object.entries(currentUser.gamesPlayed)[i][1]) && !!(Object.entries(playerList[j].gamesPlayed)[i][1])){
               console.log(playerList[j].gamesPlayed);
             }
-
-            playerRender();
-
           }
+
+                      playerRender();
+
         }
       }
     }
@@ -40,6 +38,7 @@ function resultDisplay(){
 
   // ===== Renders Player Object to Results Page =====
 
+  function playerRender(){
 
     var player = document.createElement('div');
     player.className = 'player';
@@ -53,11 +52,11 @@ function resultDisplay(){
     gamerGamesWrap.className = 'gamerGamesWrap';
     var avatarPic = document.createElement('div');
     avatarPic.className = 'avatarPic';
-    var username = document.createElement('h1');
+    var username = document.createElement('p');
     username.className = 'username';
-    var skillLevel = document.createElement('h1');
+    var skillLevel = document.createElement('p');
     skillLevel.className = 'skillLevel';
-    var userOnline = document.createElement('h3');
+    var userOnline = document.createElement('p');
     userOnline.className = 'userOnline';
     var gamerTags = document.createElement('ul');
     gamerTags.className = 'gamerTags';
@@ -66,7 +65,8 @@ function resultDisplay(){
     var comments = document.createElement('p');
     comments.className = 'comments';
     var contactButton = document.createElement('button');
-    contactButton.className = 'contactButton';
+    contactButton.className = 'buttons';
+    contactButton.textContent = 'Contact Gamer';
 
     username.textContent = playerList[j].username;
     avatarPic.textContent = playerList[j].avatarPic;
@@ -87,17 +87,17 @@ function resultDisplay(){
     player.appendChild(comments);
     player.appendChild(contactButton);
 
-// ========== gamerTags List Item Creation =====
+    // ========== gamerTags List Item Creation =====
 
     for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
       var gamerTagLi = document.createElement('li');
       if(Object.entries(playerList[j].gamerTags)[i][1]){
-        gamerTagLi.textContent = (Object.entries(playerList[j].gamerTags)[i][0], ': ' ,   Object.entries(playerList[j].gamerTags)[i][1]);
+        gamerTagLi.textContent = (Object.entries(playerList[j].gamerTags)[i][0] + ': ' +   Object.entries(playerList[j].gamerTags)[i][1]);
         gamerTags.appendChild(gamerTagLi);
       }
     }
 
-// ========== gamesPlayed List Item Creation =====
+    // ========== gamesPlayed List Item Creation =====
     for (i = 0; i < Object.entries(playerList[j].gamesPlayed).length; i++){
       var gamesPlayedLi = document.createElement('li');
       if(Object.entries(playerList[j].gamesPlayed)[i][1]){
