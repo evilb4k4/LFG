@@ -5,16 +5,17 @@ var signInLabelCreate;
 var formcreate;
 var getMainDiv = document.getElementById('content');
 
-function Player(username, avatar, dayYouCanGame, skillLevel, comments){
+function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlayed){
   this.username = username;
   this.avatar = avatar;
   this.online = false;
   this.dayYouCanGame = dayYouCanGame;
   this.skillLevel = skillLevel;
   this.comments = comments;
+  this.gamesPlayed = gamesPlayed;
 
   this.gamesPlayed = {
-    leagueOfLegends: false,
+    leagueOfLegends: '',
     worldOfWarcraft: false,
     callOfDuty: false,
     overwatch: false,
@@ -76,19 +77,19 @@ playerList[4].gamesPlayed.titanfall2 = true;
 playerList[4].gamerTags.battlenet = 'test5battlenettag';
 playerList[4].gamesPlayed.leagueOfLegends = true;
 
-// function dayOfWeek(){
-//   console.log('daysOfWeek running');
-//   var daysOfWeek = document.getElementsByClassName('gamingDays');
-//   for(var i = 0; i < daysOfWeek.length; i++){
-//     console.log('checkboxes work',daysOfWeek[i].checked);
-//     if(daysOfWeek[i].checked){
-//       this.dayYouCanGame.push(daysOfWeek[i].value);
-//     }
-//   }
-// };
+function dayOfWeek(){
+  console.log('daysOfWeek running');
+  var daysOfWeek = document.getElementsByClassName('gamingDays');
+  for(var i = 0; i < daysOfWeek.length; i++){
+    console.log('checkboxes work',daysOfWeek[i].checked);
+    if(daysOfWeek[i].checked){
+      this.dayYouCanGame.push(daysOfWeek[i].value);
+    }
+  }
+};
 
-// var playerRegistrationForm = document.getElementById('playerCreated');
-// playerRegistrationForm.addEventListener('submit', registerPlayer);
+var playerRegistrationForm = document.getElementById('playerCreated');
+playerRegistrationForm.addEventListener('submit', registerPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
@@ -135,7 +136,7 @@ function handleRegisterPlayer(event) {
   playerList.push(player);
 
   try {
-    localStorage.playerList = JSON.stringify(playerList);
+    localStorage.playerList = JSON.stringify(player);
   } catch (error) {
     console.error(error);
   }
@@ -152,11 +153,11 @@ function signIn(event) {
       currentUser = playerList[i];
       resultDisplay();
       matched = true;
-    } else if(i == playerList.length -1) {
+    } else if(i == playerList.length - 1) {
 
       function validatePlayer(){
         var errorMsg = document.getElementById('landing-msg');
-        formcreate.setAttribute('id', 'error-msg-input')
+        formcreate.setAttribute('id', 'error-msg-input');
         errorMsg.innerHTML = 'Invalid User, Please Try Again!';
         errorMsg.setAttribute('id','error-msg');
         signInSubmitButton.reset();
