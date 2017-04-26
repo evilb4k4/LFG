@@ -128,9 +128,9 @@ function signIn(event) {
       currentUser = playerList[i];
       resultDisplay();
       matched = true;
-    } else {
+    } else if(i == playerList.length -1) {
       console.log('no match');
-      // alert('no match');
+      alert('no match');
     }
   }
 }
