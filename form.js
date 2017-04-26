@@ -1,6 +1,8 @@
 'use strict';
 
 var signInSubmitButton;
+var signInLabelCreate;
+var formcreate;
 var getMainDiv = document.getElementById('content');
 
 function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
@@ -122,15 +124,24 @@ function signIn(event) {
   event.preventDefault();
   var playerUserName = signInSubmitButton.userName.value;
   var matched = false;
-  console.log(playerUserName);
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
       currentUser = playerList[i];
       resultDisplay();
       matched = true;
     } else if(i == playerList.length -1) {
-      console.log('no match');
-      alert('no match');
+
+      function validatePlayer(){
+        var errorMsg = document.getElementById('landing-msg');
+        formcreate.setAttribute('id', 'error-msg-input') 
+        errorMsg.innerHTML = 'Invalid User, Please Try Again!';
+        errorMsg.setAttribute('id','error-msg');
+        signInSubmitButton.reset();
+        console.log('no good');
+      }
+
+      signInSubmitButton.addEventListener('submit', validatePlayer);
+
     }
   }
 }
@@ -141,14 +152,19 @@ function SignInBoxCreate(event) {
   event.preventDefault();
   getMainDiv.innerHTML = '';
   var signInBoxcreate = document.createElement('div');
-  var formcreate = document.createElement('form');
+  formcreate = document.createElement('form');
   formcreate.setAttribute('id', 'sign-in');
   signInBoxcreate.className = 'sign-in-box';
   signInBoxcreate.appendChild(formcreate);
 
-  var signInLabelCreate = document.createElement('label');
+  signInLabelCreate = document.createElement('label');
+  signInLabelCreate.setAttribute('id', 'landing-msg');
   signInLabelCreate.innerHTML = 'Welcome Back, Player One';
   formcreate.appendChild(signInLabelCreate);
+
+  // var validatePlayerErrorMsg = document.createElement('span')
+  // validatePlayerErrorMsg.textContent = 'test';
+  // formcreate.appendChild(validatePlayerErrorMsg);
 
   var signInInputFieldCreate = document.createElement('input');
   signInInputFieldCreate.type = 'text';

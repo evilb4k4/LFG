@@ -123,6 +123,27 @@ footer div img {
   text-align: center;
 }
 
+#error-msg {
+    font-family: 'Black Ops One';
+    color: #A91818;
+    font-size: 25px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-align: center;
+}
+#error-msg-input input[type="text"] {
+  border: 1px solid #A91818;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 10px;
+}
+#error-msg-input input[type=text]:focus {
+  outline:none;
+    border: 1px solid #9EF3AB;
+    box-shadow: 0px 0px 13px #9EF3AB;
+    -moz-box-shadow: 0px 0px 13px #9EF3AB;
+    -webkit-box-shadow: 0px 0px 13px #9EF3AB;
+}
 .sign-in-box form {
   width: 75%;
   height: 20px;
