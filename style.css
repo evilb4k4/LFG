@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /*border: 2px solid black;*/
 }
 
 .clear-fix {
@@ -122,12 +121,15 @@ footer {
   font-style: italic;
   text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
   text-align: center;
+  outline: none;
 }
 
 .buttons:active {
   position: relative;
   top: 1px;
   text-shadow: 5px 5px 20px rgba(235, 100, 0, 1);
+  transform: scale(.95);
+  transform: translateY(2px);
 }
 
 #registerButton, #signInButton {
