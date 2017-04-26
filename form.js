@@ -5,25 +5,26 @@ var signInLabelCreate;
 var formcreate;
 var getMainDiv = document.getElementById('content');
 
-function Player(username, avatar, dayYouCanGame, skillLevel, comments){
+function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlayed){
   this.username = username;
   this.avatar = avatar;
   this.online = false;
   this.dayYouCanGame = dayYouCanGame;
   this.skillLevel = skillLevel;
   this.comments = comments;
+  this.gamesPlayed = gamesPlayed;
 
-  this.gamesPlayed = {
-    leagueOfLegends: false,
-    worldOfWarcraft: false,
-    callOfDuty: false,
-    overwatch: false,
-    battlefield1: false,
-    titanfall2: false,
-    mineCraft: false,
-    theDivision: false,
-    noMansSky: false,
-  };
+  // this.gamesPlayed = {
+  //   leagueOfLegends: '',
+  //   worldOfWarcraft: false,
+  //   callOfDuty: false,
+  //   overwatch: false,
+  //   battlefield1: false,
+  //   titanfall2: false,
+  //   mineCraft: false,
+  //   theDivision: false,
+  //   noMansSky: false,
+  // };
 
   this.gamerTags = {
     steam:'',
@@ -38,43 +39,43 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments){
 
 //===== test currentUser =====
 var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
-currentUser.gamerTags.steam = 'CUsteamtag';
-currentUser.gamesPlayed.leagueOfLegends = true;
-currentUser.gamerTags.battlenet = 'CUbattlenettag';
-currentUser.gamesPlayed.worldOfWarcraft = true;
+// currentUser.gamerTags.steam = 'CUsteamtag';
+// // currentUser.gamesPlayed.leagueOfLegends = true;
+// currentUser.gamerTags.battlenet = 'CUbattlenettag';
+// currentUser.gamesPlayed.worldOfWarcraft = true;
 
 //===== test Players =====
 var playerList = [];
 
-playerList[0] = new Player('test1', '', 'Monday', 'n00b', 'Im a n00b');
-playerList[0].gamerTags.steam = 'test1steamtag';
-playerList[0].gamesPlayed.leagueOfLegends = true;
-playerList[0].gamerTags.battlenet = 'test1battlenettag';
-playerList[0].gamesPlayed.worldOfWarcraft = true;
-
-playerList[1] = new Player('test2', '', 'Monday', 'n00b', 'Im a n00b');
-playerList[1].gamerTags.steam = 'test2steamtag';
-playerList[1].gamesPlayed.leagueOfLegends = true;
-playerList[1].gamerTags.origin = 'test2origintag';
-playerList[1].gamesPlayed.callOfDuty = true;
-
-playerList[2] = new Player('test3', '', 'Monday', 'n00b', 'Im n00b');
-playerList[2].gamerTags.steam = 'test3steamtag';
-playerList[2].gamesPlayed.leagueOfLegends = true;
-playerList[2].gamerTags.uplay = 'test3uplaytag';
-playerList[2].gamesPlayed.overwatch = true;
-
-playerList[3] = new Player('test4', '', 'Monday', 'n00b', 'Im n00b');
-playerList[3].gamerTags.xboxLive = 'test4xboxtag';
-playerList[3].gamesPlayed.battlefield1 = true;
-playerList[3].gamerTags.battlenet = 'test4battlenettag';
-playerList[3].gamesPlayed.worldOfWarcraft = true;
-
-playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
-playerList[4].gamerTags.steam = 'test5playstationtag';
-playerList[4].gamesPlayed.titanfall2 = true;
-playerList[4].gamerTags.battlenet = 'test5battlenettag';
-playerList[4].gamesPlayed.leagueOfLegends = true;
+// playerList[0] = new Player('test1', '', 'Monday', 'n00b', 'Im a n00b');
+// playerList[0].gamerTags.steam = 'test1steamtag';
+// playerList[0].gamesPlayed.leagueOfLegends = true;
+// playerList[0].gamerTags.battlenet = 'test1battlenettag';
+// playerList[0].gamesPlayed.worldOfWarcraft = true;
+//
+// playerList[1] = new Player('test2', '', 'Monday', 'n00b', 'Im a n00b');
+// playerList[1].gamerTags.steam = 'test2steamtag';
+// playerList[1].gamesPlayed.leagueOfLegends = true;
+// playerList[1].gamerTags.origin = 'test2origintag';
+// playerList[1].gamesPlayed.callOfDuty = true;
+//
+// playerList[2] = new Player('test3', '', 'Monday', 'n00b', 'Im n00b');
+// playerList[2].gamerTags.steam = 'test3steamtag';
+// playerList[2].gamesPlayed.leagueOfLegends = true;
+// playerList[2].gamerTags.uplay = 'test3uplaytag';
+// playerList[2].gamesPlayed.overwatch = true;
+//
+// playerList[3] = new Player('test4', '', 'Monday', 'n00b', 'Im n00b');
+// playerList[3].gamerTags.xboxLive = 'test4xboxtag';
+// playerList[3].gamesPlayed.battlefield1 = true;
+// playerList[3].gamerTags.battlenet = 'test4battlenettag';
+// playerList[3].gamesPlayed.worldOfWarcraft = true;
+//
+// playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
+// playerList[4].gamerTags.steam = 'test5playstationtag';
+// playerList[4].gamesPlayed.titanfall2 = true;
+// playerList[4].gamerTags.battlenet = 'test5battlenettag';
+// playerList[4].gamesPlayed.leagueOfLegends = true;
 
 // function dayOfWeek(){
 //   console.log('daysOfWeek running');
@@ -109,7 +110,7 @@ function handleRegisterPlayer(event) {
     monday: getTarget.monday.checked,
     tuesday: getTarget.tuesday.checked,
     wednesday: getTarget.wednesday.checked,
-    thrusday: getTarget.thrusday.checked,
+    thursday: getTarget.thursday.checked,
     friday: getTarget.friday.checked,
     saturday: getTarget.saturday.checked,
     sunday: getTarget.sunday.checked,
@@ -135,7 +136,7 @@ function handleRegisterPlayer(event) {
   playerList.push(player);
 
   try {
-    localStorage.playerList = JSON.stringify(playerList);
+    localStorage.playerList = JSON.stringify(player);
   } catch (error) {
     console.error(error);
   }
@@ -152,11 +153,11 @@ function signIn(event) {
       currentUser = playerList[i];
       resultDisplay();
       matched = true;
-    } else if(i == playerList.length -1) {
+    } else if(i == playerList.length - 1) {
 
       function validatePlayer(){
         var errorMsg = document.getElementById('landing-msg');
-        formcreate.setAttribute('id', 'error-msg-input') 
+        formcreate.setAttribute('id', 'error-msg-input');
         errorMsg.innerHTML = 'Invalid User, Please Try Again!';
         errorMsg.setAttribute('id','error-msg');
         signInSubmitButton.reset();
@@ -240,7 +241,7 @@ function registerPlayer() {
   gamerTagLabelCreate.innerHTML = 'Gamer Tag: ';
   var gamerInputField = document.createElement('input');
   gamerInputField.type = 'text';
-  gamerInputField.name = 'username';
+  gamerInputField.name = 'gamertag';
   registrationForm.appendChild(gamerTagDiv);
   gamerTagDiv.appendChild(gamerTagLabelCreate);
   gamerTagLabelCreate.appendChild(gamerInputField);
@@ -488,7 +489,7 @@ function registerPlayer() {
   thursdayLabel.innerHTML = 'Thursday';
   var thursdayCheckBox = document.createElement('input');
   thursdayCheckBox.type = 'checkbox';
-  thursdayCheckBox.name = 'daysOfWeek';
+  thursdayCheckBox.name = 'thursday';
   thursdayCheckBox.value = 'thursday';
   daysYouCanGameDiv.appendChild(thursdayLabel);
   thursdayLabel.appendChild(thursdayCheckBox);
