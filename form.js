@@ -449,6 +449,31 @@ function registerPlayer() {
   getMainDiv.appendChild(playerRegistrationForm);
 }
 
+//function to create a humburger menu when player log in
+function hamburgerMenu() {
+
+  var hamburgerMenuDivCreate = document.createElement('div');
+  hamburgerMenuDivCreate.className = 'hambur-menu-box';
+  var hamburgerMenuSettingButton = document.createElement('div');
+  hamburgerMenuSettingButton.className = 'hamburger-menu-button-img';
+  var hamburgerMenuSettingImg = document.createElement('img');
+  hamburgerMenuSettingImg.setAttribute('id','setting-button')
+  hamburgerMenuSettingImg.src = 'img/setting-button.png';
+  hamburgerMenuSettingButton.appendChild(hamburgerMenuSettingImg);
+  hamburgerMenuDivCreate.appendChild(hamburgerMenuSettingButton);
+
+  var hamburgerMenuList = document.createElement('div');
+  hamburgerMenuList.className = 'hamburger-menu-list';
+  var hamburgerMenuUL = document.createElement('ul');
+  var hamburgerMenuLI = document.createElement('li');
+  hamburgerMenuLI.innerHTML = 'Sign Out';
+  hamburgerMenuUL.appendChild(hamburgerMenuLI);
+  hamburgerMenuList.appendChild(hamburgerMenuUL);
+
+  hamburgerMenuDivCreate.appendChild(hamburgerMenuList);
+
+  document.body.appendChild(hamburgerMenuDivCreate);
+}
   //function to display the register and sign in buttons on the main site
 
 function mainPageLoad() {
