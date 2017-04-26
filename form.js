@@ -403,7 +403,7 @@ function registerPlayer() {
   registrationForm.appendChild(wednesdayCheckBox);
 
   var thrusdayLabel = document.createElement('label');
-  thrusdayLabel.innerHTML = 'Tfridayhrusday';
+  thrusdayLabel.innerHTML = 'Thrusday';
   var thrusdayCheckBox = document.createElement('input');
   thrusdayCheckBox.type = 'checkbox';
   thrusdayCheckBox.name = 'daysOfWeek';
