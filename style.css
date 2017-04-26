@@ -17,7 +17,6 @@ html, body {
 body {
   width: 100%;
 }
-
 #background{
   background-image: url("img/main-bg.png");
   background-size: cover;

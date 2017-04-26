@@ -39,7 +39,7 @@ function resultDisplay(){
 
 
   // ===== Renders Player Object to Results Page =====
-
+  function playerRender() {
 
     var player = document.createElement('div');
     player.className = 'player';
