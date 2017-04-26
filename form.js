@@ -38,7 +38,7 @@ var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b
 currentUser.gamerTags.steam = 'CUsteamtag';
 currentUser.gamesPlayed.leagueOfLegends = true;
 currentUser.gamerTags.battlenet = 'CUbattlenettag';
-currentUser.gamesPlayed.worldOfWarcraft = true;
+// currentUser.gamesPlayed.worldOfWarcraft = true;
 
 //===== test Players =====
 var playerList = [];
@@ -125,6 +125,7 @@ function signIn(event) {
   console.log(playerUserName);
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
+      currentUser = playerList[i];
       resultDisplay();
       matched = true;
     } else {
@@ -146,7 +147,7 @@ function SignInBoxCreate(event) {
   signInBoxcreate.appendChild(formcreate);
 
   var signInLabelCreate = document.createElement('label');
-  signInLabelCreate.innerHTML = 'sample';
+  signInLabelCreate.innerHTML = 'Welcome Back, Player One';
   formcreate.appendChild(signInLabelCreate);
 
   var signInInputFieldCreate = document.createElement('input');
@@ -157,6 +158,7 @@ function SignInBoxCreate(event) {
 
   var signInSubmitButtonCreate = document.createElement('button');
   signInSubmitButtonCreate.type = 'submit';
+  signInSubmitButtonCreate.className = 'buttons';
   signInSubmitButtonCreate.innerHTML = 'Sign In';
   formcreate.appendChild(signInSubmitButtonCreate);
 
