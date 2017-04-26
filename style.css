@@ -59,11 +59,36 @@ header {
 }
 
 footer {
-  border: rgba(55, 70, 110, .3);
+  border: rgba(55, 70, 110, .7);
   height: 60px;
   position: fixed;
   bottom: 0;
-  background-color: rgba(135, 155, 165, .2);
+  background-color: rgba(135, 155, 165, .3);
+  font-family: 'Black Ops One', cursive;
+  text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
+  text-align: center;
+}
+#icons{
+  padding: 2px;
+  float: right;
+  width: 160px;
+  background-color: rgba(0, 0, 0, .3);
+  position: fixed;
+  bottom: 8px;
+  right: 16px;
+}
+footer div img {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+}
+
+.made-by{
+  font-family: "Iceberg", cursive;
+  display: inline-block;
+  margin-top: 40px;
+  color: rgba(200, 200, 200, 0.7)
 }
 
 #content {
