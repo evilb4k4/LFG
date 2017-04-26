@@ -44,13 +44,13 @@ body {
   height: 100%;
   right: 0px;
 }
-  
+
 header {
   border: rgba(55, 70, 110, .7);
   height: 120px;
   position: fixed;
   top: 0;
-  background-color: rgba(135, 155, 165, .3);
+  background-color: rgba(135, 155, 165, .2);
   font-family: 'Black Ops One', cursive;
   font-size: 100px;
   font-style: italic;
@@ -63,12 +63,14 @@ footer {
   height: 60px;
   position: fixed;
   bottom: 0;
-  background-color: rgba(135, 155, 165, .7);
+  background-color: rgba(135, 155, 165, .2);
 }
 
 #content {
   height: 100%;
-  margin: 0 auto;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  /*margin: 0 auto;*/
   background-image: url("img/main-bg.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -117,13 +119,87 @@ footer {
 }
 
 .register-container {
-  background-color: rgb(255, 255, 255);
+  display: block;
   border: 1px solid #000;
-  width: 50%;
-  height: 50%;
-  left: 28%;
-  top: 2%;
-  position: fixed;
+  background-color: rgba(45, 95, 110, .7);
+  border-radius: 10px;
+  box-shadow: 20px 20px 50px black;
+  width: 70%;
+  height: 85%;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  overflow: scroll;
+  position: relative;
+}
+
+.register-container input[type="text"] {
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 10px;
+  width: 120px;
+}
+
+.register-container label {
+  display: inline-block;
+  border: 1px dotted black;
+  font-family: 'Iceberg', cursive;
+  font-size: 16px;
+  font-style: italic;
+  text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
+  text-align: left;
+  width: 70%;
+  float: left;
+}
+
+.registrationFormDivs {
+  border: 1px dotted black;
+  display: inline-block;
+  width: 200px;
+  float: left;
+}
+
+.registrationFormDivs * {
+  font-family: "Black Ops One", cursive;
+  font-style: italic;
+}
+
+.registrationFormDivs h1 {
+
+}
+
+.registrationFormDivs label {
+  width: auto;
+  display: inline-block;
+}
+
+#usernameDiv {
+  padding-top: 10%;
+  padding-left: 10%;
+  font-family: 'Iceberg', cursive;
+  text-align: left;
+}
+
+#gamerTagDiv {
+  padding-top: 10%;
+  padding-left: 10%;
+  font-family: 'Iceberg', cursive;
+  text-align: left;
+}
+
+#platformDiv label {
+  width: 200px;
+}
+
+#
+
+.register-container button {
+  clear: both;
+  position: absolute;
+  bottom: 30px;
+  left: calc(50% - 125px);
 }
 
 /* This css style is for the sign in and register buttons on the landing page */
@@ -238,4 +314,21 @@ footer {
 }
 .player .buttons {
   font-size: 24px;
+}
+
+::-webkit-input-placeholder {
+  font-family: "Iceberg", cursive;
+  text-align: center;
+}
+:-moz-placeholder { /* older Firefox*/
+  font-family: "Iceberg", cursive;
+  text-align: center;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family: "Iceberg", cursive;
+  text-align: center;
+}
+:-ms-input-placeholder {
+  font-family: "Iceberg", cursive;
+  text-align: center;
 }
