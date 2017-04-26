@@ -1,6 +1,8 @@
 'use strict';
 
 var signInSubmitButton;
+var signInLabelCreate;
+var formcreate;
 var getMainDiv = document.getElementById('content');
 
 function Player(username, avatar, dayYouCanGame, skillLevel, comments){
@@ -39,7 +41,7 @@ var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b
 currentUser.gamerTags.steam = 'CUsteamtag';
 currentUser.gamesPlayed.leagueOfLegends = true;
 currentUser.gamerTags.battlenet = 'CUbattlenettag';
-// currentUser.gamesPlayed.worldOfWarcraft = true;
+currentUser.gamesPlayed.worldOfWarcraft = true;
 
 //===== test Players =====
 var playerList = [];
@@ -56,13 +58,13 @@ playerList[1].gamesPlayed.leagueOfLegends = true;
 playerList[1].gamerTags.origin = 'test2origintag';
 playerList[1].gamesPlayed.callOfDuty = true;
 
-playerList[2] = new Player('test3', '', 'Monday', 'intermediate', 'Im intermediate');
+playerList[2] = new Player('test3', '', 'Monday', 'n00b', 'Im n00b');
 playerList[2].gamerTags.steam = 'test3steamtag';
 playerList[2].gamesPlayed.leagueOfLegends = true;
 playerList[2].gamerTags.uplay = 'test3uplaytag';
 playerList[2].gamesPlayed.overwatch = true;
 
-playerList[3] = new Player('test4', '', 'Monday', 'intermediate', 'Im intermediate');
+playerList[3] = new Player('test4', '', 'Monday', 'n00b', 'Im n00b');
 playerList[3].gamerTags.xboxLive = 'test4xboxtag';
 playerList[3].gamesPlayed.battlefield1 = true;
 playerList[3].gamerTags.battlenet = 'test4battlenettag';
@@ -72,7 +74,7 @@ playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
 playerList[4].gamerTags.steam = 'test5playstationtag';
 playerList[4].gamesPlayed.titanfall2 = true;
 playerList[4].gamerTags.battlenet = 'test5battlenettag';
-playerList[4].gamesPlayed.worldOfWarcraft = true;
+playerList[4].gamesPlayed.leagueOfLegends = true;
 
 // function dayOfWeek(){
 //   console.log('daysOfWeek running');
@@ -145,15 +147,24 @@ function signIn(event) {
   event.preventDefault();
   var playerUserName = signInSubmitButton.userName.value;
   var matched = false;
-  console.log(playerUserName);
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
       currentUser = playerList[i];
       resultDisplay();
       matched = true;
-    } else if(i == playerList.length - 1) {
-      console.log('no match');
-      alert('no match');
+    } else if(i == playerList.length -1) {
+
+      function validatePlayer(){
+        var errorMsg = document.getElementById('landing-msg');
+        formcreate.setAttribute('id', 'error-msg-input') 
+        errorMsg.innerHTML = 'Invalid User, Please Try Again!';
+        errorMsg.setAttribute('id','error-msg');
+        signInSubmitButton.reset();
+        console.log('no good');
+      }
+
+      signInSubmitButton.addEventListener('submit', validatePlayer);
+
     }
   }
 }
@@ -164,14 +175,19 @@ function SignInBoxCreate(event) {
   event.preventDefault();
   getMainDiv.innerHTML = '';
   var signInBoxcreate = document.createElement('div');
-  var formcreate = document.createElement('form');
+  formcreate = document.createElement('form');
   formcreate.setAttribute('id', 'sign-in');
   signInBoxcreate.className = 'sign-in-box';
   signInBoxcreate.appendChild(formcreate);
 
-  var signInLabelCreate = document.createElement('label');
+  signInLabelCreate = document.createElement('label');
+  signInLabelCreate.setAttribute('id', 'landing-msg');
   signInLabelCreate.innerHTML = 'Welcome Back, Player One';
   formcreate.appendChild(signInLabelCreate);
+
+  // var validatePlayerErrorMsg = document.createElement('span')
+  // validatePlayerErrorMsg.textContent = 'test';
+  // formcreate.appendChild(validatePlayerErrorMsg);
 
   var signInInputFieldCreate = document.createElement('input');
   signInInputFieldCreate.type = 'text';
@@ -201,21 +217,41 @@ function registerPlayer() {
   var registrationForm = document.createElement('form');
   registrationForm.setAttribute('id', 'playerCreated');
 
+//===== Username Label and Text Input =====
+
+  var usernameDiv = document.createElement('div');
+  usernameDiv.id = 'usernameDiv';
+  usernameDiv.className = 'registrationFormDivs';
   var usernameLabelCreate = document.createElement('label');
   usernameLabelCreate.innerHTML = 'User Name: ';
   var userNameInputField = document.createElement('input');
   userNameInputField.type = 'text';
   userNameInputField.name = 'username';
-  registrationForm.appendChild(usernameLabelCreate);
-  registrationForm.appendChild(userNameInputField);
+  registrationForm.appendChild(usernameDiv);
+  usernameDiv.appendChild(usernameLabelCreate);
+  usernameLabelCreate.appendChild(userNameInputField);
 
+//===== GamerTag Label and Text Input =====
+
+  var gamerTagDiv = document.createElement('div');
+  gamerTagDiv.id = 'gamerTagDiv';
+  gamerTagDiv.className = 'registrationFormDivs';
   var gamerTagLabelCreate = document.createElement('label');
   gamerTagLabelCreate.innerHTML = 'Gamer Tag: ';
   var gamerInputField = document.createElement('input');
   gamerInputField.type = 'text';
-  gamerInputField.name = 'gamertag';
-  registrationForm.appendChild(gamerTagLabelCreate);
-  registrationForm.appendChild(gamerInputField);
+  gamerInputField.name = 'username';
+  registrationForm.appendChild(gamerTagDiv);
+  gamerTagDiv.appendChild(gamerTagLabelCreate);
+  gamerTagLabelCreate.appendChild(gamerInputField);
+
+//===== Platform Labels and Radio Inputs =====
+
+  var platformDiv = document.createElement('div');
+  platformDiv.id = 'platformDiv';
+  platformDiv.className = 'registrationFormDivs';
+  platformDiv.textContent = 'Where Do You Game?';
+  gamerTagDiv.appendChild(platformDiv);
 
   var steamLabelCreate = document.createElement('label');
   steamLabelCreate.innerHTML = 'Steam';
@@ -223,8 +259,8 @@ function registerPlayer() {
   steamRadioButton.type = 'radio';
   steamRadioButton.name = 'gamerTags';
   steamRadioButton.value = 'steam';
-  registrationForm.appendChild(steamLabelCreate);
-  registrationForm.appendChild(steamRadioButton);
+  platformDiv.appendChild(steamLabelCreate);
+  steamLabelCreate.appendChild(steamRadioButton);
 
   var originLabelCreate = document.createElement('label');
   originLabelCreate.innerHTML = 'Origin';
@@ -232,8 +268,8 @@ function registerPlayer() {
   originRadioButton.type = 'radio';
   originRadioButton.name = 'gamerTags';
   originRadioButton.value = 'origin';
-  registrationForm.appendChild(originLabelCreate);
-  registrationForm.appendChild(originRadioButton);
+  platformDiv.appendChild(originLabelCreate);
+  originLabelCreate.appendChild(originRadioButton);
 
   var battlenetLabelCreate = document.createElement('label');
   battlenetLabelCreate.innerHTML = 'Battlenet';
@@ -241,8 +277,8 @@ function registerPlayer() {
   battlenetRadioButton.type = 'radio';
   battlenetRadioButton.name = 'gamerTags';
   battlenetRadioButton.value = 'battlenet';
-  registrationForm.appendChild(battlenetLabelCreate);
-  registrationForm.appendChild(battlenetRadioButton);
+  platformDiv.appendChild(battlenetLabelCreate);
+  battlenetLabelCreate.appendChild(battlenetRadioButton);
 
   var leagueOfLegendsLabelCreate = document.createElement('label');
   leagueOfLegendsLabelCreate.innerHTML = 'League Of Legends';
@@ -250,8 +286,8 @@ function registerPlayer() {
   leagueOfLegendsRadioButton.type = 'radio';
   leagueOfLegendsRadioButton.name = 'gamerTags';
   leagueOfLegendsRadioButton.value = 'leagueOfLegends';
-  registrationForm.appendChild(leagueOfLegendsLabelCreate);
-  registrationForm.appendChild(leagueOfLegendsRadioButton);
+  platformDiv.appendChild(leagueOfLegendsLabelCreate);
+  leagueOfLegendsLabelCreate.appendChild(leagueOfLegendsRadioButton);
 
   var uplayLabelCreate = document.createElement('label');
   uplayLabelCreate.innerHTML = 'Uplay';
@@ -259,8 +295,8 @@ function registerPlayer() {
   uplayRadioButton.type = 'radio';
   uplayRadioButton.name = 'gamerTags';
   uplayRadioButton.value = 'uplay';
-  registrationForm.appendChild(uplayLabelCreate);
-  registrationForm.appendChild(uplayRadioButton);
+  platformDiv.appendChild(uplayLabelCreate);
+  uplayLabelCreate.appendChild(uplayRadioButton);
 
   var xboxLiveLabelCreate = document.createElement('label');
   xboxLiveLabelCreate.innerHTML = 'Xbox Live';
@@ -268,8 +304,8 @@ function registerPlayer() {
   xboxLiveRadioButton.type = 'radio';
   xboxLiveRadioButton.name = 'gamerTags';
   xboxLiveRadioButton.value = 'xboxLive';
-  registrationForm.appendChild(xboxLiveLabelCreate);
-  registrationForm.appendChild(xboxLiveRadioButton);
+  platformDiv.appendChild(xboxLiveLabelCreate);
+  xboxLiveLabelCreate.appendChild(xboxLiveRadioButton);
 
   var playStationNetworkLabelCreate = document.createElement('label');
   playStationNetworkLabelCreate.innerHTML = 'Playstation Network';
@@ -277,12 +313,19 @@ function registerPlayer() {
   playStationNetworkRadioButton.type = 'radio';
   playStationNetworkRadioButton.name = 'gamerTags';
   playStationNetworkRadioButton.value = 'playStationNetwork';
-  registrationForm.appendChild(playStationNetworkLabelCreate);
-  registrationForm.appendChild(playStationNetworkRadioButton);
+  platformDiv.appendChild(playStationNetworkLabelCreate);
+  playStationNetworkLabelCreate.appendChild(playStationNetworkRadioButton);
+
+//===== Skill Level Labels and Radio Inputs =====
+
+  var skillLevelDiv = document.createElement('div');
+  skillLevelDiv.className = 'registrationFormDivs';
+  skillLevelDiv.id = 'skillLevelDiv';
+  usernameDiv.appendChild(skillLevelDiv);
 
   var choiceSkillLevelHeader = document.createElement('h1');
-  choiceSkillLevelHeader.textContent = 'Choice your Gamer skill Level (Be honest with yourself)';
-  registrationForm.appendChild(choiceSkillLevelHeader);
+  choiceSkillLevelHeader.textContent = 'Choose Your Skill Level';
+  skillLevelDiv.appendChild(choiceSkillLevelHeader);
 
   var noobLabelCreate = document.createElement('label');
   noobLabelCreate.innerHTML = 'Noob';
@@ -290,8 +333,8 @@ function registerPlayer() {
   noobRadioButton.type = 'radio';
   noobRadioButton.name = 'skillLevel';
   noobRadioButton.value = 'Noob';
-  registrationForm.appendChild(noobLabelCreate);
-  registrationForm.appendChild(noobRadioButton);
+  skillLevelDiv.appendChild(noobLabelCreate);
+  noobLabelCreate.appendChild(noobRadioButton);
 
   var intermediateLabelCreate = document.createElement('label');
   intermediateLabelCreate.innerHTML = 'Intermediate';
@@ -299,8 +342,8 @@ function registerPlayer() {
   intermediateRadioButton.type = 'radio';
   intermediateRadioButton.name = 'skillLevel';
   intermediateRadioButton.value = 'intermediate';
-  registrationForm.appendChild(intermediateLabelCreate);
-  registrationForm.appendChild(intermediateRadioButton);
+  skillLevelDiv.appendChild(intermediateLabelCreate);
+  intermediateLabelCreate.appendChild(intermediateRadioButton);
 
   var veteranLabelCreate = document.createElement('label');
   veteranLabelCreate.innerHTML = 'Veteran';
@@ -308,12 +351,19 @@ function registerPlayer() {
   veteranRadioButton.type = 'radio';
   veteranRadioButton.name = 'skillLevel';
   veteranRadioButton.value = 'Veteran';
-  registrationForm.appendChild(veteranLabelCreate);
-  registrationForm.appendChild(veteranRadioButton);
+  skillLevelDiv.appendChild(veteranLabelCreate);
+  veteranLabelCreate.appendChild(veteranRadioButton);
+
+//===== Games Labels and Radio Inputs =====
+
+  var gamesDiv = document.createElement('div');
+  gamesDiv.className = 'registrationFormDivs';
+  gamesDiv.id = 'gamesDiv';
+  registrationForm.appendChild(gamesDiv);
 
   var chooseYourGame = document.createElement('h1');
-  chooseYourGame.textContent = 'What Game would you like to find gamers on?)';
-  registrationForm.appendChild(chooseYourGame);
+  chooseYourGame.textContent = 'What Game Would You Like to Play?';
+  gamesDiv.appendChild(chooseYourGame);
 
   var lolLabel = document.createElement('label');
   lolLabel.innerHTML = 'League of Legends';
@@ -321,8 +371,8 @@ function registerPlayer() {
   lolCheckBox.type = 'checkbox';
   lolCheckBox.name = 'leagueOfLegends';
   lolCheckBox.value = 'leagueOfLegends';
-  registrationForm.appendChild(lolLabel);
-  registrationForm.appendChild(lolCheckBox);
+  gamesDiv.appendChild(lolLabel);
+  lolLabel.appendChild(lolCheckBox);
 
   var worldOfWarcraftLabel = document.createElement('label');
   worldOfWarcraftLabel.innerHTML = 'World Of Warcraft';
@@ -330,8 +380,8 @@ function registerPlayer() {
   worldOfWarcraftCheckBox.type = 'checkbox';
   worldOfWarcraftCheckBox.name = 'worldOfWarcraft';
   worldOfWarcraftCheckBox.value = 'worldOfWarcraft';
-  registrationForm.appendChild(worldOfWarcraftLabel);
-  registrationForm.appendChild(worldOfWarcraftCheckBox);
+  gamesDiv.appendChild(worldOfWarcraftLabel);
+  worldOfWarcraftLabel.appendChild(worldOfWarcraftCheckBox);
 
   var callOfDutyLabel = document.createElement('label');
   callOfDutyLabel.innerHTML = 'Call Of Duty';
@@ -339,8 +389,8 @@ function registerPlayer() {
   callOfDutyCheckBox.type = 'checkbox';
   callOfDutyCheckBox.name = 'callOfDuty';
   callOfDutyCheckBox.value = 'callOfDuty';
-  registrationForm.appendChild(callOfDutyLabel);
-  registrationForm.appendChild(callOfDutyCheckBox);
+  gamesDiv.appendChild(callOfDutyLabel);
+  callOfDutyLabel.appendChild(callOfDutyCheckBox);
 
   var overwatchLabel = document.createElement('label');
   overwatchLabel.innerHTML = 'Overwatch';
@@ -348,8 +398,8 @@ function registerPlayer() {
   overwatchCheckBox.type = 'checkbox';
   overwatchCheckBox.name = 'overwatch';
   overwatchCheckBox.value = 'overwatch';
-  registrationForm.appendChild(overwatchLabel);
-  registrationForm.appendChild(overwatchCheckBox);
+  gamesDiv.appendChild(overwatchLabel);
+  overwatchLabel.appendChild(overwatchCheckBox);
 
   var battlefield1Label = document.createElement('label');
   battlefield1Label.innerHTML = 'Battlefield 1';
@@ -357,8 +407,8 @@ function registerPlayer() {
   battlefield1CheckBox.type = 'checkbox';
   battlefield1CheckBox.name = 'battlefield1';
   battlefield1CheckBox.value = 'battlefield1';
-  registrationForm.appendChild(battlefield1Label);
-  registrationForm.appendChild(battlefield1CheckBox);
+  gamesDiv.appendChild(battlefield1Label);
+  battlefield1Label.appendChild(battlefield1CheckBox);
 
   var titanfall2Label = document.createElement('label');
   titanfall2Label.innerHTML = 'Titanfall 2';
@@ -366,8 +416,8 @@ function registerPlayer() {
   titanfall2CheckBox.type = 'checkbox';
   titanfall2CheckBox.name = 'titanfall2';
   titanfall2CheckBox.value = 'titanfall2';
-  registrationForm.appendChild(titanfall2Label);
-  registrationForm.appendChild(titanfall2CheckBox);
+  gamesDiv.appendChild(titanfall2Label);
+  titanfall2Label.appendChild(titanfall2CheckBox);
 
   var mineCraftLabel = document.createElement('label');
   mineCraftLabel.innerHTML = 'MineCraft';
@@ -375,8 +425,8 @@ function registerPlayer() {
   mineCraftCheckBox.type = 'checkbox';
   mineCraftCheckBox.name = 'mineCraft';
   mineCraftCheckBox.value = 'mineCraft';
-  registrationForm.appendChild(mineCraftLabel);
-  registrationForm.appendChild(mineCraftCheckBox);
+  gamesDiv.appendChild(mineCraftLabel);
+  mineCraftLabel.appendChild(mineCraftCheckBox);
 
   var theDivisionLabel = document.createElement('label');
   theDivisionLabel.innerHTML = 'The Division';
@@ -384,8 +434,8 @@ function registerPlayer() {
   theDivisionCheckBox.type = 'checkbox';
   theDivisionCheckBox.name = 'theDivision';
   theDivisionCheckBox.value = 'theDivision';
-  registrationForm.appendChild(theDivisionLabel);
-  registrationForm.appendChild(theDivisionCheckBox);
+  gamesDiv.appendChild(theDivisionLabel);
+  theDivisionLabel.appendChild(theDivisionCheckBox);
 
   var noMansSkyLabel = document.createElement('label');
   noMansSkyLabel.innerHTML = 'No Man\'s Sky';
@@ -393,12 +443,19 @@ function registerPlayer() {
   noMansSkyCheckBox.type = 'checkbox';
   noMansSkyCheckBox.name = 'noMansSky';
   noMansSkyCheckBox.value = 'noMansSky';
-  registrationForm.appendChild(noMansSkyLabel);
-  registrationForm.appendChild(noMansSkyCheckBox);
+  gamesDiv.appendChild(noMansSkyLabel);
+  noMansSkyLabel.appendChild(noMansSkyCheckBox);
+
+//===== Days You Can Game Labels and Radio Inputs =====
+
+  var daysYouCanGameDiv = document.createElement('div');
+  daysYouCanGameDiv.className = 'registrationFormDivs';
+  daysYouCanGameDiv.id = 'daysYouCanGameDiv';
+  registrationForm.appendChild(daysYouCanGameDiv);
 
   var weekDaysHeader = document.createElement('h1');
-  weekDaysHeader.textContent = 'Day you are usually online to game)';
-  registrationForm.appendChild(weekDaysHeader);
+  weekDaysHeader.textContent = 'When Do You Want To Play?';
+  daysYouCanGameDiv.appendChild(weekDaysHeader);
 
   var mondayLabel = document.createElement('label');
   mondayLabel.innerHTML = 'Monday';
@@ -406,8 +463,8 @@ function registerPlayer() {
   mondayCheckBox.type = 'checkbox';
   mondayCheckBox.name = 'monday';
   mondayCheckBox.value = 'monday';
-  registrationForm.appendChild(mondayLabel);
-  registrationForm.appendChild(mondayCheckBox);
+  daysYouCanGameDiv.appendChild(mondayLabel);
+  mondayLabel.appendChild(mondayCheckBox);
 
   var tuesdayLabel = document.createElement('label');
   tuesdayLabel.innerHTML = 'Tuesday';
@@ -415,8 +472,8 @@ function registerPlayer() {
   tuesdayCheckBox.type = 'checkbox';
   tuesdayCheckBox.name = 'tuesday';
   tuesdayCheckBox.value = 'tuesday';
-  registrationForm.appendChild(tuesdayLabel);
-  registrationForm.appendChild(tuesdayCheckBox);
+  daysYouCanGameDiv.appendChild(tuesdayLabel);
+  tuesdayLabel.appendChild(tuesdayCheckBox);
 
   var wednesdayLabel = document.createElement('label');
   wednesdayLabel.innerHTML = 'Wednesday';
@@ -424,17 +481,17 @@ function registerPlayer() {
   wednesdayCheckBox.type = 'checkbox';
   wednesdayCheckBox.name = 'wednesday';
   wednesdayCheckBox.value = 'wednesday';
-  registrationForm.appendChild(wednesdayLabel);
-  registrationForm.appendChild(wednesdayCheckBox);
+  daysYouCanGameDiv.appendChild(wednesdayLabel);
+  wednesdayLabel.appendChild(wednesdayCheckBox);
 
-  var thrusdayLabel = document.createElement('label');
-  thrusdayLabel.innerHTML = 'Thrusday';
-  var thrusdayCheckBox = document.createElement('input');
-  thrusdayCheckBox.type = 'checkbox';
-  thrusdayCheckBox.name = 'thrusday';
-  thrusdayCheckBox.value = 'thrusday';
-  registrationForm.appendChild(thrusdayLabel);
-  registrationForm.appendChild(thrusdayCheckBox);
+  var thursdayLabel = document.createElement('label');
+  thursdayLabel.innerHTML = 'Thursday';
+  var thursdayCheckBox = document.createElement('input');
+  thursdayCheckBox.type = 'checkbox';
+  thursdayCheckBox.name = 'daysOfWeek';
+  thursdayCheckBox.value = 'thursday';
+  daysYouCanGameDiv.appendChild(thursdayLabel);
+  thursdayLabel.appendChild(thursdayCheckBox);
 
   var fridayLabel = document.createElement('label');
   fridayLabel.innerHTML = 'Friday';
@@ -442,8 +499,8 @@ function registerPlayer() {
   fridayCheckBox.type = 'checkbox';
   fridayCheckBox.name = 'friday';
   fridayCheckBox.value = 'friday';
-  registrationForm.appendChild(fridayLabel);
-  registrationForm.appendChild(fridayCheckBox);
+  daysYouCanGameDiv.appendChild(fridayLabel);
+  fridayLabel.appendChild(fridayCheckBox);
 
   var saturdayLabel = document.createElement('label');
   saturdayLabel.innerHTML = 'Saturday';
@@ -451,8 +508,8 @@ function registerPlayer() {
   saturdayCheckBox.type = 'checkbox';
   saturdayCheckBox.name = 'saturday';
   saturdayCheckBox.value = 'saturday';
-  registrationForm.appendChild(saturdayLabel);
-  registrationForm.appendChild(saturdayCheckBox);
+  daysYouCanGameDiv.appendChild(saturdayLabel);
+  saturdayLabel.appendChild(saturdayCheckBox);
 
   var sundayLabel = document.createElement('label');
   sundayLabel.innerHTML = 'Sunday';
@@ -460,12 +517,15 @@ function registerPlayer() {
   sundayCheckBox.type = 'checkbox';
   sundayCheckBox.name = 'sunday';
   sundayCheckBox.value = 'sunday';
-  registrationForm.appendChild(sundayLabel);
-  registrationForm.appendChild(sundayCheckBox);
+  daysYouCanGameDiv.appendChild(sundayLabel);
+  sundayLabel.appendChild(sundayCheckBox);
+
+//===== Registration Submit Button =====
 
   var playerRegisterSubmitButton = document.createElement('button');
   playerRegisterSubmitButton.type = 'submit';
   playerRegisterSubmitButton.innerHTML = 'Sign In';
+  playerRegisterSubmitButton.className = 'buttons';
   registrationForm.appendChild(playerRegisterSubmitButton);
 
   playerRegistrationForm.appendChild(registrationForm);
