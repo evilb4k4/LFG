@@ -3,7 +3,7 @@
 var signInSubmitButton;
 var getMainDiv = document.getElementById('content');
 
-function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
+function Player(username, avatar, dayYouCanGame, skillLevel, comments){
   this.username = username;
   this.avatar = avatar;
   this.online = false;
@@ -74,16 +74,16 @@ playerList[4].gamesPlayed.titanfall2 = true;
 playerList[4].gamerTags.battlenet = 'test5battlenettag';
 playerList[4].gamesPlayed.worldOfWarcraft = true;
 
-function dayOfWeek(){
-  console.log('daysOfWeek running');
-  var daysOfWeek = document.getElementsByClassName('gamingDays');
-  for(var i = 0; i < daysOfWeek.length; i++){
-    console.log('checkboxes work',daysOfWeek[i].checked);
-    if(daysOfWeek[i].checked){
-      this.dayYouCanGame.push(daysOfWeek[i].value);
-    }
-  }
-};
+// function dayOfWeek(){
+//   console.log('daysOfWeek running');
+//   var daysOfWeek = document.getElementsByClassName('gamingDays');
+//   for(var i = 0; i < daysOfWeek.length; i++){
+//     console.log('checkboxes work',daysOfWeek[i].checked);
+//     if(daysOfWeek[i].checked){
+//       this.dayYouCanGame.push(daysOfWeek[i].value);
+//     }
+//   }
+// };
 
 // var playerRegistrationForm = document.getElementById('playerCreated');
 // playerRegistrationForm.addEventListener('submit', registerPlayer);
@@ -112,8 +112,20 @@ function handleRegisterPlayer(event) {
     saturday: getTarget.saturday.checked,
     sunday: getTarget.sunday.checked,
   };
+  var gamesPlayed = {
+    leagueOfLegends: getTarget.leagueOfLegends.checked,
+    worldOfWarcraft: getTarget.worldOfWarcraft.checked,
+    callOfDuty: getTarget.callOfDuty.checked,
+    overwatch: getTarget.overwatch.checked,
+    battlefield1:getTarget.battlefield1.checked,
+    titanfall2: getTarget.titanfall2.checked,
+    mineCraft: getTarget.mineCraft.checked,
+    theDivision: getTarget.theDivision.checked,
+    noMansSky: getTarget.noMansSky.checked,
+  };
+  console.log('COD', gamesPlayed);
 
-  var player = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, []);
+  var player = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
   player.gamerTags[playerGamerNetwork] = playerGamertag;
 
   console.log('lulwat player', player);
