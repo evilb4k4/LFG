@@ -111,7 +111,7 @@ footer div img {
   box-shadow: 20px 20px 50px black;
   width: 600px;
   height: 230px;
-  margin-left: 35%;
+  margin-left: calc(50% - 300px);
   position: fixed;
   top: 40%;
 }
@@ -158,6 +158,16 @@ footer div img {
   font-size: 16px;
   padding: 5px;
   margin-top: 10px;
+  text-align: center;
+  font-family: "Iceberg",cursive;
+}
+
+.sign-in-box input[type="text"]:focus {
+  outline:none;
+    border: 1px solid #9EF3AB;
+    box-shadow: 0px 0px 13px #9EF3AB;
+    -moz-box-shadow: 0px 0px 13px #9EF3AB;
+    -webkit-box-shadow: 0px 0px 13px #9EF3AB;
 }
 
 .sign-in-box button {
@@ -329,11 +339,13 @@ footer div img {
   height: 200px;
   position: fixed;
   top: 40%;
+
 }
 .buttons {
   border-radius: 10px;
   width: 250px;
   height: 60px;
+  border: 1px solid black;
   box-shadow: 20px 20px 50px black;
   font-family: 'Black Ops One';
   font-size: 30px;
@@ -344,21 +356,19 @@ footer div img {
 }
 
 .buttons:active {
-  position: relative;
-  top: 1px;
   text-shadow: 5px 5px 20px rgba(235, 100, 0, 1);
   transform: scale(.95);
   transform: translateY(2px);
 }
 
 #registerButton, #signInButton {
-  margin: 70 20 0 25px;
+  margin: 70px 20px 0 25px;
 }
 
 #results {
   display: block;
   position: fixed;
-  top: 140px;
+  top: 160px;
   text-align: center;
   width: 100%;
   height: 100%;
@@ -366,9 +376,9 @@ footer div img {
 }
 
 .player {
-  width: 450px;
+  width: 600px;
   height: 200px;
-  margin: 11px;
+  margin: 25px;
   margin-bottom: 25px;
   display: inline-block;
   border: 1px solid #000;
@@ -381,28 +391,33 @@ footer div img {
 .avatarUserWrap {
   display: inline-block;
   float: left;
-  width: 20%;
-  height: 70%;
+  width: 35%;
+  height: 80%;
   border-width: 0px;
+  position: relative;
   /*overflow: hidden;*/
 }
 
 .avatarPic {
-  width: 100%;
-  height: 75%;
+  width: 160px;
+  height: 160px;
   border: 1px solid black;
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  background-color: orange;
 }
 
 .userOnlineWrap {
   width: 100%;
   height: 20%;
-  margin-top: 2%;
+  margin-top: 125px;
 }
 
 .gamerGamesWrap {
   display: inline-block;
   float: left;
-  width: 80%;
+  width: 60%;
   height: 70%;
   border-width: 0px;
 }
@@ -428,6 +443,11 @@ footer div img {
   float: left;
 }
 .player .buttons {
+  font-size: 16px;
+  width: 125px;
+  height: 30px;
+}
+.username{
   font-size: 24px;
 }
 

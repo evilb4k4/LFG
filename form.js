@@ -95,7 +95,7 @@ function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
   var playerUserName = getTarget.username.value;
-  var playerGamertag = getTarget.gamertag.value;
+  var playerGamertag = getTarget.gametag.value;
   console.log('username', playerUserName);
   var playerSkillLevel = getTarget.skillLevel.value;
   var playerGamerNetwork = getTarget.gamerTags.value;
@@ -109,7 +109,7 @@ function handleRegisterPlayer(event) {
     monday: getTarget.monday.checked,
     tuesday: getTarget.tuesday.checked,
     wednesday: getTarget.wednesday.checked,
-    thrusday: getTarget.thrusday.checked,
+    thursday: getTarget.thursday.checked,
     friday: getTarget.friday.checked,
     saturday: getTarget.saturday.checked,
     sunday: getTarget.sunday.checked,
@@ -156,7 +156,7 @@ function signIn(event) {
 
       function validatePlayer(){
         var errorMsg = document.getElementById('landing-msg');
-        formcreate.setAttribute('id', 'error-msg-input') 
+        formcreate.setAttribute('id', 'error-msg-input')
         errorMsg.innerHTML = 'Invalid User, Please Try Again!';
         errorMsg.setAttribute('id','error-msg');
         signInSubmitButton.reset();
@@ -240,7 +240,7 @@ function registerPlayer() {
   gamerTagLabelCreate.innerHTML = 'Gamer Tag: ';
   var gamerInputField = document.createElement('input');
   gamerInputField.type = 'text';
-  gamerInputField.name = 'username';
+  gamerInputField.name = 'gametag';
   registrationForm.appendChild(gamerTagDiv);
   gamerTagDiv.appendChild(gamerTagLabelCreate);
   gamerTagLabelCreate.appendChild(gamerInputField);
@@ -488,7 +488,7 @@ function registerPlayer() {
   thursdayLabel.innerHTML = 'Thursday';
   var thursdayCheckBox = document.createElement('input');
   thursdayCheckBox.type = 'checkbox';
-  thursdayCheckBox.name = 'daysOfWeek';
+  thursdayCheckBox.name = 'thursday';
   thursdayCheckBox.value = 'thursday';
   daysYouCanGameDiv.appendChild(thursdayLabel);
   thursdayLabel.appendChild(thursdayCheckBox);
