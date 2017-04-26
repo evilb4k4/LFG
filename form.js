@@ -14,17 +14,17 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
   this.comments = comments;
   this.gamesPlayed = gamesPlayed;
 
-  // this.gamesPlayed = {
-  //   leagueOfLegends: '',
-  //   worldOfWarcraft: false,
-  //   callOfDuty: false,
-  //   overwatch: false,
-  //   battlefield1: false,
-  //   titanfall2: false,
-  //   mineCraft: false,
-  //   theDivision: false,
-  //   noMansSky: false,
-  // };
+  this.gamesPlayed = {
+    leagueOfLegends: '',
+    worldOfWarcraft: false,
+    callOfDuty: false,
+    overwatch: false,
+    battlefield1: false,
+    titanfall2: false,
+    mineCraft: false,
+    theDivision: false,
+    noMansSky: false,
+  };
 
   this.gamerTags = {
     steam:'',
@@ -39,64 +39,64 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
 
 //===== test currentUser =====
 var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
-// currentUser.gamerTags.steam = 'CUsteamtag';
-// // currentUser.gamesPlayed.leagueOfLegends = true;
-// currentUser.gamerTags.battlenet = 'CUbattlenettag';
-// currentUser.gamesPlayed.worldOfWarcraft = true;
+currentUser.gamerTags.steam = 'CUsteamtag';
+currentUser.gamesPlayed.leagueOfLegends = true;
+currentUser.gamerTags.battlenet = 'CUbattlenettag';
+currentUser.gamesPlayed.worldOfWarcraft = true;
 
 //===== test Players =====
 var playerList = [];
 
-// playerList[0] = new Player('test1', '', 'Monday', 'n00b', 'Im a n00b');
-// playerList[0].gamerTags.steam = 'test1steamtag';
-// playerList[0].gamesPlayed.leagueOfLegends = true;
-// playerList[0].gamerTags.battlenet = 'test1battlenettag';
-// playerList[0].gamesPlayed.worldOfWarcraft = true;
-//
-// playerList[1] = new Player('test2', '', 'Monday', 'n00b', 'Im a n00b');
-// playerList[1].gamerTags.steam = 'test2steamtag';
-// playerList[1].gamesPlayed.leagueOfLegends = true;
-// playerList[1].gamerTags.origin = 'test2origintag';
-// playerList[1].gamesPlayed.callOfDuty = true;
-//
-// playerList[2] = new Player('test3', '', 'Monday', 'n00b', 'Im n00b');
-// playerList[2].gamerTags.steam = 'test3steamtag';
-// playerList[2].gamesPlayed.leagueOfLegends = true;
-// playerList[2].gamerTags.uplay = 'test3uplaytag';
-// playerList[2].gamesPlayed.overwatch = true;
-//
-// playerList[3] = new Player('test4', '', 'Monday', 'n00b', 'Im n00b');
-// playerList[3].gamerTags.xboxLive = 'test4xboxtag';
-// playerList[3].gamesPlayed.battlefield1 = true;
-// playerList[3].gamerTags.battlenet = 'test4battlenettag';
-// playerList[3].gamesPlayed.worldOfWarcraft = true;
-//
-// playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
-// playerList[4].gamerTags.steam = 'test5playstationtag';
-// playerList[4].gamesPlayed.titanfall2 = true;
-// playerList[4].gamerTags.battlenet = 'test5battlenettag';
-// playerList[4].gamesPlayed.leagueOfLegends = true;
+playerList[0] = new Player('test1', '', 'Monday', 'n00b', 'Im a n00b');
+playerList[0].gamerTags.steam = 'test1steamtag';
+playerList[0].gamesPlayed.leagueOfLegends = true;
+playerList[0].gamerTags.battlenet = 'test1battlenettag';
+playerList[0].gamesPlayed.worldOfWarcraft = true;
 
-// function dayOfWeek(){
-//   console.log('daysOfWeek running');
-//   var daysOfWeek = document.getElementsByClassName('gamingDays');
-//   for(var i = 0; i < daysOfWeek.length; i++){
-//     console.log('checkboxes work',daysOfWeek[i].checked);
-//     if(daysOfWeek[i].checked){
-//       this.dayYouCanGame.push(daysOfWeek[i].value);
-//     }
-//   }
-// };
+playerList[1] = new Player('test2', '', 'Monday', 'n00b', 'Im a n00b');
+playerList[1].gamerTags.steam = 'test2steamtag';
+playerList[1].gamesPlayed.leagueOfLegends = true;
+playerList[1].gamerTags.origin = 'test2origintag';
+playerList[1].gamesPlayed.callOfDuty = true;
 
-// var playerRegistrationForm = document.getElementById('playerCreated');
-// playerRegistrationForm.addEventListener('submit', registerPlayer);
+playerList[2] = new Player('test3', '', 'Monday', 'n00b', 'Im n00b');
+playerList[2].gamerTags.steam = 'test3steamtag';
+playerList[2].gamesPlayed.leagueOfLegends = true;
+playerList[2].gamerTags.uplay = 'test3uplaytag';
+playerList[2].gamesPlayed.overwatch = true;
+
+playerList[3] = new Player('test4', '', 'Monday', 'n00b', 'Im n00b');
+playerList[3].gamerTags.xboxLive = 'test4xboxtag';
+playerList[3].gamesPlayed.battlefield1 = true;
+playerList[3].gamerTags.battlenet = 'test4battlenettag';
+playerList[3].gamesPlayed.worldOfWarcraft = true;
+
+playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
+playerList[4].gamerTags.steam = 'test5playstationtag';
+playerList[4].gamesPlayed.titanfall2 = true;
+playerList[4].gamerTags.battlenet = 'test5battlenettag';
+playerList[4].gamesPlayed.leagueOfLegends = true;
+
+function dayOfWeek(){
+  console.log('daysOfWeek running');
+  var daysOfWeek = document.getElementsByClassName('gamingDays');
+  for(var i = 0; i < daysOfWeek.length; i++){
+    console.log('checkboxes work',daysOfWeek[i].checked);
+    if(daysOfWeek[i].checked){
+      this.dayYouCanGame.push(daysOfWeek[i].value);
+    }
+  }
+};
+
+var playerRegistrationForm = document.getElementById('playerCreated');
+playerRegistrationForm.addEventListener('submit', registerPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
   var playerUserName = getTarget.username.value;
-  var playerGamertag = getTarget.gamertag.value;
+  var playerGamertag = getTarget.gametag.value;
   console.log('username', playerUserName);
   var playerSkillLevel = getTarget.skillLevel.value;
   var playerGamerNetwork = getTarget.gamerTags.value;
@@ -241,7 +241,7 @@ function registerPlayer() {
   gamerTagLabelCreate.innerHTML = 'Gamer Tag: ';
   var gamerInputField = document.createElement('input');
   gamerInputField.type = 'text';
-  gamerInputField.name = 'gamertag';
+  gamerInputField.name = 'gametag';
   registrationForm.appendChild(gamerTagDiv);
   gamerTagDiv.appendChild(gamerTagLabelCreate);
   gamerTagLabelCreate.appendChild(gamerInputField);

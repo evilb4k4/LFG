@@ -66,7 +66,7 @@ function resultDisplay(){
     comments.className = 'comments';
     var contactButton = document.createElement('button');
     contactButton.className = 'buttons';
-    contactButton.textContent = 'Contact Gamer';
+    contactButton.textContent = 'Contact';
 
     username.textContent = playerList[j].username;
     avatarPic.textContent = playerList[j].avatarPic;
