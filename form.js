@@ -22,6 +22,7 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments) {
     theDivision: false,
     noMansSky: false,
   };
+
   this.gamerTags = {
     steam:'',
     origin:'',
@@ -73,7 +74,7 @@ playerList[4].gamesPlayed.titanfall2 = true;
 playerList[4].gamerTags.battlenet = 'test5battlenettag';
 playerList[4].gamesPlayed.worldOfWarcraft = true;
 
-Player.prototype.daysOfWeek = function(){
+function dayOfWeek(){
   console.log('daysOfWeek running');
   var daysOfWeek = document.getElementsByClassName('gamingDays');
   for(var i = 0; i < daysOfWeek.length; i++){
@@ -92,32 +93,38 @@ function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
   var playerUserName = getTarget.username.value;
+  var playerGamertag = getTarget.gamertag.value;
   console.log('username', playerUserName);
   var playerSkillLevel = getTarget.skillLevel.value;
   var playerGamerNetwork = getTarget.gamerTags.value;
+  console.log('playerGamerNetwork', playerGamerNetwork);
   console.log('network gamertag', playerGamerNetwork);
   // var playerGamerNetwork = getTarget.gamerTags.value;
-  // var playerGamingDays = getTarget.dayYouCanGame.value;
+  var playerGamingDays = getTarget.monday.value;
+  console.log('dayYouCanGame', playerGamingDays);
 
-  // console.log('player days work', playerGamingDays);
-  var playerList;
+  var dayYouCanGame = {
+    monday: getTarget.monday.checked,
+    tuesday: getTarget.tuesday.checked,
+    wednesday: getTarget.wednesday.checked,
+    thrusday: getTarget.thrusday.checked,
+    friday: getTarget.friday.checked,
+    saturday: getTarget.saturday.checked,
+    sunday: getTarget.sunday.checked,
+  };
 
-  //Checking if the Players localStorage DB exists
+  var player = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, []);
+  player.gamerTags[playerGamerNetwork] = playerGamertag;
+
+  console.log('lulwat player', player);
+
+  playerList.push(player);
+
   try {
-    playerList = JSON.parse(localStorage.playerList);
-    console.log('it exists');
-  } catch(error){
-    console.log('error');
+    localStorage.playerList = JSON.stringify(playerList);
+  } catch (error) {
+    console.error(error);
   }
-  if(playerList){
-    console.log('again');
-    playerList.push(new Player(playerUserName, playerSkillLevel, playerGamerNetwork));
-  } else {
-    playerList = [new Player(playerUserName, playerSkillLevel, playerGamerNetwork)];
-  }
-
-  localStorage.playerList = JSON.stringify(playerList);
-  console.log(playerUserName);
 
 }
 
@@ -194,7 +201,7 @@ function registerPlayer() {
   gamerTagLabelCreate.innerHTML = 'Gamer Tag: ';
   var gamerInputField = document.createElement('input');
   gamerInputField.type = 'text';
-  gamerInputField.name = 'gamerTags';
+  gamerInputField.name = 'gamertag';
   registrationForm.appendChild(gamerTagLabelCreate);
   registrationForm.appendChild(gamerInputField);
 
@@ -385,7 +392,7 @@ function registerPlayer() {
   mondayLabel.innerHTML = 'Monday';
   var mondayCheckBox = document.createElement('input');
   mondayCheckBox.type = 'checkbox';
-  mondayCheckBox.className = 'daysOfWeek';
+  mondayCheckBox.name = 'monday';
   mondayCheckBox.value = 'monday';
   registrationForm.appendChild(mondayLabel);
   registrationForm.appendChild(mondayCheckBox);
@@ -394,7 +401,7 @@ function registerPlayer() {
   tuesdayLabel.innerHTML = 'Tuesday';
   var tuesdayCheckBox = document.createElement('input');
   tuesdayCheckBox.type = 'checkbox';
-  tuesdayCheckBox.className = 'daysOfWeek';
+  tuesdayCheckBox.name = 'tuesday';
   tuesdayCheckBox.value = 'tuesday';
   registrationForm.appendChild(tuesdayLabel);
   registrationForm.appendChild(tuesdayCheckBox);
@@ -403,7 +410,7 @@ function registerPlayer() {
   wednesdayLabel.innerHTML = 'Wednesday';
   var wednesdayCheckBox = document.createElement('input');
   wednesdayCheckBox.type = 'checkbox';
-  wednesdayCheckBox.className = 'daysOfWeek';
+  wednesdayCheckBox.name = 'wednesday';
   wednesdayCheckBox.value = 'wednesday';
   registrationForm.appendChild(wednesdayLabel);
   registrationForm.appendChild(wednesdayCheckBox);
@@ -412,7 +419,7 @@ function registerPlayer() {
   thrusdayLabel.innerHTML = 'Thrusday';
   var thrusdayCheckBox = document.createElement('input');
   thrusdayCheckBox.type = 'checkbox';
-  thrusdayCheckBox.className = 'daysOfWeek';
+  thrusdayCheckBox.name = 'thrusday';
   thrusdayCheckBox.value = 'thrusday';
   registrationForm.appendChild(thrusdayLabel);
   registrationForm.appendChild(thrusdayCheckBox);
@@ -421,7 +428,7 @@ function registerPlayer() {
   fridayLabel.innerHTML = 'Friday';
   var fridayCheckBox = document.createElement('input');
   fridayCheckBox.type = 'checkbox';
-  fridayCheckBox.className = 'daysOfWeek';
+  fridayCheckBox.name = 'friday';
   fridayCheckBox.value = 'friday';
   registrationForm.appendChild(fridayLabel);
   registrationForm.appendChild(fridayCheckBox);
@@ -430,7 +437,7 @@ function registerPlayer() {
   saturdayLabel.innerHTML = 'Saturday';
   var saturdayCheckBox = document.createElement('input');
   saturdayCheckBox.type = 'checkbox';
-  saturdayCheckBox.className = 'daysOfWeek';
+  saturdayCheckBox.name = 'saturday';
   saturdayCheckBox.value = 'saturday';
   registrationForm.appendChild(saturdayLabel);
   registrationForm.appendChild(saturdayCheckBox);
@@ -439,7 +446,7 @@ function registerPlayer() {
   sundayLabel.innerHTML = 'Sunday';
   var sundayCheckBox = document.createElement('input');
   sundayCheckBox.type = 'checkbox';
-  sundayCheckBox.className = 'daysOfWeek';
+  sundayCheckBox.name = 'sunday';
   sundayCheckBox.value = 'sunday';
   registrationForm.appendChild(sundayLabel);
   registrationForm.appendChild(sundayCheckBox);
