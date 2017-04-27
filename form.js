@@ -15,18 +15,6 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
   this.comments = comments;
   this.gamesPlayed = gamesPlayed;
 
-  this.gamesPlayed = {
-    leagueOfLegends: '',
-    worldOfWarcraft: false,
-    callOfDuty: false,
-    overwatch: false,
-    battlefield1: false,
-    titanfall2: false,
-    mineCraft: false,
-    theDivision: false,
-    noMansSky: false,
-  };
-
   this.gamerTags = {
     steam:'',
     origin:'',
@@ -38,67 +26,15 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
   };
 }
 
-//===== test currentUser =====
-// var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
-// currentUser.gamerTags.steam = 'CUsteamtag';
-// currentUser.gamesPlayed.leagueOfLegends = true;
-// currentUser.gamerTags.battlenet = 'CUbattlenettag';
-// currentUser.gamesPlayed.worldOfWarcraft = true;
-
-// //===== test Players =====
-// var playerList = [];
-//
-// playerList[0] = new Player('test1', '', 'Monday', 'n00b', 'Im a n00b');
-// playerList[0].gamerTags.steam = 'test1steamtag';
-// playerList[0].gamesPlayed.leagueOfLegends = true;
-// playerList[0].gamerTags.battlenet = 'test1battlenettag';
-// playerList[0].gamesPlayed.worldOfWarcraft = true;
-//
-// playerList[1] = new Player('test2', '', 'Monday', 'n00b', 'Im a n00b');
-// playerList[1].gamerTags.steam = 'test2steamtag';
-// playerList[1].gamesPlayed.leagueOfLegends = true;
-// playerList[1].gamerTags.origin = 'test2origintag';
-// playerList[1].gamesPlayed.callOfDuty = true;
-//
-// playerList[2] = new Player('test3', '', 'Monday', 'n00b', 'Im n00b');
-// playerList[2].gamerTags.steam = 'test3steamtag';
-// playerList[2].gamesPlayed.leagueOfLegends = true;
-// playerList[2].gamerTags.uplay = 'test3uplaytag';
-// playerList[2].gamesPlayed.overwatch = true;
-//
-// playerList[3] = new Player('test4', '', 'Monday', 'n00b', 'Im n00b');
-// playerList[3].gamerTags.xboxLive = 'test4xboxtag';
-// playerList[3].gamesPlayed.battlefield1 = true;
-// playerList[3].gamerTags.battlenet = 'test4battlenettag';
-// playerList[3].gamesPlayed.worldOfWarcraft = true;
-//
-// playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
-// playerList[4].gamerTags.steam = 'test5playstationtag';
-// playerList[4].gamesPlayed.titanfall2 = true;
-// playerList[4].gamerTags.battlenet = 'test5battlenettag';
-// playerList[4].gamesPlayed.leagueOfLegends = true;
-//
-// function dayOfWeek(){
-//   console.log('daysOfWeek running');
-//   var daysOfWeek = document.getElementsByClassName('gamingDays');
-//   for(var i = 0; i < daysOfWeek.length; i++){
-//     console.log('checkboxes work',daysOfWeek[i].checked);
-//     if(daysOfWeek[i].checked){
-//       this.dayYouCanGame.push(daysOfWeek[i].value);
-//     }
-//   }
-// };
-
-// var playerRegistrationForm = document.getElementById('playerCreated');
-// playerRegistrationForm.addEventListener('submit', registerPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
-  var playerUserName = getTarget.username.value;
+  var playerUserName = getTarget.username.value.toLowerCase();
+  var playerAvatar = getTarget.avatar.value;
   var playerGamertag = getTarget.gametag.value;
-  console.log('username', playerUserName);
+  console.log('username', playerGamertag);
   var playerSkillLevel = getTarget.skillLevel.value;
   var playerGamerNetwork = getTarget.gamerTags.value;
   console.log('playerGamerNetwork', playerGamerNetwork);
@@ -127,23 +63,18 @@ function handleRegisterPlayer(event) {
     theDivision: getTarget.theDivision.checked,
     noMansSky: getTarget.noMansSky.checked,
   };
-  // console.log('COD', gamesPlayed);
 
-  // var playerList = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
-  // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
-
-  // console.log('lulwat player', playerList);
 
   // playerList.push(playerList);
-  currentUser = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  currentUser = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  var prePlayerList = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
 
   if(playerList){
-    console.log('again');
-    playerList.push(new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed));
-    // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    playerList.push(prePlayerList);
   } else {
-    playerList = [new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed)];
-    // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    playerList = [prePlayerList];
   }
 
   try {
@@ -158,7 +89,7 @@ function handleRegisterPlayer(event) {
 //Section for the sigin logic
 function signIn(event) {
   event.preventDefault();
-  var playerUserName = signInSubmitButton.userName.value;
+  var playerUserName = signInSubmitButton.userName.value.toLowerCase();
   var matched = false;
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
@@ -202,10 +133,6 @@ function SignInBoxCreate(event) {
   signInLabelCreate.innerHTML = 'Welcome Back, Player One';
   formcreate.appendChild(signInLabelCreate);
 
-  // var validatePlayerErrorMsg = document.createElement('span')
-  // validatePlayerErrorMsg.textContent = 'test';
-  // formcreate.appendChild(validatePlayerErrorMsg);
-
   var signInInputFieldCreate = document.createElement('input');
   signInInputFieldCreate.type = 'text';
   signInInputFieldCreate.name = 'userName';
@@ -227,7 +154,6 @@ function SignInBoxCreate(event) {
 //this fuctions creates the html form
 function registerPlayer() {
   getMainDiv.innerHTML = '';
-
   var playerRegistrationForm  = document.createElement('div');
   playerRegistrationForm.className = 'register-container';
 
@@ -235,7 +161,6 @@ function registerPlayer() {
   registrationForm.setAttribute('id', 'playerCreated');
 
 //===== Username Label and Text Input =====
-
   var usernameDiv = document.createElement('div');
   usernameDiv.id = 'usernameDiv';
   usernameDiv.className = 'registrationFormDivs';
@@ -247,6 +172,95 @@ function registerPlayer() {
   registrationForm.appendChild(usernameDiv);
   usernameDiv.appendChild(usernameLabelCreate);
   usernameLabelCreate.appendChild(userNameInputField);
+
+  //===== Avatar input field =====
+  var avatarDiv = document.createElement('div');
+  avatarDiv.id = 'avatarDiv';
+  avatarDiv.className = 'registrationFormDivs';
+  var avatarLabelCreate = document.createElement('label');
+  avatarLabelCreate.innerHTML = 'Add an Avatar: ';
+  var avatarInputField = document.createElement('input');
+  avatarInputField.type = 'text';
+  avatarInputField.name = 'avatar';
+  var avatarField = avatarInputField.value;
+  console.log('avatarInputField works', avatarField);
+  registrationForm.appendChild(avatarDiv);
+  avatarDiv.appendChild(avatarLabelCreate);
+  avatarLabelCreate.appendChild(avatarInputField);
+
+//===== Days You Can Game Labels and Radio Inputs =====
+
+  var daysYouCanGameDiv = document.createElement('div');
+  daysYouCanGameDiv.className = 'registrationFormDivs';
+  daysYouCanGameDiv.id = 'daysYouCanGameDiv';
+  registrationForm.appendChild(daysYouCanGameDiv);
+
+  var weekDaysHeader = document.createElement('h1');
+  weekDaysHeader.textContent = 'When Do You Want To Play?';
+  daysYouCanGameDiv.appendChild(weekDaysHeader);
+
+  var mondayLabel = document.createElement('label');
+  mondayLabel.innerHTML = 'Monday';
+  var mondayCheckBox = document.createElement('input');
+  mondayCheckBox.type = 'checkbox';
+  mondayCheckBox.name = 'monday';
+  mondayCheckBox.value = 'monday';
+  daysYouCanGameDiv.appendChild(mondayLabel);
+  mondayLabel.appendChild(mondayCheckBox);
+
+  var tuesdayLabel = document.createElement('label');
+  tuesdayLabel.innerHTML = 'Tuesday';
+  var tuesdayCheckBox = document.createElement('input');
+  tuesdayCheckBox.type = 'checkbox';
+  tuesdayCheckBox.name = 'tuesday';
+  tuesdayCheckBox.value = 'tuesday';
+  daysYouCanGameDiv.appendChild(tuesdayLabel);
+  tuesdayLabel.appendChild(tuesdayCheckBox);
+
+  var wednesdayLabel = document.createElement('label');
+  wednesdayLabel.innerHTML = 'Wednesday';
+  var wednesdayCheckBox = document.createElement('input');
+  wednesdayCheckBox.type = 'checkbox';
+  wednesdayCheckBox.name = 'wednesday';
+  wednesdayCheckBox.value = 'wednesday';
+  daysYouCanGameDiv.appendChild(wednesdayLabel);
+  wednesdayLabel.appendChild(wednesdayCheckBox);
+
+  var thursdayLabel = document.createElement('label');
+  thursdayLabel.innerHTML = 'Thursday';
+  var thursdayCheckBox = document.createElement('input');
+  thursdayCheckBox.type = 'checkbox';
+  thursdayCheckBox.name = 'thursday';
+  thursdayCheckBox.value = 'thursday';
+  daysYouCanGameDiv.appendChild(thursdayLabel);
+  thursdayLabel.appendChild(thursdayCheckBox);
+
+  var fridayLabel = document.createElement('label');
+  fridayLabel.innerHTML = 'Friday';
+  var fridayCheckBox = document.createElement('input');
+  fridayCheckBox.type = 'checkbox';
+  fridayCheckBox.name = 'friday';
+  fridayCheckBox.value = 'friday';
+  daysYouCanGameDiv.appendChild(fridayLabel);
+  fridayLabel.appendChild(fridayCheckBox);
+
+  var saturdayLabel = document.createElement('label');
+  saturdayLabel.innerHTML = 'Saturday';
+  var saturdayCheckBox = document.createElement('input');
+  saturdayCheckBox.type = 'checkbox';
+  saturdayCheckBox.name = 'saturday';
+  saturdayCheckBox.value = 'saturday';
+  daysYouCanGameDiv.appendChild(saturdayLabel);
+  saturdayLabel.appendChild(saturdayCheckBox);
+
+  var sundayLabel = document.createElement('label');
+  sundayLabel.innerHTML = 'Sunday';
+  var sundayCheckBox = document.createElement('input');
+  sundayCheckBox.type = 'checkbox';
+  sundayCheckBox.name = 'sunday';
+  sundayCheckBox.value = 'sunday';
+  daysYouCanGameDiv.appendChild(sundayLabel);
+  sundayLabel.appendChild(sundayCheckBox);
 
 //===== GamerTag Label and Text Input =====
 
@@ -267,8 +281,11 @@ function registerPlayer() {
   var platformDiv = document.createElement('div');
   platformDiv.id = 'platformDiv';
   platformDiv.className = 'registrationFormDivs';
-  platformDiv.textContent = 'Where Do You Game?';
-  gamerTagDiv.appendChild(platformDiv);
+  registrationForm.appendChild(platformDiv);
+
+  var platformHeader = document.createElement('h1');
+  platformHeader.textContent = 'Where Do You Game?';
+  platformDiv.appendChild(platformHeader);
 
   var steamLabelCreate = document.createElement('label');
   steamLabelCreate.innerHTML = 'Steam';
@@ -463,80 +480,6 @@ function registerPlayer() {
   gamesDiv.appendChild(noMansSkyLabel);
   noMansSkyLabel.appendChild(noMansSkyCheckBox);
 
-//===== Days You Can Game Labels and Radio Inputs =====
-
-  var daysYouCanGameDiv = document.createElement('div');
-  daysYouCanGameDiv.className = 'registrationFormDivs';
-  daysYouCanGameDiv.id = 'daysYouCanGameDiv';
-  registrationForm.appendChild(daysYouCanGameDiv);
-
-  var weekDaysHeader = document.createElement('h1');
-  weekDaysHeader.textContent = 'When Do You Want To Play?';
-  daysYouCanGameDiv.appendChild(weekDaysHeader);
-
-  var mondayLabel = document.createElement('label');
-  mondayLabel.innerHTML = 'Monday';
-  var mondayCheckBox = document.createElement('input');
-  mondayCheckBox.type = 'checkbox';
-  mondayCheckBox.name = 'monday';
-  mondayCheckBox.value = 'monday';
-  daysYouCanGameDiv.appendChild(mondayLabel);
-  mondayLabel.appendChild(mondayCheckBox);
-
-  var tuesdayLabel = document.createElement('label');
-  tuesdayLabel.innerHTML = 'Tuesday';
-  var tuesdayCheckBox = document.createElement('input');
-  tuesdayCheckBox.type = 'checkbox';
-  tuesdayCheckBox.name = 'tuesday';
-  tuesdayCheckBox.value = 'tuesday';
-  daysYouCanGameDiv.appendChild(tuesdayLabel);
-  tuesdayLabel.appendChild(tuesdayCheckBox);
-
-  var wednesdayLabel = document.createElement('label');
-  wednesdayLabel.innerHTML = 'Wednesday';
-  var wednesdayCheckBox = document.createElement('input');
-  wednesdayCheckBox.type = 'checkbox';
-  wednesdayCheckBox.name = 'wednesday';
-  wednesdayCheckBox.value = 'wednesday';
-  daysYouCanGameDiv.appendChild(wednesdayLabel);
-  wednesdayLabel.appendChild(wednesdayCheckBox);
-
-  var thursdayLabel = document.createElement('label');
-  thursdayLabel.innerHTML = 'Thursday';
-  var thursdayCheckBox = document.createElement('input');
-  thursdayCheckBox.type = 'checkbox';
-  thursdayCheckBox.name = 'thursday';
-  thursdayCheckBox.value = 'thursday';
-  daysYouCanGameDiv.appendChild(thursdayLabel);
-  thursdayLabel.appendChild(thursdayCheckBox);
-
-  var fridayLabel = document.createElement('label');
-  fridayLabel.innerHTML = 'Friday';
-  var fridayCheckBox = document.createElement('input');
-  fridayCheckBox.type = 'checkbox';
-  fridayCheckBox.name = 'friday';
-  fridayCheckBox.value = 'friday';
-  daysYouCanGameDiv.appendChild(fridayLabel);
-  fridayLabel.appendChild(fridayCheckBox);
-
-  var saturdayLabel = document.createElement('label');
-  saturdayLabel.innerHTML = 'Saturday';
-  var saturdayCheckBox = document.createElement('input');
-  saturdayCheckBox.type = 'checkbox';
-  saturdayCheckBox.name = 'saturday';
-  saturdayCheckBox.value = 'saturday';
-  daysYouCanGameDiv.appendChild(saturdayLabel);
-  saturdayLabel.appendChild(saturdayCheckBox);
-
-  var sundayLabel = document.createElement('label');
-  sundayLabel.innerHTML = 'Sunday';
-  var sundayCheckBox = document.createElement('input');
-  sundayCheckBox.type = 'checkbox';
-  sundayCheckBox.name = 'sunday';
-  sundayCheckBox.value = 'sunday';
-  daysYouCanGameDiv.appendChild(sundayLabel);
-  sundayLabel.appendChild(sundayCheckBox);
-
 //===== Registration Submit Button =====
 
   var playerRegisterSubmitButton = document.createElement('button');
@@ -673,6 +616,3 @@ signInButtonClick.addEventListener('click', SignInBoxCreate);
 
 var formButtonCreate = document.getElementById('registerButton');
 formButtonCreate.addEventListener('click', registerPlayer);
-
-// var playerRegistrationForm = document.getElementById('playerCreated');
-// playerRegistrationForm.addEventListener('submit', registerPlayer);

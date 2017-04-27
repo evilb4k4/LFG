@@ -3,7 +3,7 @@
 function Player(username, avatar, startTimeUsual, endTimeUsual, skillLevel, comments) {
   this.username = username;
   this.avatar = avatar;
-  this.online = false;
+  this.online = true;
   this.startTimeUsual = startTimeUsual;
   this.endTimeUsual = endTimeUsual;
   this.skillLevel = skillLevel;
