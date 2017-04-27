@@ -106,5 +106,10 @@ function resultDisplay(){
       }
     }
   }
+  try {
+    currentUser =JSON.parse(localStorage.currentUser);
+  } catch(error){
+    console.log('error');
+  }
   hamburgerMenu();
 }

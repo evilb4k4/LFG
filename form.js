@@ -593,6 +593,13 @@ function hamburgerMenu() {
   hamburgerMenuDivCreate.appendChild(hamburgerMenuList);
 
   document.body.appendChild(hamburgerMenuDivCreate);
+  setUsername();
+}
+
+function setUsername() {
+  var setUsername = document.getElementById('getUserName');
+  setUsername.textContent = currentUser.username;
+
 }
   //function to display the register and sign in buttons on the main site
 
