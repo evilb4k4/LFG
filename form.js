@@ -86,10 +86,10 @@ function dayOfWeek(){
       this.dayYouCanGame.push(daysOfWeek[i].value);
     }
   }
-};
+}
 
-var playerRegistrationForm = document.getElementById('playerCreated');
-playerRegistrationForm.addEventListener('submit', registerPlayer);
+// var playerRegistrationForm = document.getElementById('playerCreated');
+// playerRegistrationForm.addEventListener('submit', registerPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
