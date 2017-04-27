@@ -1,7 +1,6 @@
 'use strict';
 
 function resultDisplay(){
-
   var content = document.getElementById('content');
 
   content.textContent = '';
@@ -12,11 +11,12 @@ function resultDisplay(){
   for (var j = 0; j < playerList.length; j++) {
 
     //===== Conditionals for Comparison between currentUser and Player objects =====
-
     if (currentUser.username != playerList[j].username){
       console.log(playerList[j].username);
-      if (currentUser.dayYouCanGame == playerList[j].dayYouCanGame){
-        console.log(playerList[j].dayYouCanGame);
+      for (var k = 0; k < Object.entries(currentUser.dayYouCanGame).length; k++){
+        if (!!(Object.entries(currentUser.dayYouCanGame)[k][1]) && !!(Object.entries(playerList[j].dayYouCanGame)[k][1])){
+          console.log('test1');
+
         if (currentUser.skillLevel == playerList[j].skillLevel){
           console.log(playerList[j].skillLevel);
           for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
@@ -27,7 +27,7 @@ function resultDisplay(){
               console.log(playerList[j].gamesPlayed);
             }
           }
-
+        }
                       playerRender();
 
         }

@@ -3,6 +3,7 @@
 var signInSubmitButton;
 var signInLabelCreate;
 var formcreate;
+var currentUser;
 var getMainDiv = document.getElementById('content');
 
 function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlayed){
@@ -44,52 +45,52 @@ currentUser.gamesPlayed.leagueOfLegends = true;
 currentUser.gamerTags.battlenet = 'CUbattlenettag';
 currentUser.gamesPlayed.worldOfWarcraft = true;
 
-//===== test Players =====
-var playerList = [];
+// //===== test Players =====
+// var playerList = [];
+//
+// playerList[0] = new Player('test1', '', 'Monday', 'n00b', 'Im a n00b');
+// playerList[0].gamerTags.steam = 'test1steamtag';
+// playerList[0].gamesPlayed.leagueOfLegends = true;
+// playerList[0].gamerTags.battlenet = 'test1battlenettag';
+// playerList[0].gamesPlayed.worldOfWarcraft = true;
+//
+// playerList[1] = new Player('test2', '', 'Monday', 'n00b', 'Im a n00b');
+// playerList[1].gamerTags.steam = 'test2steamtag';
+// playerList[1].gamesPlayed.leagueOfLegends = true;
+// playerList[1].gamerTags.origin = 'test2origintag';
+// playerList[1].gamesPlayed.callOfDuty = true;
+//
+// playerList[2] = new Player('test3', '', 'Monday', 'n00b', 'Im n00b');
+// playerList[2].gamerTags.steam = 'test3steamtag';
+// playerList[2].gamesPlayed.leagueOfLegends = true;
+// playerList[2].gamerTags.uplay = 'test3uplaytag';
+// playerList[2].gamesPlayed.overwatch = true;
+//
+// playerList[3] = new Player('test4', '', 'Monday', 'n00b', 'Im n00b');
+// playerList[3].gamerTags.xboxLive = 'test4xboxtag';
+// playerList[3].gamesPlayed.battlefield1 = true;
+// playerList[3].gamerTags.battlenet = 'test4battlenettag';
+// playerList[3].gamesPlayed.worldOfWarcraft = true;
+//
+// playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
+// playerList[4].gamerTags.steam = 'test5playstationtag';
+// playerList[4].gamesPlayed.titanfall2 = true;
+// playerList[4].gamerTags.battlenet = 'test5battlenettag';
+// playerList[4].gamesPlayed.leagueOfLegends = true;
+//
+// function dayOfWeek(){
+//   console.log('daysOfWeek running');
+//   var daysOfWeek = document.getElementsByClassName('gamingDays');
+//   for(var i = 0; i < daysOfWeek.length; i++){
+//     console.log('checkboxes work',daysOfWeek[i].checked);
+//     if(daysOfWeek[i].checked){
+//       this.dayYouCanGame.push(daysOfWeek[i].value);
+//     }
+//   }
+// };
 
-playerList[0] = new Player('test1', '', 'Monday', 'n00b', 'Im a n00b');
-playerList[0].gamerTags.steam = 'test1steamtag';
-playerList[0].gamesPlayed.leagueOfLegends = true;
-playerList[0].gamerTags.battlenet = 'test1battlenettag';
-playerList[0].gamesPlayed.worldOfWarcraft = true;
-
-playerList[1] = new Player('test2', '', 'Monday', 'n00b', 'Im a n00b');
-playerList[1].gamerTags.steam = 'test2steamtag';
-playerList[1].gamesPlayed.leagueOfLegends = true;
-playerList[1].gamerTags.origin = 'test2origintag';
-playerList[1].gamesPlayed.callOfDuty = true;
-
-playerList[2] = new Player('test3', '', 'Monday', 'n00b', 'Im n00b');
-playerList[2].gamerTags.steam = 'test3steamtag';
-playerList[2].gamesPlayed.leagueOfLegends = true;
-playerList[2].gamerTags.uplay = 'test3uplaytag';
-playerList[2].gamesPlayed.overwatch = true;
-
-playerList[3] = new Player('test4', '', 'Monday', 'n00b', 'Im n00b');
-playerList[3].gamerTags.xboxLive = 'test4xboxtag';
-playerList[3].gamesPlayed.battlefield1 = true;
-playerList[3].gamerTags.battlenet = 'test4battlenettag';
-playerList[3].gamesPlayed.worldOfWarcraft = true;
-
-playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
-playerList[4].gamerTags.steam = 'test5playstationtag';
-playerList[4].gamesPlayed.titanfall2 = true;
-playerList[4].gamerTags.battlenet = 'test5battlenettag';
-playerList[4].gamesPlayed.leagueOfLegends = true;
-
-function dayOfWeek(){
-  console.log('daysOfWeek running');
-  var daysOfWeek = document.getElementsByClassName('gamingDays');
-  for(var i = 0; i < daysOfWeek.length; i++){
-    console.log('checkboxes work',daysOfWeek[i].checked);
-    if(daysOfWeek[i].checked){
-      this.dayYouCanGame.push(daysOfWeek[i].value);
-    }
-  }
-};
-
-var playerRegistrationForm = document.getElementById('playerCreated');
-playerRegistrationForm.addEventListener('submit', registerPlayer);
+// var playerRegistrationForm = document.getElementById('playerCreated');
+// playerRegistrationForm.addEventListener('submit', registerPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
@@ -126,17 +127,27 @@ function handleRegisterPlayer(event) {
     theDivision: getTarget.theDivision.checked,
     noMansSky: getTarget.noMansSky.checked,
   };
-  console.log('COD', gamesPlayed);
+  // console.log('COD', gamesPlayed);
 
-  var player = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
-  player.gamerTags[playerGamerNetwork] = playerGamertag;
+  // var playerList = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
 
-  console.log('lulwat player', player);
+  // console.log('lulwat player', playerList);
 
-  playerList.push(player);
+  // playerList.push(playerList);
+  currentUser = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+
+  if(playerList){
+    console.log('again');
+    playerList.push(new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed));
+    // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
+  } else {
+    playerList = [new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed)];
+    // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
+  }
 
   try {
-    localStorage.playerList = JSON.stringify(player);
+    localStorage.playerList = JSON.stringify(playerList);
   } catch (error) {
     console.error(error);
   }
@@ -581,7 +592,12 @@ function mainPageLoad() {
 
   getMainDiv.appendChild(registerSignBox);
 }
-
+try {
+  var playerList = JSON.parse(localStorage.playerList);
+  console.log('it exists');
+} catch(error){
+  console.log('error');
+}
 mainPageLoad();
 
 //event listeners
