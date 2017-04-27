@@ -584,11 +584,18 @@ function hamburgerMenu() {
   hamburgerMenuList.setAttribute('id', 'dropDownMenu')
   hamburgerMenuList.className = 'hamburger-menu-list';
 
-  var hamburgerMenuLI = document.createElement('a');
-  hamburgerMenuLI.href = '#';
-  hamburgerMenuLI.innerHTML = 'Sign Out';
+  var editProfLI = document.createElement('a');
+  editProfLI.href = '#';
+  editProfLI.innerHTML = 'Edit Profile';
 
-  hamburgerMenuList.appendChild(hamburgerMenuLI);
+  hamburgerMenuList.appendChild(editProfLI);
+
+  var signOutLI = document.createElement('a');
+  signOutLI.setAttribute('id', 'logOut');
+  signOutLI.href = '#';
+  signOutLI.innerHTML = 'Sign Out';
+
+  hamburgerMenuList.appendChild(signOutLI);
 
   hamburgerMenuDivCreate.appendChild(hamburgerMenuList);
 
@@ -596,10 +603,34 @@ function hamburgerMenu() {
   setUsername();
 }
 
+//this function logs the current user out
+function logOut() {
+  localStorage.removeItem('currentUser');
+  location.reload();
+}
+function dropDownMenus(event) {
+  if (event.target.matches('#setting-button')) {
+    document.getElementById("dropDownMenu").classList.toggle("show");
+    var dropdowns = document.getElementsByClassName('hamburger-menu-list');
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (!openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
 function setUsername() {
   var setUsername = document.getElementById('getUserName');
   setUsername.textContent = currentUser.username;
 
+  var getSettingButtonClick = document.getElementById('logOut');
+  getSettingButtonClick.addEventListener('click', logOut);
+
+  var getDropDownMenu = document.getElementById('setting-button');
+  getDropDownMenu.addEventListener('click', dropDownMenus);
 }
   //function to display the register and sign in buttons on the main site
 
