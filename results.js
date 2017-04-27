@@ -28,7 +28,6 @@ function resultDisplay(){
               }
             }
           }
-
         }
       }
       playerRender();
@@ -61,8 +60,10 @@ function resultDisplay(){
     userOnline.className = 'userOnline';
     var gamerTags = document.createElement('ul');
     gamerTags.className = 'gamerTags';
+    gamerTags.textContent = 'Gamer Tags: ';
     var gamesPlayed = document.createElement('ul');
     gamesPlayed.className = 'gamesPlayed';
+    gamesPlayed.textContent = 'Games Played: ';
     var dayYouCanGame = document.createElement('ul');
     dayYouCanGame.className = 'dayYouCanGame';
     var comments = document.createElement('p');
@@ -123,6 +124,7 @@ function resultDisplay(){
       }
     }
     // ========== dayYouCanGame List Item Creation =====
+
 
         if (playerList[j].dayYouCanGame.monday){
           var dayYouCanGameLi = document.createElement('p');

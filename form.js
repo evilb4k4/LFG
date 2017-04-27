@@ -153,6 +153,7 @@ function registerPlayer() {
 
   var registrationForm = document.createElement('form');
   registrationForm.setAttribute('id', 'playerCreated');
+
 //===== Username Label and Text Input =====
   var usernameDiv = document.createElement('div');
   usernameDiv.id = 'usernameDiv';
@@ -165,12 +166,13 @@ function registerPlayer() {
   registrationForm.appendChild(usernameDiv);
   usernameDiv.appendChild(usernameLabelCreate);
   usernameLabelCreate.appendChild(userNameInputField);
-  // Avatar input field
+
+  //===== Avatar input field =====
   var avatarDiv = document.createElement('div');
-  usernameDiv.id = 'avatarDiv';
-  usernameDiv.className = 'avatarImgDiv';
+  avatarDiv.id = 'avatarDiv';
+  avatarDiv.className = 'registrationFormDivs';
   var avatarLabelCreate = document.createElement('label');
-  avatarLabelCreate.innerHTML = 'Add an Avatar : ';
+  avatarLabelCreate.innerHTML = 'Add an Avatar: ';
   var avatarInputField = document.createElement('input');
   avatarInputField.type = 'text';
   avatarInputField.name = 'avatar';
@@ -179,6 +181,81 @@ function registerPlayer() {
   registrationForm.appendChild(avatarDiv);
   avatarDiv.appendChild(avatarLabelCreate);
   avatarLabelCreate.appendChild(avatarInputField);
+
+//===== Days You Can Game Labels and Radio Inputs =====
+
+  var daysYouCanGameDiv = document.createElement('div');
+  daysYouCanGameDiv.className = 'registrationFormDivs';
+  daysYouCanGameDiv.id = 'daysYouCanGameDiv';
+  registrationForm.appendChild(daysYouCanGameDiv);
+
+  var weekDaysHeader = document.createElement('h1');
+  weekDaysHeader.textContent = 'When Do You Want To Play?';
+  daysYouCanGameDiv.appendChild(weekDaysHeader);
+
+  var mondayLabel = document.createElement('label');
+  mondayLabel.innerHTML = 'Monday';
+  var mondayCheckBox = document.createElement('input');
+  mondayCheckBox.type = 'checkbox';
+  mondayCheckBox.name = 'monday';
+  mondayCheckBox.value = 'monday';
+  daysYouCanGameDiv.appendChild(mondayLabel);
+  mondayLabel.appendChild(mondayCheckBox);
+
+  var tuesdayLabel = document.createElement('label');
+  tuesdayLabel.innerHTML = 'Tuesday';
+  var tuesdayCheckBox = document.createElement('input');
+  tuesdayCheckBox.type = 'checkbox';
+  tuesdayCheckBox.name = 'tuesday';
+  tuesdayCheckBox.value = 'tuesday';
+  daysYouCanGameDiv.appendChild(tuesdayLabel);
+  tuesdayLabel.appendChild(tuesdayCheckBox);
+
+  var wednesdayLabel = document.createElement('label');
+  wednesdayLabel.innerHTML = 'Wednesday';
+  var wednesdayCheckBox = document.createElement('input');
+  wednesdayCheckBox.type = 'checkbox';
+  wednesdayCheckBox.name = 'wednesday';
+  wednesdayCheckBox.value = 'wednesday';
+  daysYouCanGameDiv.appendChild(wednesdayLabel);
+  wednesdayLabel.appendChild(wednesdayCheckBox);
+
+  var thursdayLabel = document.createElement('label');
+  thursdayLabel.innerHTML = 'Thursday';
+  var thursdayCheckBox = document.createElement('input');
+  thursdayCheckBox.type = 'checkbox';
+  thursdayCheckBox.name = 'thursday';
+  thursdayCheckBox.value = 'thursday';
+  daysYouCanGameDiv.appendChild(thursdayLabel);
+  thursdayLabel.appendChild(thursdayCheckBox);
+
+  var fridayLabel = document.createElement('label');
+  fridayLabel.innerHTML = 'Friday';
+  var fridayCheckBox = document.createElement('input');
+  fridayCheckBox.type = 'checkbox';
+  fridayCheckBox.name = 'friday';
+  fridayCheckBox.value = 'friday';
+  daysYouCanGameDiv.appendChild(fridayLabel);
+  fridayLabel.appendChild(fridayCheckBox);
+
+  var saturdayLabel = document.createElement('label');
+  saturdayLabel.innerHTML = 'Saturday';
+  var saturdayCheckBox = document.createElement('input');
+  saturdayCheckBox.type = 'checkbox';
+  saturdayCheckBox.name = 'saturday';
+  saturdayCheckBox.value = 'saturday';
+  daysYouCanGameDiv.appendChild(saturdayLabel);
+  saturdayLabel.appendChild(saturdayCheckBox);
+
+  var sundayLabel = document.createElement('label');
+  sundayLabel.innerHTML = 'Sunday';
+  var sundayCheckBox = document.createElement('input');
+  sundayCheckBox.type = 'checkbox';
+  sundayCheckBox.name = 'sunday';
+  sundayCheckBox.value = 'sunday';
+  daysYouCanGameDiv.appendChild(sundayLabel);
+  sundayLabel.appendChild(sundayCheckBox);
+
 //===== GamerTag Label and Text Input =====
 
   var gamerTagDiv = document.createElement('div');
@@ -198,8 +275,11 @@ function registerPlayer() {
   var platformDiv = document.createElement('div');
   platformDiv.id = 'platformDiv';
   platformDiv.className = 'registrationFormDivs';
-  platformDiv.textContent = 'Where Do You Game?';
-  gamerTagDiv.appendChild(platformDiv);
+  registrationForm.appendChild(platformDiv);
+
+  var platformHeader = document.createElement('h1');
+  platformHeader.textContent = 'Where Do You Game?';
+  platformDiv.appendChild(platformHeader);
 
   var steamLabelCreate = document.createElement('label');
   steamLabelCreate.innerHTML = 'Steam';
@@ -393,80 +473,6 @@ function registerPlayer() {
   noMansSkyCheckBox.value = 'noMansSky';
   gamesDiv.appendChild(noMansSkyLabel);
   noMansSkyLabel.appendChild(noMansSkyCheckBox);
-
-//===== Days You Can Game Labels and Radio Inputs =====
-
-  var daysYouCanGameDiv = document.createElement('div');
-  daysYouCanGameDiv.className = 'registrationFormDivs';
-  daysYouCanGameDiv.id = 'daysYouCanGameDiv';
-  registrationForm.appendChild(daysYouCanGameDiv);
-
-  var weekDaysHeader = document.createElement('h1');
-  weekDaysHeader.textContent = 'When Do You Want To Play?';
-  daysYouCanGameDiv.appendChild(weekDaysHeader);
-
-  var mondayLabel = document.createElement('label');
-  mondayLabel.innerHTML = 'Monday';
-  var mondayCheckBox = document.createElement('input');
-  mondayCheckBox.type = 'checkbox';
-  mondayCheckBox.name = 'monday';
-  mondayCheckBox.value = 'monday';
-  daysYouCanGameDiv.appendChild(mondayLabel);
-  mondayLabel.appendChild(mondayCheckBox);
-
-  var tuesdayLabel = document.createElement('label');
-  tuesdayLabel.innerHTML = 'Tuesday';
-  var tuesdayCheckBox = document.createElement('input');
-  tuesdayCheckBox.type = 'checkbox';
-  tuesdayCheckBox.name = 'tuesday';
-  tuesdayCheckBox.value = 'tuesday';
-  daysYouCanGameDiv.appendChild(tuesdayLabel);
-  tuesdayLabel.appendChild(tuesdayCheckBox);
-
-  var wednesdayLabel = document.createElement('label');
-  wednesdayLabel.innerHTML = 'Wednesday';
-  var wednesdayCheckBox = document.createElement('input');
-  wednesdayCheckBox.type = 'checkbox';
-  wednesdayCheckBox.name = 'wednesday';
-  wednesdayCheckBox.value = 'wednesday';
-  daysYouCanGameDiv.appendChild(wednesdayLabel);
-  wednesdayLabel.appendChild(wednesdayCheckBox);
-
-  var thursdayLabel = document.createElement('label');
-  thursdayLabel.innerHTML = 'Thursday';
-  var thursdayCheckBox = document.createElement('input');
-  thursdayCheckBox.type = 'checkbox';
-  thursdayCheckBox.name = 'thursday';
-  thursdayCheckBox.value = 'thursday';
-  daysYouCanGameDiv.appendChild(thursdayLabel);
-  thursdayLabel.appendChild(thursdayCheckBox);
-
-  var fridayLabel = document.createElement('label');
-  fridayLabel.innerHTML = 'Friday';
-  var fridayCheckBox = document.createElement('input');
-  fridayCheckBox.type = 'checkbox';
-  fridayCheckBox.name = 'friday';
-  fridayCheckBox.value = 'friday';
-  daysYouCanGameDiv.appendChild(fridayLabel);
-  fridayLabel.appendChild(fridayCheckBox);
-
-  var saturdayLabel = document.createElement('label');
-  saturdayLabel.innerHTML = 'Saturday';
-  var saturdayCheckBox = document.createElement('input');
-  saturdayCheckBox.type = 'checkbox';
-  saturdayCheckBox.name = 'saturday';
-  saturdayCheckBox.value = 'saturday';
-  daysYouCanGameDiv.appendChild(saturdayLabel);
-  saturdayLabel.appendChild(saturdayCheckBox);
-
-  var sundayLabel = document.createElement('label');
-  sundayLabel.innerHTML = 'Sunday';
-  var sundayCheckBox = document.createElement('input');
-  sundayCheckBox.type = 'checkbox';
-  sundayCheckBox.name = 'sunday';
-  sundayCheckBox.value = 'sunday';
-  daysYouCanGameDiv.appendChild(sundayLabel);
-  sundayLabel.appendChild(sundayCheckBox);
 
 //===== Registration Submit Button =====
 
