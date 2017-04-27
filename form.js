@@ -15,18 +15,6 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
   this.comments = comments;
   this.gamesPlayed = gamesPlayed;
 
-  // this.gamesPlayed = {
-  //   leagueOfLegends: '',
-  //   worldOfWarcraft: false,
-  //   callOfDuty: false,
-  //   overwatch: false,
-  //   battlefield1: false,
-  //   titanfall2: false,
-  //   mineCraft: false,
-  //   theDivision: false,
-  //   noMansSky: false,
-  // };
-
   this.gamerTags = {
     steam:'',
     origin:'',
@@ -38,22 +26,13 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
   };
 }
 
-// //===== test currentUser =====
-// var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
-// currentUser.gamerTags.steam = 'CUsteamtag';
-// currentUser.gamesPlayed.leagueOfLegends = true;
-// currentUser.gamerTags.battlenet = 'CUbattlenettag';
-// currentUser.gamesPlayed.worldOfWarcraft = true;
-
-
-
 //function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
   var playerUserName = getTarget.username.value;
   var playerGamertag = getTarget.gametag.value;
-  console.log('username', playerUserName);
+  console.log('username', playerGamertag);
   var playerSkillLevel = getTarget.skillLevel.value;
   var playerGamerNetwork = getTarget.gamerTags.value;
   console.log('playerGamerNetwork', playerGamerNetwork);
@@ -82,23 +61,18 @@ function handleRegisterPlayer(event) {
     theDivision: getTarget.theDivision.checked,
     noMansSky: getTarget.noMansSky.checked,
   };
-  // console.log('COD', gamesPlayed);
 
-  // var playerList = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
-  // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
-
-  // console.log('lulwat player', playerList);
 
   // playerList.push(playerList);
   currentUser = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  var prePlayerList = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
 
   if(playerList){
-    console.log('again');
-    playerList.push(new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed));
-    // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    playerList.push(prePlayerList);
   } else {
-    playerList = [new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed)];
-    // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    playerList = [prePlayerList];
   }
 
   try {
@@ -151,10 +125,6 @@ function SignInBoxCreate(event) {
   signInLabelCreate.setAttribute('id', 'landing-msg');
   signInLabelCreate.innerHTML = 'Welcome Back, Player One';
   formcreate.appendChild(signInLabelCreate);
-
-  // var validatePlayerErrorMsg = document.createElement('span')
-  // validatePlayerErrorMsg.textContent = 'test';
-  // formcreate.appendChild(validatePlayerErrorMsg);
 
   var signInInputFieldCreate = document.createElement('input');
   signInInputFieldCreate.type = 'text';
