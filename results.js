@@ -62,6 +62,8 @@ function resultDisplay(){
     gamerTags.className = 'gamerTags';
     var gamesPlayed = document.createElement('ul');
     gamesPlayed.className = 'gamesPlayed';
+    var dayYouCanGame = document.createElement('ul');
+    dayYouCanGame.className = 'dayYouCanGame';
     var comments = document.createElement('p');
     comments.className = 'comments';
     var contactButton = document.createElement('button');
@@ -86,6 +88,7 @@ function resultDisplay(){
     gamerGamesWrap.appendChild(gamesPlayed);
     player.appendChild(comments);
     player.appendChild(contactButton);
+    avatarUserWrap.appendChild(dayYouCanGame);
     if(Object.entries(playerList[j].online)){
       var onlineIcon = document.createElement('img');
       var onlineText = document.createElement('p');
@@ -102,8 +105,8 @@ function resultDisplay(){
     // ========== gamerTags List Item Creation =====
 
     for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
-      var gamerTagLi = document.createElement('li');
       if(Object.entries(playerList[j].gamerTags)[i][1]){
+        var gamerTagLi = document.createElement('li');
         gamerTagLi.textContent = (Object.entries(playerList[j].gamerTags)[i][0] + ': ' +   Object.entries(playerList[j].gamerTags)[i][1]);
         gamerTags.appendChild(gamerTagLi);
       }
@@ -111,11 +114,19 @@ function resultDisplay(){
 
     // ========== gamesPlayed List Item Creation =====
     for (i = 0; i < Object.entries(playerList[j].gamesPlayed).length; i++){
-      var gamesPlayedLi = document.createElement('li');
       if(Object.entries(playerList[j].gamesPlayed)[i][1]){
+        var gamesPlayedLi = document.createElement('li');
         gamesPlayedLi.textContent = Object.entries(playerList[j].gamesPlayed)[i][0];
         gamesPlayed.appendChild(gamesPlayedLi);
       }
     }
+    // ========== dayYouCanGame List Item Creation =====
+    for (i = 0; i < Object.entries(playerList[j].dayYouCanGame).length; i++){
+      if(Object.entries(playerList[j].dayYouCanGame)[i][1]){
+        var dayYouCanGameLi = document.createElement('li');
+        dayYouCanGameLi.textContent = Object.entries(playerList[j].dayYouCanGame)[i][0];
+        dayYouCanGame.appendChild(dayYouCanGameLi);
   }
+}
+}
 }

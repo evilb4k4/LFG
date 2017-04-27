@@ -15,35 +15,35 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
   this.comments = comments;
   this.gamesPlayed = gamesPlayed;
 
-  this.gamesPlayed = {
-    leagueOfLegends: '',
-    worldOfWarcraft: false,
-    callOfDuty: false,
-    overwatch: false,
-    battlefield1: false,
-    titanfall2: false,
-    mineCraft: false,
-    theDivision: false,
-    noMansSky: false,
-  };
+  // this.gamesPlayed = {
+  //   leagueOfLegends: '',
+  //   worldOfWarcraft: false,
+  //   callOfDuty: false,
+  //   overwatch: false,
+  //   battlefield1: false,
+  //   titanfall2: false,
+  //   mineCraft: false,
+  //   theDivision: false,
+  //   noMansSky: false,
+  // };
 
-  this.gamerTags = {
-    steam:'',
-    origin:'',
-    battlenet:'',
-    leagueOfLegends: '',
-    uplay:'',
-    xboxLive:'',
-    playStationNetwork:'',
-  };
+  // this.gamerTags = {
+  //   steam:'',
+  //   origin:'',
+  //   battlenet:'',
+  //   leagueOfLegends: '',
+  //   uplay:'',
+  //   xboxLive:'',
+  //   playStationNetwork:'',
+  // };
 }
 
 //===== test currentUser =====
-var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
-currentUser.gamerTags.steam = 'CUsteamtag';
-currentUser.gamesPlayed.leagueOfLegends = true;
-currentUser.gamerTags.battlenet = 'CUbattlenettag';
-currentUser.gamesPlayed.worldOfWarcraft = true;
+// var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
+// currentUser.gamerTags.steam = 'CUsteamtag';
+// currentUser.gamesPlayed.leagueOfLegends = true;
+// currentUser.gamerTags.battlenet = 'CUbattlenettag';
+// currentUser.gamesPlayed.worldOfWarcraft = true;
 
 // //===== test Players =====
 // var playerList = [];
