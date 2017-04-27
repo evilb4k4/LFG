@@ -106,4 +106,5 @@ function resultDisplay(){
       }
     }
   }
+  hamburgerMenu();
 }

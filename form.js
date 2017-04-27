@@ -39,11 +39,11 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
 }
 
 //===== test currentUser =====
-var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
-currentUser.gamerTags.steam = 'CUsteamtag';
-currentUser.gamesPlayed.leagueOfLegends = true;
-currentUser.gamerTags.battlenet = 'CUbattlenettag';
-currentUser.gamesPlayed.worldOfWarcraft = true;
+// var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
+// currentUser.gamerTags.steam = 'CUsteamtag';
+// currentUser.gamesPlayed.leagueOfLegends = true;
+// currentUser.gamerTags.battlenet = 'CUbattlenettag';
+// currentUser.gamesPlayed.worldOfWarcraft = true;
 
 // //===== test Players =====
 // var playerList = [];
@@ -148,10 +148,11 @@ function handleRegisterPlayer(event) {
 
   try {
     localStorage.playerList = JSON.stringify(playerList);
+    localStorage.currentUser = JSON.stringify(currentUser);
   } catch (error) {
     console.error(error);
   }
-
+  resultDisplay();
 }
 
 //Section for the sigin logic
@@ -162,10 +163,14 @@ function signIn(event) {
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
       currentUser = playerList[i];
+      try {
+        localStorage.currentUser = JSON.stringify(currentUser);
+      } catch (error) {
+        console.error(error);
+      }
       resultDisplay();
       matched = true;
     } else if(i == playerList.length - 1) {
-
       function validatePlayer(){
         var errorMsg = document.getElementById('landing-msg');
         formcreate.setAttribute('id', 'error-msg-input');
@@ -554,19 +559,36 @@ function hamburgerMenu() {
   hamburgerMenuDivCreate.className = 'hambur-menu-box';
   var hamburgerMenuSettingButton = document.createElement('div');
   hamburgerMenuSettingButton.className = 'hamburger-menu-button-img';
+  var userProfileBox = document.createElement('div');
+  userProfileBox.className = 'hamburger-menu-avatar-box';
+  hamburgerMenuSettingButton.appendChild(userProfileBox);
+
+  var userEditButtonBox = document.createElement('div');
+  userEditButtonBox.className = 'img-setting-box';
+  hamburgerMenuSettingButton.appendChild(userEditButtonBox);
+
   var hamburgerMenuSettingImg = document.createElement('img');
   hamburgerMenuSettingImg.setAttribute('id','setting-button');
   hamburgerMenuSettingImg.src = 'img/setting-button.png';
-  hamburgerMenuSettingButton.appendChild(hamburgerMenuSettingImg);
+  userEditButtonBox.appendChild(hamburgerMenuSettingImg);
+
+  var userProfileNameBox = document.createElement('id');
+  userProfileNameBox.className = 'user-prifile-name-box';
+  var userSpanElement = document.createElement('span');
+  userSpanElement.setAttribute('id', 'getUserName');
+  userProfileNameBox.appendChild(userSpanElement);
+  hamburgerMenuSettingButton.appendChild(userProfileNameBox);
   hamburgerMenuDivCreate.appendChild(hamburgerMenuSettingButton);
 
   var hamburgerMenuList = document.createElement('div');
+  hamburgerMenuList.setAttribute('id', 'dropDownMenu')
   hamburgerMenuList.className = 'hamburger-menu-list';
-  var hamburgerMenuUL = document.createElement('ul');
-  var hamburgerMenuLI = document.createElement('li');
+
+  var hamburgerMenuLI = document.createElement('a');
+  hamburgerMenuLI.href = '#';
   hamburgerMenuLI.innerHTML = 'Sign Out';
-  hamburgerMenuUL.appendChild(hamburgerMenuLI);
-  hamburgerMenuList.appendChild(hamburgerMenuUL);
+
+  hamburgerMenuList.appendChild(hamburgerMenuLI);
 
   hamburgerMenuDivCreate.appendChild(hamburgerMenuList);
 
@@ -592,13 +614,19 @@ function mainPageLoad() {
 
   getMainDiv.appendChild(registerSignBox);
 }
+
 try {
   var playerList = JSON.parse(localStorage.playerList);
+  currentUser =JSON.parse(localStorage.currentUser);
   console.log('it exists');
 } catch(error){
   console.log('error');
 }
+if(currentUser === undefined){
 mainPageLoad();
+} else {
+  resultDisplay();
+}
 
 //event listeners
 
