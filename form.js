@@ -30,10 +30,8 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
 function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
-  var playerUserName = getTarget.username.value;
-
+  var playerUserName = getTarget.username.value.toLowerCase();
   var playerAvatar = getTarget.avatar.value;
-
   var playerGamertag = getTarget.gametag.value;
   console.log('username', playerGamertag);
   var playerSkillLevel = getTarget.skillLevel.value;
@@ -89,7 +87,7 @@ function handleRegisterPlayer(event) {
 //Section for the sigin logic
 function signIn(event) {
   event.preventDefault();
-  var playerUserName = signInSubmitButton.userName.value;
+  var playerUserName = signInSubmitButton.userName.value.toLowerCase();
   var matched = false;
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
