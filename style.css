@@ -485,6 +485,13 @@ footer div img {
   transform: translateY(-10px);
 }
 
+.dayYouCanGame{
+  
+}
+.dayYouCanGameLi{
+  display:inline;
+}
+
 
 
 
