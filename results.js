@@ -17,21 +17,21 @@ function resultDisplay(){
         if (!!(Object.entries(currentUser.dayYouCanGame)[k][1]) && !!(Object.entries(playerList[j].dayYouCanGame)[k][1])){
           console.log('test1');
 
-        if (currentUser.skillLevel == playerList[j].skillLevel){
-          console.log(playerList[j].skillLevel);
-          for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
-            if(!!(Object.entries(currentUser.gamerTags)[i][1]) && !!(Object.entries(playerList[j].gamerTags)[i][1])){
-              console.log(playerList[j].gamerTags);
-            }
-            if(!!(Object.entries(currentUser.gamesPlayed)[i][1]) && !!(Object.entries(playerList[j].gamesPlayed)[i][1])){
-              console.log(playerList[j].gamesPlayed);
+          if (currentUser.skillLevel == playerList[j].skillLevel){
+            console.log(playerList[j].skillLevel);
+            for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
+              if(!!(Object.entries(currentUser.gamerTags)[i][1]) && !!(Object.entries(playerList[j].gamerTags)[i][1])){
+                console.log(playerList[j].gamerTags);
+              }
+              if(!!(Object.entries(currentUser.gamesPlayed)[i][1]) && !!(Object.entries(playerList[j].gamesPlayed)[i][1])){
+                console.log(playerList[j].gamesPlayed);
+              }
             }
           }
-        }
-                      playerRender();
 
         }
       }
+      playerRender();
     }
   }
 
@@ -50,8 +50,9 @@ function resultDisplay(){
     userOnlineWrap.className = 'userOnlineWrap';
     var gamerGamesWrap = document.createElement('div');
     gamerGamesWrap.className = 'gamerGamesWrap';
-    var avatarPic = document.createElement('div');
+    var avatarPic = document.createElement('img');
     avatarPic.className = 'avatarPic';
+    avatarPic.src = ('url('playerList[j].Avatar')');
     var username = document.createElement('p');
     username.className = 'username';
     var skillLevel = document.createElement('p');
@@ -74,6 +75,7 @@ function resultDisplay(){
     avatarPic.textContent = playerList[j].avatarPic;
     userOnline.textContent = playerList[j].userOnline;
     skillLevel.textContent = playerList[j].skillLevel;
+    dayYouCanGame.textContent = '.  Days Online: ';
 
     content.appendChild(results);
     results.appendChild(player);
@@ -121,12 +123,48 @@ function resultDisplay(){
       }
     }
     // ========== dayYouCanGame List Item Creation =====
-    for (i = 0; i < Object.entries(playerList[j].dayYouCanGame).length; i++){
-      if(Object.entries(playerList[j].dayYouCanGame)[i][1]){
-        var dayYouCanGameLi = document.createElement('li');
-        dayYouCanGameLi.textContent = Object.entries(playerList[j].dayYouCanGame)[i][0];
-        dayYouCanGame.appendChild(dayYouCanGameLi);
-  }
-}
-}
-}
+
+        if (playerList[j].dayYouCanGame.monday){
+          var dayYouCanGameLi = document.createElement('p');
+          dayYouCanGameLi.className = 'dayYouCanGameLi';
+          dayYouCanGameLi.textContent = 'MON  ';
+          dayYouCanGame.appendChild(dayYouCanGameLi);
+        }
+        if (playerList[j].dayYouCanGame.tuesday){
+          var dayYouCanGameLi = document.createElement('p');
+          dayYouCanGameLi.className = 'dayYouCanGameLi';
+          dayYouCanGameLi.textContent = 'TUE  ';
+          dayYouCanGame.appendChild(dayYouCanGameLi);
+        }
+        if (playerList[j].dayYouCanGame.wednesday){
+          var dayYouCanGameLi = document.createElement('p');
+          dayYouCanGameLi.className = 'dayYouCanGameLi';
+          dayYouCanGameLi.textContent = 'WED  ';
+          dayYouCanGame.appendChild(dayYouCanGameLi);
+        }
+        if (playerList[j].dayYouCanGame.thursday){
+          var dayYouCanGameLi = document.createElement('p');
+          dayYouCanGameLi.className = 'dayYouCanGameLi';
+          dayYouCanGameLi.textContent = 'THUR  ';
+          dayYouCanGame.appendChild(dayYouCanGameLi);
+        }
+        if (playerList[j].dayYouCanGame.friday){
+          var dayYouCanGameLi = document.createElement('p');
+          dayYouCanGameLi.className = 'dayYouCanGameLi';
+          dayYouCanGameLi.textContent = 'FRI  ';
+          dayYouCanGame.appendChild(dayYouCanGameLi);
+        }
+        if (playerList[j].dayYouCanGame.saturday){
+          var dayYouCanGameLi = document.createElement('p');
+          dayYouCanGameLi.className = 'dayYouCanGameLi';
+          dayYouCanGameLi.textContent = 'SAT  ';
+          dayYouCanGame.appendChild(dayYouCanGameLi);
+        }
+        if (playerList[j].dayYouCanGame.sunday){
+          var dayYouCanGameLi = document.createElement('p');
+          dayYouCanGameLi.className = 'dayYouCanGameLi';
+          dayYouCanGameLi.textContent = 'SUN  ';
+          dayYouCanGame.appendChild(dayYouCanGameLi);
+        }
+      }
+    }
