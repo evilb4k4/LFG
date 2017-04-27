@@ -147,15 +147,12 @@ function SignInBoxCreate(event) {
 //this fuctions creates the html form
 function registerPlayer() {
   getMainDiv.innerHTML = '';
-
   var playerRegistrationForm  = document.createElement('div');
   playerRegistrationForm.className = 'register-container';
 
   var registrationForm = document.createElement('form');
   registrationForm.setAttribute('id', 'playerCreated');
-
 //===== Username Label and Text Input =====
-
   var usernameDiv = document.createElement('div');
   usernameDiv.id = 'usernameDiv';
   usernameDiv.className = 'registrationFormDivs';
@@ -167,7 +164,18 @@ function registerPlayer() {
   registrationForm.appendChild(usernameDiv);
   usernameDiv.appendChild(usernameLabelCreate);
   usernameLabelCreate.appendChild(userNameInputField);
-
+  // Avatar input field
+  var avatarDiv = document.createElement('div');
+  usernameDiv.id = 'avatarDiv';
+  usernameDiv.className = 'avatarImgDiv';
+  var avatarLabelCreate = document.createElement('label');
+  avatarLabelCreate.innerHTML = 'Add an Avatar : ';
+  var avatarInputField = document.createElement('input');
+  avatarInputField.type = 'file';
+  avatarInputField.name = 'avatar';
+  registrationForm.appendChild(avatarDiv);
+  avatarDiv.appendChild(avatarLabelCreate);
+  avatarLabelCreate.appendChild(avatarInputField);
 //===== GamerTag Label and Text Input =====
 
   var gamerTagDiv = document.createElement('div');
