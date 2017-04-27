@@ -30,7 +30,8 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
 function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
-  var playerUserName = getTarget.username.value;
+  var playerUserName = getTarget.username.value.toLowerCase();
+  var playerAvatar = getTarget.avatar.value;
   var playerGamertag = getTarget.gametag.value;
   console.log('username', playerGamertag);
   var playerSkillLevel = getTarget.skillLevel.value;
@@ -64,8 +65,8 @@ function handleRegisterPlayer(event) {
 
 
   // playerList.push(playerList);
-  currentUser = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
-  var prePlayerList = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  currentUser = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  var prePlayerList = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
 
   if(playerList){
     prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
@@ -86,7 +87,7 @@ function handleRegisterPlayer(event) {
 //Section for the sigin logic
 function signIn(event) {
   event.preventDefault();
-  var playerUserName = signInSubmitButton.userName.value;
+  var playerUserName = signInSubmitButton.userName.value.toLowerCase();
   var matched = false;
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
@@ -175,6 +176,8 @@ function registerPlayer() {
   var avatarInputField = document.createElement('input');
   avatarInputField.type = 'text';
   avatarInputField.name = 'avatar';
+  var avatarField = avatarInputField.value;
+  console.log('avatarInputField works', avatarField);
   registrationForm.appendChild(avatarDiv);
   avatarDiv.appendChild(avatarLabelCreate);
   avatarLabelCreate.appendChild(avatarInputField);

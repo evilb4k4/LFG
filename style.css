@@ -459,7 +459,8 @@ footer div img {
   position: absolute;
   top: -40px;
   left: -40px;
-  background-color: orange;
+  /*transform: translate(-40px,-40px);*/
+  background-color: lime;
 }
 
 .userOnlineWrap {
@@ -549,9 +550,17 @@ footer div img {
 
 .dayYouCanGame{
 
+  position: absolute;
+  width: 480px;
+  text-align: left;
+  top: -25px;
+  left: 120px;
+  background-color: rgba(0, 0, 0, .7);
+  color: rgba(0,255,0,.5);
+  border-radius: 10px;
 }
 .dayYouCanGameLi{
-  display:inline;
+  display: inline;
 }
 
 ::-webkit-input-placeholder {
