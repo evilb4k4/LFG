@@ -15,7 +15,6 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
   this.comments = comments;
   this.gamesPlayed = gamesPlayed;
 
-
   this.gamerTags = {
     steam:'',
     origin:'',
