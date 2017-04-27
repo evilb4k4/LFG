@@ -15,82 +15,17 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
   this.comments = comments;
   this.gamesPlayed = gamesPlayed;
 
-  // this.gamesPlayed = {
-  //   leagueOfLegends: '',
-  //   worldOfWarcraft: false,
-  //   callOfDuty: false,
-  //   overwatch: false,
-  //   battlefield1: false,
-  //   titanfall2: false,
-  //   mineCraft: false,
-  //   theDivision: false,
-  //   noMansSky: false,
-  // };
 
-  // this.gamerTags = {
-  //   steam:'',
-  //   origin:'',
-  //   battlenet:'',
-  //   leagueOfLegends: '',
-  //   uplay:'',
-  //   xboxLive:'',
-  //   playStationNetwork:'',
-  // };
+  this.gamerTags = {
+    steam:'',
+    origin:'',
+    battlenet:'',
+    leagueOfLegends: '',
+    uplay:'',
+    xboxLive:'',
+    playStationNetwork:'',
+  };
 }
-
-//===== test currentUser =====
-// var currentUser = new Player('testCurrentUser', '', 'Monday', 'n00b', 'Im a n00b');
-// currentUser.gamerTags.steam = 'CUsteamtag';
-// currentUser.gamesPlayed.leagueOfLegends = true;
-// currentUser.gamerTags.battlenet = 'CUbattlenettag';
-// currentUser.gamesPlayed.worldOfWarcraft = true;
-
-// //===== test Players =====
-// var playerList = [];
-//
-// playerList[0] = new Player('test1', '', 'Monday', 'n00b', 'Im a n00b');
-// playerList[0].gamerTags.steam = 'test1steamtag';
-// playerList[0].gamesPlayed.leagueOfLegends = true;
-// playerList[0].gamerTags.battlenet = 'test1battlenettag';
-// playerList[0].gamesPlayed.worldOfWarcraft = true;
-//
-// playerList[1] = new Player('test2', '', 'Monday', 'n00b', 'Im a n00b');
-// playerList[1].gamerTags.steam = 'test2steamtag';
-// playerList[1].gamesPlayed.leagueOfLegends = true;
-// playerList[1].gamerTags.origin = 'test2origintag';
-// playerList[1].gamesPlayed.callOfDuty = true;
-//
-// playerList[2] = new Player('test3', '', 'Monday', 'n00b', 'Im n00b');
-// playerList[2].gamerTags.steam = 'test3steamtag';
-// playerList[2].gamesPlayed.leagueOfLegends = true;
-// playerList[2].gamerTags.uplay = 'test3uplaytag';
-// playerList[2].gamesPlayed.overwatch = true;
-//
-// playerList[3] = new Player('test4', '', 'Monday', 'n00b', 'Im n00b');
-// playerList[3].gamerTags.xboxLive = 'test4xboxtag';
-// playerList[3].gamesPlayed.battlefield1 = true;
-// playerList[3].gamerTags.battlenet = 'test4battlenettag';
-// playerList[3].gamesPlayed.worldOfWarcraft = true;
-//
-// playerList[4] = new Player('test5', '', 'Monday', 'n00b', 'Im a n00b');
-// playerList[4].gamerTags.steam = 'test5playstationtag';
-// playerList[4].gamesPlayed.titanfall2 = true;
-// playerList[4].gamerTags.battlenet = 'test5battlenettag';
-// playerList[4].gamesPlayed.leagueOfLegends = true;
-//
-// function dayOfWeek(){
-//   console.log('daysOfWeek running');
-//   var daysOfWeek = document.getElementsByClassName('gamingDays');
-//   for(var i = 0; i < daysOfWeek.length; i++){
-//     console.log('checkboxes work',daysOfWeek[i].checked);
-//     if(daysOfWeek[i].checked){
-//       this.dayYouCanGame.push(daysOfWeek[i].value);
-//     }
-//   }
-// };
-
-// var playerRegistrationForm = document.getElementById('playerCreated');
-// playerRegistrationForm.addEventListener('submit', registerPlayer);
 
 //function handling player registration
 function handleRegisterPlayer(event) {
@@ -98,7 +33,7 @@ function handleRegisterPlayer(event) {
   var getTarget = event.target;
   var playerUserName = getTarget.username.value;
   var playerGamertag = getTarget.gametag.value;
-  console.log('username', playerUserName);
+  console.log('username', playerGamertag);
   var playerSkillLevel = getTarget.skillLevel.value;
   var playerGamerNetwork = getTarget.gamerTags.value;
   console.log('playerGamerNetwork', playerGamerNetwork);
@@ -127,23 +62,18 @@ function handleRegisterPlayer(event) {
     theDivision: getTarget.theDivision.checked,
     noMansSky: getTarget.noMansSky.checked,
   };
-  // console.log('COD', gamesPlayed);
 
-  // var playerList = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
-  // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
-
-  // console.log('lulwat player', playerList);
 
   // playerList.push(playerList);
   currentUser = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  var prePlayerList = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
 
   if(playerList){
-    console.log('again');
-    playerList.push(new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed));
-    // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    playerList.push(prePlayerList);
   } else {
-    playerList = [new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed)];
-    // playerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
+    playerList = [prePlayerList];
   }
 
   try {
@@ -197,10 +127,6 @@ function SignInBoxCreate(event) {
   signInLabelCreate.innerHTML = 'Welcome Back, Player One';
   formcreate.appendChild(signInLabelCreate);
 
-  // var validatePlayerErrorMsg = document.createElement('span')
-  // validatePlayerErrorMsg.textContent = 'test';
-  // formcreate.appendChild(validatePlayerErrorMsg);
-
   var signInInputFieldCreate = document.createElement('input');
   signInInputFieldCreate.type = 'text';
   signInInputFieldCreate.name = 'userName';
@@ -222,15 +148,12 @@ function SignInBoxCreate(event) {
 //this fuctions creates the html form
 function registerPlayer() {
   getMainDiv.innerHTML = '';
-
   var playerRegistrationForm  = document.createElement('div');
   playerRegistrationForm.className = 'register-container';
 
   var registrationForm = document.createElement('form');
   registrationForm.setAttribute('id', 'playerCreated');
-
 //===== Username Label and Text Input =====
-
   var usernameDiv = document.createElement('div');
   usernameDiv.id = 'usernameDiv';
   usernameDiv.className = 'registrationFormDivs';
@@ -242,7 +165,18 @@ function registerPlayer() {
   registrationForm.appendChild(usernameDiv);
   usernameDiv.appendChild(usernameLabelCreate);
   usernameLabelCreate.appendChild(userNameInputField);
-
+  // Avatar input field
+  var avatarDiv = document.createElement('div');
+  usernameDiv.id = 'avatarDiv';
+  usernameDiv.className = 'avatarImgDiv';
+  var avatarLabelCreate = document.createElement('label');
+  avatarLabelCreate.innerHTML = 'Add an Avatar : ';
+  var avatarInputField = document.createElement('input');
+  avatarInputField.type = 'file';
+  avatarInputField.name = 'avatar';
+  registrationForm.appendChild(avatarDiv);
+  avatarDiv.appendChild(avatarLabelCreate);
+  avatarLabelCreate.appendChild(avatarInputField);
 //===== GamerTag Label and Text Input =====
 
   var gamerTagDiv = document.createElement('div');
@@ -607,6 +541,3 @@ signInButtonClick.addEventListener('click', SignInBoxCreate);
 
 var formButtonCreate = document.getElementById('registerButton');
 formButtonCreate.addEventListener('click', registerPlayer);
-
-// var playerRegistrationForm = document.getElementById('playerCreated');
-// playerRegistrationForm.addEventListener('submit', registerPlayer);
