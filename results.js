@@ -90,11 +90,11 @@ function resultDisplay(){
       var onlineIcon = document.createElement('img');
       var onlineText = document.createElement('p');
       onlineIcon.setAttribute('id', 'online-icon');
-      onlineText.textContent='ONLINE';
-      onlineText.setAttribute('id', 'online-text');
+      userOnline.textContent='online';
+      // onlineText.setAttribute('id', 'online-text');
       onlineIcon.src = ('img/200w_d.gif');
       userOnline.appendChild(onlineIcon);
-      userOnline.appendChild(onlineText);
+      // userOnline.appendChild(onlineText);
 
 
     }
