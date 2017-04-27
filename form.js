@@ -31,6 +31,7 @@ function handleRegisterPlayer(event) {
   event.preventDefault();
   var getTarget = event.target;
   var playerUserName = getTarget.username.value.toLowerCase();
+  var playerAvatar = getTarget.avatar.value;
   var playerGamertag = getTarget.gametag.value;
   console.log('username', playerGamertag);
   var playerSkillLevel = getTarget.skillLevel.value;
@@ -64,8 +65,8 @@ function handleRegisterPlayer(event) {
 
 
   // playerList.push(playerList);
-  currentUser = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
-  var prePlayerList = new Player(playerUserName, 'avatar', dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  currentUser = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
+  var prePlayerList = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
 
   if(playerList){
     prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
@@ -171,8 +172,10 @@ function registerPlayer() {
   var avatarLabelCreate = document.createElement('label');
   avatarLabelCreate.innerHTML = 'Add an Avatar : ';
   var avatarInputField = document.createElement('input');
-  avatarInputField.type = 'file';
+  avatarInputField.type = 'text';
   avatarInputField.name = 'avatar';
+  var avatarField = avatarInputField.value;
+  console.log('avatarInputField works', avatarField);
   registrationForm.appendChild(avatarDiv);
   avatarDiv.appendChild(avatarLabelCreate);
   avatarLabelCreate.appendChild(avatarInputField);
