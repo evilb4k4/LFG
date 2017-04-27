@@ -123,6 +123,15 @@ function resultDisplay(){
         gamesPlayed.appendChild(gamesPlayedLi);
       }
     }
+  }
+  try {
+    currentUser =JSON.parse(localStorage.currentUser);
+  } catch(error){
+    console.log('error');
+  }
+  hamburgerMenu();
+}
+
     // ========== dayYouCanGame List Item Creation =====
 
 

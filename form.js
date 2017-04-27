@@ -26,6 +26,7 @@ function Player(username, avatar, dayYouCanGame, skillLevel, comments, gamesPlay
   };
 }
 
+
 //function handling player registration
 function handleRegisterPlayer(event) {
   event.preventDefault();
@@ -78,10 +79,11 @@ function handleRegisterPlayer(event) {
 
   try {
     localStorage.playerList = JSON.stringify(playerList);
+    localStorage.currentUser = JSON.stringify(currentUser);
   } catch (error) {
     console.error(error);
   }
-
+  resultDisplay();
 }
 
 //Section for the sigin logic
@@ -92,10 +94,14 @@ function signIn(event) {
   for(var i = 0; i < playerList.length && !matched; i++){
     if(playerUserName == playerList[i].username){
       currentUser = playerList[i];
+      try {
+        localStorage.currentUser = JSON.stringify(currentUser);
+      } catch (error) {
+        console.error(error);
+      }
       resultDisplay();
       matched = true;
     } else if(i == playerList.length - 1) {
-
       function validatePlayer(){
         var errorMsg = document.getElementById('landing-msg');
         formcreate.setAttribute('id', 'error-msg-input');
@@ -496,23 +502,78 @@ function hamburgerMenu() {
   hamburgerMenuDivCreate.className = 'hambur-menu-box';
   var hamburgerMenuSettingButton = document.createElement('div');
   hamburgerMenuSettingButton.className = 'hamburger-menu-button-img';
+  var userProfileBox = document.createElement('div');
+  userProfileBox.className = 'hamburger-menu-avatar-box';
+  hamburgerMenuSettingButton.appendChild(userProfileBox);
+
+  var userEditButtonBox = document.createElement('div');
+  userEditButtonBox.className = 'img-setting-box';
+  hamburgerMenuSettingButton.appendChild(userEditButtonBox);
+
   var hamburgerMenuSettingImg = document.createElement('img');
   hamburgerMenuSettingImg.setAttribute('id','setting-button');
   hamburgerMenuSettingImg.src = 'img/setting-button.png';
-  hamburgerMenuSettingButton.appendChild(hamburgerMenuSettingImg);
+  userEditButtonBox.appendChild(hamburgerMenuSettingImg);
+
+  var userProfileNameBox = document.createElement('id');
+  userProfileNameBox.className = 'user-prifile-name-box';
+  var userSpanElement = document.createElement('span');
+  userSpanElement.setAttribute('id', 'getUserName');
+  userProfileNameBox.appendChild(userSpanElement);
+  hamburgerMenuSettingButton.appendChild(userProfileNameBox);
   hamburgerMenuDivCreate.appendChild(hamburgerMenuSettingButton);
 
   var hamburgerMenuList = document.createElement('div');
+  hamburgerMenuList.setAttribute('id', 'dropDownMenu')
   hamburgerMenuList.className = 'hamburger-menu-list';
-  var hamburgerMenuUL = document.createElement('ul');
-  var hamburgerMenuLI = document.createElement('li');
-  hamburgerMenuLI.innerHTML = 'Sign Out';
-  hamburgerMenuUL.appendChild(hamburgerMenuLI);
-  hamburgerMenuList.appendChild(hamburgerMenuUL);
+
+  var editProfLI = document.createElement('a');
+  editProfLI.href = '#';
+  editProfLI.innerHTML = 'Edit Profile';
+
+  hamburgerMenuList.appendChild(editProfLI);
+
+  var signOutLI = document.createElement('a');
+  signOutLI.setAttribute('id', 'logOut');
+  signOutLI.href = '#';
+  signOutLI.innerHTML = 'Sign Out';
+
+  hamburgerMenuList.appendChild(signOutLI);
 
   hamburgerMenuDivCreate.appendChild(hamburgerMenuList);
 
   document.body.appendChild(hamburgerMenuDivCreate);
+  setUsername();
+}
+
+//this function logs the current user out
+function logOut() {
+  localStorage.removeItem('currentUser');
+  location.reload();
+}
+function dropDownMenus(event) {
+  if (event.target.matches('#setting-button')) {
+    document.getElementById("dropDownMenu").classList.toggle("show");
+    var dropdowns = document.getElementsByClassName('hamburger-menu-list');
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (!openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function setUsername() {
+  var setUsername = document.getElementById('getUserName');
+  setUsername.textContent = currentUser.username;
+
+  var getSettingButtonClick = document.getElementById('logOut');
+  getSettingButtonClick.addEventListener('click', logOut);
+
+  var getDropDownMenu = document.getElementById('setting-button');
+  getDropDownMenu.addEventListener('click', dropDownMenus);
 }
   //function to display the register and sign in buttons on the main site
 
@@ -534,13 +595,19 @@ function mainPageLoad() {
 
   getMainDiv.appendChild(registerSignBox);
 }
+
 try {
   var playerList = JSON.parse(localStorage.playerList);
+  currentUser =JSON.parse(localStorage.currentUser);
   console.log('it exists');
 } catch(error){
   console.log('error');
 }
+if(currentUser === undefined){
 mainPageLoad();
+} else {
+  resultDisplay();
+}
 
 //event listeners
 
