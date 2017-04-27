@@ -185,6 +185,8 @@ footer div img {
   margin: 0 auto;
   margin-top: 25px;
   margin-bottom: 15px;
+  padding: 50px;
+  padding-bottom: 50px;
   overflow: scroll;
   position: relative;
 }
@@ -205,13 +207,15 @@ footer div img {
   font-style: italic;
   text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
   text-align: right;
-  text-
   width: 70%;
   float: left;
 }
 
 .registrationFormDivs {
   display: inline-block;
+  background-color: rgba(45, 95, 110, .7);
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.3);
   width: 200px;
   float: left;
 }
@@ -229,7 +233,6 @@ footer div img {
 .registrationFormDivs h1 {
   font-family: 'Black Ops One', cursive;
   font-size: 16px;
-  margin-top: 20px;
 }
 
 .registrationFormDivs label {
@@ -239,8 +242,9 @@ footer div img {
 }
 
 #usernameDiv {
-  padding-top: 50px;
-  padding-left: 50px;
+  border: none;
+  background: none;
+  transform: translate(50px, 50px);
 }
 
 #usernameDiv label {
@@ -248,9 +252,31 @@ footer div img {
   text-align: left;
 }
 
-#gamerTagDiv {
+#usernameDiv > label {
+  font-size: 24px;
+}
+
+#avatarDiv {
   padding-top: 50px;
-  margin-left: 100px;
+  padding-left: 50px;
+  border: none;
+  background: none;
+}
+
+#avatarDiv label {
+  font-family: 'Iceberg', cursive;
+  text-align: left;
+  transform: translateX(30%);
+}
+
+#avatarDiv > label {
+  font-size: 24px;
+}
+
+#gamerTagDiv {
+  border: none;
+  background: none;
+  transform: translate(-50px, 50px);
 }
 
 #gamerTagDiv label {
@@ -259,14 +285,25 @@ footer div img {
   text-align: left;
 }
 
+#gamerTagDiv > label {
+  font-size: 24px;
+}
+
 #platformDiv {
   position: relative;
-  padding-top: 20px;
+  transform: translateY(127px);
+  text-align: left;
+}
+
+#platformDiv h1 {
+  margin: 10px 0;
 }
 
 #platformDiv label {
   width: 100%;
   margin: 0 auto;
+  padding-top: 5px;
+  text-align: left;
 }
 
 #platformDiv label input {
@@ -276,11 +313,18 @@ footer div img {
 
 #skillLevelDiv {
   position: relative;
+  margin-top: 20px;
+}
+
+#skillLevelDiv h1 {
+  margin: 10px 0;
 }
 
 #skillLevelDiv label {
   width: 100%;
   margin: 0 auto;
+  padding-top: 5px;
+  text-align: left;
 }
 
 #skillLevelDiv label input {
@@ -290,13 +334,17 @@ footer div img {
 
 #gamesDiv {
   position: relative;
-  padding-top: 112.4px;
-  margin-left: 50px;
+  transform: translate(-50px, -90px);
+}
+
+#gamesDiv h1 {
+  margin: 10px 0;
 }
 
 #gamesDiv label {
   width: 100%;
   margin: 0 auto;
+  padding-top: 5px;
   text-align: left;
 }
 
@@ -307,13 +355,17 @@ footer div img {
 
 #daysYouCanGameDiv {
   position: relative;
-  padding-top: 112.4px;
-  margin-left: 50px;
+  transform: translate(-108px, 128px);
+}
+
+#daysYouCanGameDiv h1 {
+  margin: 10px 0;
 }
 
 #daysYouCanGameDiv label {
   width: 100%;
   margin: 0 auto;
+  padding-top: 5px;
   text-align: left;
 }
 
@@ -442,11 +494,6 @@ footer div img {
   border-radius: 10px;
   transform: translateX(-25px;)
 }
-/*#online-text{
-  font-size: 12px;
-  display: inline;
-  margin-bottom: 50px;
-}*/
 
 .gamerGamesWrap {
   display: inline-block;
@@ -457,18 +504,33 @@ footer div img {
 }
 
 .gamerTags {
-  width: 220px;
-  display: inline-block;
-  margin: 0 auto;
-  list-style: none;
-}
-
-.gamesPlayed {
-  width: 220px;
+  width: 200px;
+  height: 130px;
   display: inline-block;
   margin: 0 auto;
   margin-left: 5px;
+  padding: 5px;
   list-style: none;
+  text-align: left;
+  transform: translate(0, -20px);
+  border: 1px solid rgba(0,0,0,.3);
+  background-color: rgba(45, 95, 110, .7);
+  border-radius: 10px;
+}
+
+.gamesPlayed {
+  width: 200px;
+  height: 130px;
+  display: inline-block;
+  margin: 0 auto;
+  margin-left: 5px;
+  padding: 5px;
+  list-style: none;
+  text-align: left;
+  transform: translate(25px, 40px);
+  border: 1px solid rgba(0,0,0,.3);
+  background-color: rgba(45, 95, 110, .7);
+  border-radius: 10px;
 }
 
 .comments {
@@ -482,22 +544,15 @@ footer div img {
   font-size: 16px;
   width: 125px;
   height: 30px;
-  transform: translateY(-10px);
+  transform: translate(55px, -20px);
 }
 
 .dayYouCanGame{
-  
+
 }
 .dayYouCanGameLi{
   display:inline;
 }
-
-
-
-
-
-
-
 
 ::-webkit-input-placeholder {
   font-family: "Iceberg", cursive;

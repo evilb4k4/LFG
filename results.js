@@ -17,22 +17,21 @@ function resultDisplay(){
         if (!!(Object.entries(currentUser.dayYouCanGame)[k][1]) && !!(Object.entries(playerList[j].dayYouCanGame)[k][1])){
           console.log('test1');
 
-        if (currentUser.skillLevel == playerList[j].skillLevel){
-          console.log(playerList[j].skillLevel);
-          for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
-            if(!!(Object.entries(currentUser.gamerTags)[i][1]) && !!(Object.entries(playerList[j].gamerTags)[i][1])){
-              console.log(playerList[j].gamerTags);
-            }
-            if(!!(Object.entries(currentUser.gamesPlayed)[i][1]) && !!(Object.entries(playerList[j].gamesPlayed)[i][1])){
-              console.log(playerList[j].gamesPlayed);
+          if (currentUser.skillLevel == playerList[j].skillLevel){
+            console.log(playerList[j].skillLevel);
+            for (var i = 0; i < Object.entries(playerList[j].gamerTags).length; i++){
+              if(!!(Object.entries(currentUser.gamerTags)[i][1]) && !!(Object.entries(playerList[j].gamerTags)[i][1])){
+                console.log(playerList[j].gamerTags);
+              }
+              if(!!(Object.entries(currentUser.gamesPlayed)[i][1]) && !!(Object.entries(playerList[j].gamesPlayed)[i][1])){
+                console.log(playerList[j].gamesPlayed);
+              }
             }
           }
         }
-                      playerRender();
-
-        }
       }
-    }
+          playerRender();
+        }
   }
 
 
@@ -60,8 +59,10 @@ function resultDisplay(){
     userOnline.className = 'userOnline';
     var gamerTags = document.createElement('ul');
     gamerTags.className = 'gamerTags';
+    gamerTags.textContent = 'Gamer Tags: ';
     var gamesPlayed = document.createElement('ul');
     gamesPlayed.className = 'gamesPlayed';
+    gamesPlayed.textContent = 'Games Played: ';
     var dayYouCanGame = document.createElement('ul');
     dayYouCanGame.className = 'dayYouCanGame';
     var comments = document.createElement('p');
@@ -126,7 +127,7 @@ function resultDisplay(){
         var dayYouCanGameLi = document.createElement('li');
         dayYouCanGameLi.textContent = Object.entries(playerList[j].dayYouCanGame)[i][0];
         dayYouCanGame.appendChild(dayYouCanGameLi);
+      }
+    }
   }
-}
-}
 }
