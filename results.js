@@ -86,6 +86,18 @@ function resultDisplay(){
     gamerGamesWrap.appendChild(gamesPlayed);
     player.appendChild(comments);
     player.appendChild(contactButton);
+    if(Object.entries(playerList[j].online)){
+      var onlineIcon = document.createElement('img');
+      var onlineText = document.createElement('p');
+      onlineIcon.setAttribute('id', 'online-icon');
+      onlineText.textContent='ONLINE';
+      onlineText.setAttribute('id', 'online-text');
+      onlineIcon.src = ('img/200w_d.gif');
+      userOnline.appendChild(onlineIcon);
+      userOnline.appendChild(onlineText);
+
+
+    }
 
     // ========== gamerTags List Item Creation =====
 

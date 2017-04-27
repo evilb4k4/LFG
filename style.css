@@ -450,6 +450,21 @@ footer div img {
 .username{
   font-size: 24px;
 }
+#online-icon{
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}
+#online-text{
+  font-size: 12px;
+  display: inline;
+}
+
+
+
+
+
+
 
 ::-webkit-input-placeholder {
   font-family: "Iceberg", cursive;
