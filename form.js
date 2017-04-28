@@ -532,16 +532,16 @@ function hamburgerMenu() {
   hamburgerMenuList.setAttribute('id', 'dropDownMenu')
   hamburgerMenuList.className = 'hamburger-menu-list';
 
-  // var editProfLI = document.createElement('a');
-  // editProfLI.href = '#';
-  // editProfLI.innerHTML = 'Edit Profile';
-
-  // hamburgerMenuList.appendChild(editProfLI);
-
   var signOutLI = document.createElement('a');
   signOutLI.setAttribute('id', 'logOut');
   signOutLI.href = '#';
   signOutLI.innerHTML = 'Sign Out';
+
+  var aboutUs = document.createElement('a');
+  aboutUs.href = 'aboutus.html';
+  aboutUs.innerHTML = 'About Us';
+
+  hamburgerMenuList.appendChild(aboutUs);
 
   hamburgerMenuList.appendChild(signOutLI);
 

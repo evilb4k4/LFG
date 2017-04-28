@@ -21,6 +21,10 @@ label {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+a {
+  color: black;
+}
+
 /* hamburger manu class */
 .hambur-menu-box {
   position: fixed;
@@ -638,4 +642,55 @@ footer div img {
     width: 600px;
     margin-left: calc(50% - 300px);
   }
+}
+
+h3 {
+ color: lime;
+ margin-top: 10px;
+ text-align: center;
+ font-family: 'Black Ops One';
+ font-size: 30px;
+text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+p {
+  display: inline;
+  color: lime;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+/*About me Box container*/
+.about-me-box{
+ display: block;
+ border: 1px solid #000;
+ background-color: rgba(45, 95, 110, .7);
+ border-radius: 10px;
+ box-shadow: 20px 20px 50px black;
+ width: 50%;
+ height: 165px;
+ margin: 1% auto;
+ position: relative;
+
+}
+.about-me-image {
+ display: inline-block;
+ width: 195px;
+}
+.about-me-box img{
+ display: inline-block;
+ border-radius: 10px;
+ margin: 2px 2px 2px 2px;
+ width: 160px;
+ height:160px;
+}
+
+.about-me-description {
+ display: inline-block;
+ width: 800px;
+ height: 190px;
+ position: absolute;
+ top:0;
+ padding-top: 3%;
+ padding-left: 5%;
+ color: #fff;
+ font-size: 25px;
+ font-family: 'black ops one';
 }
