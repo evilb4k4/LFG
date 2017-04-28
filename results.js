@@ -11,6 +11,7 @@ function resultDisplay(){
 
   for (var j = 0; j < playerList.length; j++) {
     match = false;
+
     //===== Conditionals for Comparison between currentUser and Player objects =====
     if (currentUser.username != playerList[j].username){
       console.log(playerList[j].username);

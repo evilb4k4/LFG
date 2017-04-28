@@ -17,6 +17,10 @@ body {
   width: 100%;
 }
 
+label {
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 /* hamburger manu class */
 .hambur-menu-box {
   position: fixed;
@@ -36,15 +40,21 @@ body {
 }
 .hamburger-menu-avatar-box {
   display: inline-block;
-  width: 90px;
-  height: 90px;
-  border: 1px solid #fff;
+  width: 75px;
+  height: 75px;
+  border: 1px solid #000;
 }
 .user-prifile-name-box {
-  color: white;
+  color: rgba(0,255,0,.8);
+  text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
   padding-left: 25px;
   font-family: 'Black Ops One';
   font-size: 20px;
+  font-style: italic;
+  position: absolute;
+  top: 24px;
+  right: 17px;
+
 }
 .img-setting-box  img {
   margin: 15px;
@@ -68,10 +78,9 @@ body {
  font-family: sans-serif;
  text-decoration: none;
  background: #EEE;
- shadow: #EEE;
+ double-shadow: #EEE;
  border-bottom: 1px solid #777a7c ;
- style: #EEE;
- overflow: hidden;
+ hover-style: #EEE;overflow: hidden;
  text-shadow: 0 -1px 0 rgba(255,255,255,0.3);
  padding: 10px 10px;
 }
@@ -91,6 +100,7 @@ header {
   font-family: 'Black Ops One', cursive;
   font-size: 100px;
   font-style: italic;
+  color: rgba(0,255,0,.8);
   text-shadow: 5px 5px 20px rgba(55, 70, 110, 1);
   text-align: center;
 }
@@ -214,6 +224,8 @@ footer div img {
 
 .register-container {
   display: block;
+  color: rgba(0,255,0,.5);
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   background-color: rgba(45, 95, 110, .8);
   border-radius: 10px;
   box-shadow: 20px 20px 50px black;
@@ -224,7 +236,6 @@ footer div img {
   margin-bottom: 15px;
   padding: 50px;
   padding-bottom: 50px;
-  overflow: scroll;
   position: relative;
 }
 
@@ -250,6 +261,7 @@ footer div img {
 
 .registrationFormDivs {
   display: inline-block;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   background-color: rgba(45, 95, 110, .7);
   border-radius: 10px;
   border: 1px solid rgba(0,0,0,.3);

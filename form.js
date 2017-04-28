@@ -69,6 +69,8 @@ function handleRegisterPlayer(event) {
   currentUser = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
   var prePlayerList = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
 
+  currentUser.gamerTags[playerGamerNetwork] = playerGamertag;
+
   if(playerList){
     prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
     playerList.push(prePlayerList);
