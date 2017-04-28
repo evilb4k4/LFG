@@ -69,6 +69,8 @@ function handleRegisterPlayer(event) {
   currentUser = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
   var prePlayerList = new Player(playerUserName, playerAvatar, dayYouCanGame, playerSkillLevel, [], gamesPlayed);
 
+  currentUser.gamerTags[playerGamerNetwork] = playerGamertag;
+
   if(playerList){
     prePlayerList.gamerTags[playerGamerNetwork] = playerGamertag;
     playerList.push(prePlayerList);
@@ -504,6 +506,9 @@ function hamburgerMenu() {
   hamburgerMenuSettingButton.className = 'hamburger-menu-button-img';
   var userProfileBox = document.createElement('div');
   userProfileBox.className = 'hamburger-menu-avatar-box';
+  var avatarPic = document.createElement('img');
+  avatarPic.src = currentUser.avatar;
+  userProfileBox.appendChild(avatarPic);
   hamburgerMenuSettingButton.appendChild(userProfileBox);
 
   var userEditButtonBox = document.createElement('div');
@@ -527,16 +532,16 @@ function hamburgerMenu() {
   hamburgerMenuList.setAttribute('id', 'dropDownMenu')
   hamburgerMenuList.className = 'hamburger-menu-list';
 
-  var editProfLI = document.createElement('a');
-  editProfLI.href = '#';
-  editProfLI.innerHTML = 'Edit Profile';
-
-  hamburgerMenuList.appendChild(editProfLI);
-
   var signOutLI = document.createElement('a');
   signOutLI.setAttribute('id', 'logOut');
   signOutLI.href = '#';
   signOutLI.innerHTML = 'Sign Out';
+
+  var aboutUs = document.createElement('a');
+  aboutUs.href = 'aboutus.html';
+  aboutUs.innerHTML = 'About Us';
+
+  hamburgerMenuList.appendChild(aboutUs);
 
   hamburgerMenuList.appendChild(signOutLI);
 
@@ -604,7 +609,7 @@ try {
   console.log('error');
 }
 if(currentUser === undefined){
-mainPageLoad();
+  mainPageLoad();
 } else {
   resultDisplay();
 }
