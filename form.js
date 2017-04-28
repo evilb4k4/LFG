@@ -607,7 +607,7 @@ try {
   console.log('error');
 }
 if(currentUser === undefined){
-mainPageLoad();
+  mainPageLoad();
 } else {
   resultDisplay();
 }
