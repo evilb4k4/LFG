@@ -532,11 +532,11 @@ function hamburgerMenu() {
   hamburgerMenuList.setAttribute('id', 'dropDownMenu')
   hamburgerMenuList.className = 'hamburger-menu-list';
 
-  var editProfLI = document.createElement('a');
-  editProfLI.href = '#';
-  editProfLI.innerHTML = 'Edit Profile';
+  // var editProfLI = document.createElement('a');
+  // editProfLI.href = '#';
+  // editProfLI.innerHTML = 'Edit Profile';
 
-  hamburgerMenuList.appendChild(editProfLI);
+  // hamburgerMenuList.appendChild(editProfLI);
 
   var signOutLI = document.createElement('a');
   signOutLI.setAttribute('id', 'logOut');

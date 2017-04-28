@@ -340,7 +340,7 @@ footer div img {
 
 #platformDiv {
   position: relative;
-  transform: translateY(127px);
+  transform: translate(0, 126px);
   text-align: left;
 }
 
