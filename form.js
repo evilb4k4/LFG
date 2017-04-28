@@ -504,6 +504,9 @@ function hamburgerMenu() {
   hamburgerMenuSettingButton.className = 'hamburger-menu-button-img';
   var userProfileBox = document.createElement('div');
   userProfileBox.className = 'hamburger-menu-avatar-box';
+  var avatarPic = document.createElement('img');
+  avatarPic.src = currentUser.avatar;
+  userProfileBox.appendChild(avatarPic);
   hamburgerMenuSettingButton.appendChild(userProfileBox);
 
   var userEditButtonBox = document.createElement('div');
